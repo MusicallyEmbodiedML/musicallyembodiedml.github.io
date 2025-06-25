@@ -13,7 +13,7 @@ The PAF-POPR firmware offers exploration of Phase Aligned Formant synthesis, usi
 
 # PAF
 
-[Phase Aligned Formant synthesis](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a560464f05a6a0e20e1a9b8e1f5584f83151587a) was developed my Miller Pucklette in the mid 90s.  It offers methods for creating complex spectra that avoid common issues with subtractive and FM.  The synth runs 3 PAF operators and a delay effect. 19 sound generation parameters are controlled by the three axes of the joystick.
+[Phase Aligned Formant synthesis](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a560464f05a6a0e20e1a9b8e1f5584f83151587a) was developed my Miller Pucklette in the mid 90s.  It offers methods for creating complex spectra that avoid common issues with subtractive and FM.  The synth runs 3 PAF operators and a delay effect. Notes are shaped by an attack-release envelope, with release length controller by ML. 19 sound generation parameters are controlled by the three axes of the joystick.
 
 ## Inputs
 
@@ -22,7 +22,6 @@ The PAF synth is controlled by MIDI. It listens for ```note on``` messages on ch
 ## Outputs
 
 Mono sound is output to both channels of the line out and headphone sockets.
-
 
 
 # POPR approach
