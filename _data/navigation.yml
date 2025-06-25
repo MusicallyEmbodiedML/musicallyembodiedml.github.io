@@ -1,0 +1,43 @@
+main:
+  - title: "MEMLNaut"
+    url: /memlnaut/
+  - title: "Posts"
+    url: /posts/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "About"
+    url: /about/
+
+memlnaut:
+  - title: "MEMLNaut"
+    children:
+    - title: "About"
+      url: /memlnaut
+    - title: "Features"
+      url: /memlnaut/features
+    - title: "Technical Spec"
+      url: /memlnaut/techspec
+  - title: "ML Approaches"
+    children:
+    - title: "POPR"
+      url: /memlnaut/approaches/popr
+    - title: "CARL"
+      url: /memlnaut/approaches/carl
+  - title: "Firmwares"
+    children:
+    - title: "Guide"
+      url: /memlnaut/firmwares/guide
+    - title: "PAF Synth (CARL)"
+      url: /memlnaut/firmwares/pafsynthrl
+    - title: "PAF Synth (POPR)"
+      url: /memlnaut/firmwares/pafsynthpopr
+    - title: "Multi FX with RL"
+      url: /memlnaut/firmwares/multifxrl
+    - title: "Multi FX with POPR"
+      url: /memlnaut/firmwares/multifxpopr
+    - title: "Multi-Euclidean Rhythm Generator (CARL)"
+      url: /memlnaut/firmwares/multieuclideancarl
+    - title: "Doom Compressor"
+      url: /memlnaut/firmwares/doomcomppopr

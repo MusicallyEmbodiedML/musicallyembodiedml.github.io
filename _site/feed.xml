@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="/~ck84/meml/feed.xml" rel="self" type="application/atom+xml" /><link href="/~ck84/meml/" rel="alternate" type="text/html" /><updated>2025-06-25T09:54:54+10:00</updated><id>/~ck84/meml/feed.xml</id><title type="html">Musically Embodied Machine Learning</title><subtitle>AHRC funded research project on musically embodied machine learning</subtitle><author><name>First Lastname</name></author><entry><title type="html">Research Visit to the Intelligent Instruments Lab in Reykjavik</title><link href="/~ck84/meml/report/iil/" rel="alternate" type="text/html" title="Research Visit to the Intelligent Instruments Lab in Reykjavik" /><published>2025-06-01T00:00:00+10:00</published><updated>2025-06-01T00:00:00+10:00</updated><id>/~ck84/meml/report/iil</id><content type="html" xml:base="/~ck84/meml/report/iil/"><![CDATA[<p>Chris and Andrea recent spent a week in Iceland, visiting Thor Magnusson’s <a href="https://iil.is">Intelligent Instruments Lab</a> at the University of Reykjavik.  Following our participatory design method, we spent the week working with Tom Manoury, exploring the augmentation of a euphonium using our MEMLNaut technology. We also working with Stefanos Vasilakis, who used the PAF synthesis MEMLNaut patch with external synth hardware. The week culminated in performances at Mengi, with the addition a duet with Andrea and Betty Accorsi on sax, and a Brain Dead Ensemble style trio with Thor Magnusson playing the Threnoscope, Chris playing MEMLNaut/Xiasri and Betty playing sax.</p>
+
+<!-- 
+gallery:
+  - url: /asssets/images/akranes.jpg
+    image_path: /asssets/images/akranes.jpg
+    alt: "Akranes"
+    title: "Akranes" -->]]></content><author><name>First Lastname</name></author><category term="report" /><category term="report" /><category term="performance" /><summary type="html"><![CDATA[Chris and Andrea recent spent a week in Iceland, visiting Thor Magnusson’s Intelligent Instruments Lab at the University of Reykjavik. Following our participatory design method, we spent the week working with Tom Manoury, exploring the augmentation of a euphonium using our MEMLNaut technology. We also working with Stefanos Vasilakis, who used the PAF synthesis MEMLNaut patch with external synth hardware. The week culminated in performances at Mengi, with the addition a duet with Andrea and Betty Accorsi on sax, and a Brain Dead Ensemble style trio with Thor Magnusson playing the Threnoscope, Chris playing MEMLNaut/Xiasri and Betty playing sax.]]></summary></entry><entry><title type="html">MEML @ CHIME 2024</title><link href="/~ck84/meml/workshop/conference/chime-report/" rel="alternate" type="text/html" title="MEML @ CHIME 2024" /><published>2024-12-05T00:00:00+11:00</published><updated>2024-12-05T00:00:00+11:00</updated><id>/~ck84/meml/workshop/conference/chime-report</id><content type="html" xml:base="/~ck84/meml/workshop/conference/chime-report/"><![CDATA[<p>At <a href="https://www.chime.ac.uk/chime-annual-conference-2024">CHIME</a> this year we ran a <a href="/workshop/conference/chime-workshop/">workshop</a> and also shared some new instruments in the demo session. Here’s some documentation from the event.</p>]]></content><author><name>First Lastname</name></author><category term="workshop" /><category term="conference" /><category term="workshop" /><category term="documentation" /><category term="instruments" /><category term="event report" /><summary type="html"><![CDATA[At CHIME this year we ran a workshop and also shared some new instruments in the demo session. Here’s some documentation from the event.]]></summary></entry><entry><title type="html">Presentation to the Music Technology Group at Universitat Pompeu Fabra, Barcelona</title><link href="/~ck84/meml/presentation/upfmtg/" rel="alternate" type="text/html" title="Presentation to the Music Technology Group at Universitat Pompeu Fabra, Barcelona" /><published>2024-12-05T00:00:00+11:00</published><updated>2024-12-05T00:00:00+11:00</updated><id>/~ck84/meml/presentation/upfmtg</id><content type="html" xml:base="/~ck84/meml/presentation/upfmtg/"><![CDATA[<p>Chris was visiting the <a href="https://www.upf.edu/web/mtg">Music Technology Group</a> to <a href="https://www.upf.edu/web/mtg/home/-/asset_publisher/sWCQhjdDLWwE/content/behzad-haki-defends-his-phd-thesis/maximized">examine</a> Behzad Haki’s fascinating PhD research on generative realtime rhythmic accompaniment.  He also gave a presentation on the MEML project. Here are the slides from the presentation:</p>
+
+<div id="pdf" style="width:100%; height:800px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>PDFObject.embed("/assets/pdf/UPF-MEML-Presentation.pdf", "#pdf", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="presentation" /><category term="presentation" /><summary type="html"><![CDATA[Chris was visiting the Music Technology Group to examine Behzad Haki’s fascinating PhD research on generative realtime rhythmic accompaniment. He also gave a presentation on the MEML project. Here are the slides from the presentation:]]></summary></entry><entry><title type="html">MEML Workshop at CHIME 2024</title><link href="/~ck84/meml/workshop/conference/chime-workshop/" rel="alternate" type="text/html" title="MEML Workshop at CHIME 2024" /><published>2024-12-01T00:00:00+11:00</published><updated>2024-12-01T00:00:00+11:00</updated><id>/~ck84/meml/workshop/conference/chime-workshop</id><content type="html" xml:base="/~ck84/meml/workshop/conference/chime-workshop/"><![CDATA[<h1 id="the-instruments">The Instruments</h1>
+
+<p>We have three instruments to use in the workshop, all with a similar interface.  Each instrument has a large-ish parameter space which is controlled by a 3D joystick, supported by other controls for engaging with machine learning models.</p>
+
+<p>The instruments:</p>
+
+<ul>
+  <li>a multi-fx processor</li>
+  <li>a sequencer</li>
+  <li>an FM synthesiser</li>
+</ul>
+
+<h1 id="connecting-to-the-web-interfaces">Connecting to the web interfaces</h1>
+
+<p>Each instrument is running a small web interface for extended options that control machine learning.</p>
+
+<h1 id="documentation">Documentation</h1>
+
+<h2 id="quick-start-tutorial">Quick-start tutorial</h2>
+
+<ol>
+  <li>
+    <p>Make sure you are in Inference mode: the LED on the unit should be Off, and the Web GUI should display the training radio button under the Training section.</p>
+  </li>
+  <li>
+    <p>Wiggle the joystick (and play a note at the same time, if required): you will hear the sound changing as you move the joystick. With the joystick, you can interact with the model and map the joystick’s coordinates to your desired sounds. The joystick moves around in two dimensions and you can twist its top knob too.</p>
+  </li>
+  <li>
+    <p>Switch the toggle on the unit up: the LED lights up, and you will be in Training mode.</p>
+  </li>
+  <li>
+    <p>Press the green button to the LEFT (“Draw”): the sounds mapped to the joystick will change randomly. This is the start of your training session.</p>
+  </li>
+  <li>Explore the new sounds with the joystick. Once you find one that you like, you have two options:
+    <ul>
+      <li>Press Draw again: the current sound will be manipulated with further random noise (see “Exploration Modes” in the Web GUI) so you can explore sounds that are similar to it, and fine-tune your base sound. By default, it will put the current sound at the centre of the joystick (“Pre-train” mode).</li>
+      <li>Press and hold the button on top of the joystick (“Save”): move the joystick to the desired position, and release the Save button. This creates a data point in the Dataset. After training, the selected sound will be in that position when you go back to Inference mode.</li>
+    </ul>
+  </li>
+  <li>After a data point is saved into the Dataset, press “Draw” again: the network will be re-randomised, and you can repeat Step 5 to create more data points.</li>
+  <li>
+    <p>If you want to start the acquisition process again, the green button on the RIGHT (“Clear”) will clear the dataset. You can then start again from Step 3.</p>
+  </li>
+  <li>
+    <p>Experiment with populating a dataset with a few data points. Then, flick the toggle switch down to Inference. The Model will train for a few seconds, then display its final loss value on the Web interface.</p>
+  </li>
+  <li>Your Model is trained! Play around with it, find your saved sounds and explore the ones in between that the Model has generated. Then, start creating more than one Dataset and training more than one Model. Use different Exploration Modes too.</li>
+</ol>
+
+<p>See the GUI guide for a detailed explanation.</p>
+
+<h2 id="hardware-interface-elements">Hardware interface elements</h2>
+
+<h3 id="joystick">Joystick</h3>
+
+<p>The joystick lets you control the parameters of the instrument, by providing input data to the Model. The joystick operates in three dimensions: X-Y axis movements, and bi-directional twists of its knob. The button on top is the Save button (see below).</p>
+
+<h3 id="traininginference-switch">Training/Inference switch</h3>
+<p>This switch lets you go in and out of Training or Inference mode. In Training mode (green LED ON), you can acquire data and create a dataset. In Inference mode, the Model is trained for the set amount of Iterations, then the joystick guides you through the parameter space using the trained Model.
+This switch is equivalent to the Train/Acquire button in the Web GUI.</p>
+
+<h3 id="draw-button">Draw button</h3>
+<p>The Draw button moves the training process by one step. At the start, it draws new random parameters. After that, it lets you “zoom” into the sound that the joystick points to when the Draw button is pressed, according to the selected Exploration mode (see Web GUI elements).</p>
+
+<h3 id="clear-button">Clear button</h3>
+<p>This button clears the current Dataset and re-initialises the training sequence (Step 3 in the Quick Start guide). It is equivalent to the “Clear” button for Datasets in the Web GUI. 
+Web GUI elements</p>
+
+<h3 id="datasets">Datasets</h3>
+<p>Each radio button represents one Dataset. You can change between Datasets in Training mode. Datasets can be cleared at any time with the Clear button below. A Model cannot be trained on an empty dataset.</p>
+
+<h3 id="models">Models</h3>
+<p>Each radio button represents one Model. You can change between Models either in Training or in Inference mode. Models can be reset to random weights with the Reset button below.</p>
+
+<h2 id="modes">Modes</h2>
+<p>There are two modes, “Training” and “Inference”. You can switch between them either by flicking the hardware switch on the unit, or by pressing the “Train”/”Acquire” button on the web interface. Every time you switch from Training to Inference mode, the current Model will get trained on the current Dataset.
+The green LED on the unit is turned on if you are in Training mode.
+If you switch in and out of Inference mode more than once on the same dataset, the network will train for longer on the same dataset.</p>
+
+<h3 id="iterations">Iterations</h3>
+<p>How long you want the network to train on your data? This slider sets the number of epochs from 1 to 2000. Loosely-trained models may also make inspiring sounds.</p>
+
+<h3 id="exploration-modes">Exploration modes</h3>
+
+<p>Exploration modes are different ways to navigate random parameter spaces during training. Each of them is a different way to re-randomise the weights of a Model around a sound that you select with the joystick. The Exploration modes are:</p>
+
+<ul>
+  <li>NN Weights: Gaussian noise is summed to the weights of a neural network. Exploration Range controls the variance of the noise.</li>
+  <li>Pre-Train: The network is pre-trained so that a selected sound is moved to the centre of the joystick’s parameter space. Exploration Range controls the range around the centre that the joystick can reach.</li>
+  <li>Zoom: This mode “zooms in” around the sound that was selected by the joystick position. The Model’s weights are unaffected. Exploration Range sets the amount of zooming-in: less range means more zoom.</li>
+</ul>
+
+<p>You can change Exploration modes and range at any point as you acquire more data in Training mode.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="the-microsoft-way">The Microsoft way</h3>
+<p>Unplug the USB-A cable going from the back of the unit to the power supply or USB hub, and plug it back in after a few seconds.</p>
+
+<h3 id="web-gui-is-unresponsive">Web GUI is unresponsive</h3>
+<p>Have a laptop with a serial terminal ready (e.g. screen). Disconnect the main USB cable from the unit. Connect a MicroUSB cable to the Pi Pico contained in the unit. Open the device /dev/ttyACM0. Disconnect and reconnect the MicroUSB cable into the Pico. Then connect the main USB cable of the unit. Upon boot-up, the Pico should display two things:</p>
+<ul>
+  <li>the IP address that it uses for serving the Web GUI</li>
+  <li>A message acknowledging that the XMOS board has booted up and has supplied a status message</li>
+</ul>
+
+<p>Check that the webpage refreshes correctly and the browser points at the right IP address, and is connected to the same network. Check that the XMOS board is powered up.
+None of the above works</p>
+
+<p>Ask for help from the workshop organisers!</p>]]></content><author><name>First Lastname</name></author><category term="workshop" /><category term="conference" /><category term="workshop" /><category term="documentation" /><category term="instruments" /><summary type="html"><![CDATA[The Instruments]]></summary></entry><entry><title type="html">Further Experiments in Neural Mapping Design</title><link href="/~ck84/meml/demo/joystickexpts/" rel="alternate" type="text/html" title="Further Experiments in Neural Mapping Design" /><published>2024-11-19T00:00:00+11:00</published><updated>2024-11-19T00:00:00+11:00</updated><id>/~ck84/meml/demo/joystickexpts</id><content type="html" xml:base="/~ck84/meml/demo/joystickexpts/"><![CDATA[<p>In the last month or so we’ve been doing some more experimentation with hardware instruments and mapping design using neural networks. In October, ahead of a visit to Machina Bristronica, Eric from <a href="https://schlappiengineering.com/">Schlappi Engineering</a> visited for a week long hack session, and we made a new instrument based on our FM synthesis joystick prototype, converted to use for sequencing in modular synthesis.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PAwbFgUveCI?si=xEitO005prkhqiG9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<p>The sequencing engine runs a set of four <a href="https://erikdemaine.org/papers/DeepRhythms_CGTA/paper.pdf">euclidean sequencers</a>, with four parameters <em>(n, k, speed, offset)</em> controlling the rhythm they generate.  This space of 16 parameters is mapped to the three dimensional joystick, via a neural network. Controls on the module allow the player to collect points in the parameter space and train the mappings in the neural network. This results in a joystick controlled techno!</p>
+
+<p>Another experiment we’ve done is to take a similar system and use it to control a larger parameter space in a multifx engine.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6G7BbbTWlO4?si=pd53CWvXd97U1TPa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<p>This video shows us trying out the engine, with modular synth drums, e-drums and guitar.  There are four effects (flange, delay, ring mod and filter). These are mixed together through a mixing matrix, which means that each effect takes a mix of itself and other effects as the input, in addition to the live signal from the instrument.  The neural network controls all of the levels in the mixing matrix, in addition to the mix levels of the live input and the parameters of the effects.  This results different in effects fading in and out in different areas of the joystick, and makes some interesting and unexpected surprises.</p>
+
+<p>These different instruments are creating a basis for us to run experiments in different ways to interact with neural networks as we train, modify and evolve them towards musical goals.</p>]]></content><author><name>First Lastname</name></author><category term="demo" /><category term="prototype" /><category term="xmos" /><category term="multifx" /><category term="modular" /><category term="sequencing" /><category term="dsp" /><category term="neuralnetwork" /><category term="mapping" /><summary type="html"><![CDATA[In the last month or so we’ve been doing some more experimentation with hardware instruments and mapping design using neural networks. In October, ahead of a visit to Machina Bristronica, Eric from Schlappi Engineering visited for a week long hack session, and we made a new instrument based on our FM synthesis joystick prototype, converted to use for sequencing in modular synthesis.]]></summary></entry><entry><title type="html">Upcoming: PhD Course @ AAU Copenhagen</title><link href="/~ck84/meml/course/event/phd-course-announcement/" rel="alternate" type="text/html" title="Upcoming: PhD Course @ AAU Copenhagen" /><published>2024-09-25T00:00:00+10:00</published><updated>2024-09-25T00:00:00+10:00</updated><id>/~ck84/meml/course/event/phd-course-announcement</id><content type="html" xml:base="/~ck84/meml/course/event/phd-course-announcement/"><![CDATA[<p>We’re happy to announce that we’ll be running a PhD Course on Musically Embodied Machine Learning at AAU Copenhagen, in collaboration with <a href="https://vbn.aau.dk/en/persons/dano">Dan Overholt</a>.  The course will take place from 15th-17th January 2025. We’ll be announcing more information soon, but please get in contact if you’re interested in attending.</p>]]></content><author><name>First Lastname</name></author><category term="course" /><category term="event" /><category term="phd" /><summary type="html"><![CDATA[We’re happy to announce that we’ll be running a PhD Course on Musically Embodied Machine Learning at AAU Copenhagen, in collaboration with Dan Overholt. The course will take place from 15th-17th January 2025. We’ll be announcing more information soon, but please get in contact if you’re interested in attending.]]></summary></entry><entry><title type="html">Joystick FM Synth Prototype</title><link href="/~ck84/meml/demo/joystickproto/" rel="alternate" type="text/html" title="Joystick FM Synth Prototype" /><published>2024-09-24T00:00:00+10:00</published><updated>2024-09-24T00:00:00+10:00</updated><id>/~ck84/meml/demo/joystickproto</id><content type="html" xml:base="/~ck84/meml/demo/joystickproto/"><![CDATA[<p>We’ve been working on some tech groundwork, and making a prototype synth.  It uses machine learning to map from a 3D parameter space (a 3D joystick) into a bigger parameter space of an FM synth.  The prototype has controls for collecting training data, and for training the model. In the background, it uses an XMOS chip to run the neural network and the sound synthesis.</p>
+
+<iframe width="315" height="560" src="https://www.youtube.com/embed/oHhd-ZfGYwg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>]]></content><author><name>First Lastname</name></author><category term="demo" /><category term="prototype" /><category term="xmos" /><summary type="html"><![CDATA[We’ve been working on some tech groundwork, and making a prototype synth. It uses machine learning to map from a 3D parameter space (a 3D joystick) into a bigger parameter space of an FM synth. The prototype has controls for collecting training data, and for training the model. In the background, it uses an XMOS chip to run the neural network and the sound synthesis.]]></summary></entry><entry><title type="html">Music RAI Workshop</title><link href="/~ck84/meml/event/music-rai/" rel="alternate" type="text/html" title="Music RAI Workshop" /><published>2024-07-27T00:00:00+10:00</published><updated>2024-07-27T00:00:00+10:00</updated><id>/~ck84/meml/event/music-rai</id><content type="html" xml:base="/~ck84/meml/event/music-rai/"><![CDATA[<p>Andrea presented the project at the <a href="https://nickbknickbk.github.io/MusicRAI/">Music RAI</a> workshop at QMUL, on ethical and responsible music making, and bias in AI music generation.</p>
+
+<p>The organisers reported:</p>
+
+<blockquote>
+  <p>‘We brought together over 100 people to form an interdisciplinary community of musicians, academics, and stakeholders to collaboratively identify the potential and challenges for using low-resource models and small datasets in musical practice. The workshop consisted of publicly streamed discussion panels, presentations of participants’ work, and brainstorming sessions on the future of AI and marginalised music. The event was followed by an evening reception featuring live performances sing AI and small datasets of music.’</p>
+</blockquote>
+
+<p>Here are the slides from the presentation:</p>
+
+<div id="pdf" style="width:100%; height:800px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>PDFObject.embed("/assets/pdf/MEML_ RAIM Workshop.pdf", "#pdf", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[Andrea presented the project at the Music RAI workshop at QMUL, on ethical and responsible music making, and bias in AI music generation.]]></summary></entry><entry><title type="html">Sussex AI Day 2024</title><link href="/~ck84/meml/event%20report/sussex-ai-day/" rel="alternate" type="text/html" title="Sussex AI Day 2024" /><published>2024-06-25T05:34:30+10:00</published><updated>2024-06-25T05:34:30+10:00</updated><id>/~ck84/meml/event%20report/sussex-ai-day</id><content type="html" xml:base="/~ck84/meml/event%20report/sussex-ai-day/"><![CDATA[<p>We presented the project at the <a href="https://staff.sussex.ac.uk/news/article/64948-sussex-ai-day-2024">Sussex AI day 2024</a>.</p>
+
+<p><img src="/assets/images/sussex-ai-day.jpg" alt="Sussex AI Poster Session" class="img-responsive" /></p>
+
+<div id="sussexAIPosterMEML" style="width:100%; height:800px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>PDFObject.embed("/assets/pdf/sussexAIPoster_small.pdf", "#sussexAIPosterMEML", {height: "100%"});</script>
+
+<div id="SussexAIDay2024" style="width:100%; height:800px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>PDFObject.embed("/assets/pdf/SussexAIDay2024.pdf", "#SussexAIDay2024", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event report" /><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[We presented the project at the Sussex AI day 2024.]]></summary></entry><entry><title type="html">Sussex AI Launch</title><link href="/~ck84/meml/event%20report/sussex-ai-launch/" rel="alternate" type="text/html" title="Sussex AI Launch" /><published>2024-02-19T06:34:30+11:00</published><updated>2024-02-19T06:34:30+11:00</updated><id>/~ck84/meml/event%20report/sussex-ai-launch</id><content type="html" xml:base="/~ck84/meml/event%20report/sussex-ai-launch/"><![CDATA[<p>Before the project officially began,  Chris presented a prototype at the <a href="https://www.sussex.ac.uk/broadcast/read/63436">Sussex AI launch event</a>.  It was a DiffLogic network running on an RP2040 microcontroller (hosted on a uSEQ module). The network listened to patterns of kickdrums and improvised drum patterns around this.</p>
+
+<div id="pdfembedSussexAI" style="width:100%; height:800px;"></div>
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>PDFObject.embed("/assets/pdf/sussexAI.pdf", "#pdfembedSussexAI", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event report" /><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[Before the project officially began, Chris presented a prototype at the Sussex AI launch event. It was a DiffLogic network running on an RP2040 microcontroller (hosted on a uSEQ module). The network listened to patterns of kickdrums and improvised drum patterns around this.]]></summary></entry></feed>
