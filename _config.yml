@@ -17,8 +17,8 @@ title: Musically Embodied Machine Learning
 email:
 description: >- # this means to ignore newlines until "baseurl:"
   AHRC funded research project on musically embodied machine learning
-twitter_username: username
-github_username: username
+# twitter_username: username
+# github_username: username
 minimal_mistakes_skin: meml
 search: true
 search_full_content: true 

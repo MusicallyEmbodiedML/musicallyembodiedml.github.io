@@ -27,7 +27,7 @@ network is now trained.
 
 ### Momentary switches
 
-**Momentary B1** (up): *randomise* the weights of the network in training mode. Disabled in inference mode.
+**Momentary B1** (up): *randomise* the weights of the network. In training mode, this helps to explore the parameter space and collect training points. In inference mode, it resets or adds noise to the network weights.
 
 **Momentary B2** (down): *clear dataset*. Wipes all data points in training mode. Disabled in inference mode.
 
@@ -45,12 +45,34 @@ network is now trained.
 
 ### Pots
 
+**X potentiometer**: Sets the scaling for randomisation. In training mode, a large scaling will increase the probability of jumping to a new sound in the parameter space. A small value will make a random modification to the existing sound, creating variations.
+
 **Z potentiometer**: Sets the maximum number of iterations the network will be trained for.
 
 **Y potentiometer**: Sets the zoom-in factor. Lower numbers make the zoom-in mode finer, higher number make it coarser (similar to the zoom-out mode).
 POPR.md
 3 KB
 
+# Screens
 
+### Messages
+
+Messages from the synthesiser about training and inference
+
+### Save Model
+
+Choose a numbered slot to save the current model to.  SD card required.
+
+### Load Model
+
+Choose a numbered slot to load a current model from.  SD card required.
+
+### Help
+
+Quick info about the controls
+
+### System Info
+
+Various info about the hardware and software.
 
 
