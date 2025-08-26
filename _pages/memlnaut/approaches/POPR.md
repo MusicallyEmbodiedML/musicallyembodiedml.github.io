@@ -12,6 +12,13 @@ This approach to ML is conventionally refered to as Interactive Machine Learning
 
 1. Plug the unit in, turn the joystick (or move the input sensors),
 hear the untrained model in action.
+
+<video controls loop width="100%">
+  <source src="/assets/video/01-explore.webm" type="video/webm">
+  <source src="/assets/video/01-explore.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 2. Flick **Toggle B1** switch up to *training mode*.
 3. Flick **Momentary B1** switch up to *randomise* the network.
 Repeat as many times as desired.
