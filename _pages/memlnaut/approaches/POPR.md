@@ -14,8 +14,8 @@ This approach to ML is conventionally refered to as Interactive Machine Learning
 hear the untrained model in action.
 
 <video controls loop width="100%">
-  <source src="/assets/video/01-explore.webm" type="video/webm">
-  <source src="/assets/video/01-explore.mp4" type="video/mp4">
+  <source src="/assets/video/memlnaut/01-explore.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/01-explore.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
