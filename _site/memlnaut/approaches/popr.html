@@ -70,6 +70,9 @@
 
 
 
+<script data-goatcounter="https://meml.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
@@ -273,17 +276,46 @@
 <ol>
   <li>Plug the unit in, turn the joystick (or move the input sensors),
 hear the untrained model in action.</li>
+</ol>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/01-explore.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/01-explore.mp4" type="video/mp4" />
+</video>
+
+<ol>
   <li>Flick <strong>Toggle B1</strong> switch up to <em>training mode</em>.</li>
   <li>Flick <strong>Momentary B1</strong> switch up to <em>randomise</em> the network.
 Repeat as many times as desired.</li>
+</ol>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/02-randomise.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/02-randomise.mp4" type="video/mp4" />
+</video>
+
+<ol>
   <li>When you find a sound that you want to keep, press the <strong>head button of the
 joystick</strong>, and keep it pressed. Move the joystick (or the input sensors) to
 a position where you would like the sound. Release the head of the joystick.
 You have <em>created a data point</em> in the dataset.</li>
+</ol>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/03-save.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/03-save.mp4" type="video/mp4" />
+</video>
+
+<ol>
   <li>Repeat step 4 as many times as desired.</li>
   <li>Flick <strong>Toggle B1</strong> down to <em>inference mode</em> (centre position). Your
 network is now trained.</li>
 </ol>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/05-train.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/05-train.mp4" type="video/mp4" />
+</video>
 
 <h1 id="controls">Controls</h1>
 
@@ -292,6 +324,11 @@ network is now trained.</li>
 <p><strong>Momentary B1</strong> (up): <em>randomise</em> the weights of the network. In training mode, this helps to explore the parameter space and collect training points. In inference mode, it resets or adds noise to the network weights.</p>
 
 <p><strong>Momentary B2</strong> (down): <em>clear dataset</em>. Wipes all data points in training mode. Disabled in inference mode.</p>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/04-clear.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/04-clear.mp4" type="video/mp4" />
+</video>
 
 <h3 id="toggle-switches">Toggle switches</h3>
 
@@ -307,34 +344,28 @@ network is now trained.</li>
 
 <p><strong>X potentiometer</strong>: Sets the scaling for randomisation. In training mode, a large scaling will increase the probability of jumping to a new sound in the parameter space. A small value will make a random modification to the existing sound, creating variations.</p>
 
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/07-randomscale.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/07-randomscale.mp4" type="video/mp4" />
+</video>
+
 <p><strong>Z potentiometer</strong>: Sets the maximum number of iterations the network will be trained for.</p>
 
-<p><strong>Y potentiometer</strong>: Sets the zoom-in factor. Lower numbers make the zoom-in mode finer, higher number make it coarser (similar to the zoom-out mode).
-POPR.md
-3 KB</p>
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/08-iterations.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/08-iterations.mp4" type="video/mp4" />
+</video>
+
+<p><strong>Y potentiometer</strong>: Sets the zoom-in factor. Lower numbers make the zoom-in mode finer, higher number make it coarser (similar to the zoom-out mode).</p>
+
+<video controls="" loop="" width="100%">
+  <source src="/assets/video/memlnaut/06-zoom.webm" type="video/webm" />
+  <source src="/assets/video/memlnaut/06-zoom.mp4" type="video/mp4" />
+</video>
 
 <h1 id="screens">Screens</h1>
 
-<h3 id="messages">Messages</h3>
-
-<p>Messages from the synthesiser about training and inference</p>
-
-<h3 id="save-model">Save Model</h3>
-
-<p>Choose a numbered slot to save the current model to.  SD card required.</p>
-
-<h3 id="load-model">Load Model</h3>
-
-<p>Choose a numbered slot to load a current model from.  SD card required.</p>
-
-<h3 id="help">Help</h3>
-
-<p>Quick info about the controls</p>
-
-<h3 id="system-info">System Info</h3>
-
-<p>Various info about the hardware and software.</p>
-
+<p>Refer to <a href="/memlnaut/features/#gui-elements">GUI Elements</a> for an overview of the functionality of the graphical user interface in the display.</p>
 
         
       </section>

@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-03T21:26:49+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Musically Embodied Machine Learning</title><subtitle>AHRC funded research project on musically embodied machine learning</subtitle><author><name>First Lastname</name></author><entry><title type="html">Research Visit to the Intelligent Instruments Lab in Reykjavik</title><link href="http://localhost:4000/report/iil/" rel="alternate" type="text/html" title="Research Visit to the Intelligent Instruments Lab in Reykjavik" /><published>2025-06-01T00:00:00+01:00</published><updated>2025-06-01T00:00:00+01:00</updated><id>http://localhost:4000/report/iil</id><content type="html" xml:base="http://localhost:4000/report/iil/"><![CDATA[<p>Chris and Andrea recent spent a week in Iceland, visiting Thor Magnusson’s <a href="https://iil.is">Intelligent Instruments Lab</a> at the University of Reykjavik.  Following our participatory design method, we spent the week working with Tom Manoury, exploring the augmentation of a euphonium using our MEMLNaut technology. We also working with Stefanos Vasilakis, who used the PAF synthesis MEMLNaut patch with external synth hardware. The week culminated in performances at Mengi, with the addition a duet with Andrea and Betty Accorsi on sax, and a Brain Dead Ensemble style trio with Thor Magnusson playing the Threnoscope, Chris playing MEMLNaut/Xiasri and Betty playing sax.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-09-15T16:14:13+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Musically Embodied Machine Learning</title><subtitle>AHRC funded research project on musically embodied machine learning</subtitle><author><name>First Lastname</name></author><entry><title type="html">MEMLNauts Gig</title><link href="http://localhost:4000/events/gigs/RoseHill/" rel="alternate" type="text/html" title="MEMLNauts Gig" /><published>2025-09-12T00:00:00+01:00</published><updated>2025-09-12T00:00:00+01:00</updated><id>http://localhost:4000/events/gigs/RoseHill</id><content type="html" xml:base="http://localhost:4000/events/gigs/RoseHill/"><![CDATA[<p>October 3rd 2025. 7pm-11pm
+The Rose Hill, Brighton, BN1 4JL
+£5 / £3</p>
+
+<p>Tickets: <a href="www.ticketsource.co.uk/memlnauts">www.ticketsource.co.uk/memlnauts</a></p>
+
+<p>Emute Lab presents improvised performances from participants in the Musically Embodied Machine Learning project (MEML).</p>
+
+<p>The MEMLNauts are finding new ways to be creative with machine learning, with impish algorithms driving newly customised instruments . Expect fractious brass, wayward woodwind, unruly vocal processing, and indecorous string feedback.</p>
+
+<p>Embedded machine learning empowers musicians to find new performance approaches, by sharing control with often unpredictable and lively algorithms within the instrument.  We will present performances with a variety of machine learning augmented instruments, in solo and group improvisations.</p>
+
+<p><img src="/assets/images/rosehill_memlnauts_poster.jpg" alt="Rose Hill Gig Poster" /></p>
+
+<p>Line up:</p>
+
+<p><a href="https://monsieurtom.is/">Tom Manoury</a></p>
+
+<p><a href="https://www.instagram.com/buntylooping/">Bunty</a></p>
+
+<p><a href="https://www.bettyaccorsi.com/">Betty Accorsi</a></p>
+
+<p><a href="https://martelloni.github.io">Andrea Martelloni</a></p>
+
+<p><a href="https:://luuma.net">Luuma</a></p>
+
+<p>Tom Manoury will be playing this augmented euphonium:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bAqBzPZpA7o?si=IalhSH1jCcuDUGzR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<p>Bunty:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eM7kwLqv8BI?si=Emo9b3s3qBQ9sFEr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>]]></content><author><name>First Lastname</name></author><category term="events" /><category term="gigs" /><category term="performance" /><summary type="html"><![CDATA[October 3rd 2025. 7pm-11pm The Rose Hill, Brighton, BN1 4JL £5 / £3]]></summary></entry><entry><title type="html">Research Visit to the Intelligent Instruments Lab in Reykjavik</title><link href="http://localhost:4000/report/iil/" rel="alternate" type="text/html" title="Research Visit to the Intelligent Instruments Lab in Reykjavik" /><published>2025-06-01T00:00:00+01:00</published><updated>2025-06-01T00:00:00+01:00</updated><id>http://localhost:4000/report/iil</id><content type="html" xml:base="http://localhost:4000/report/iil/"><![CDATA[<p>Chris and Andrea recent spent a week in Iceland, visiting Thor Magnusson’s <a href="https://iil.is">Intelligent Instruments Lab</a> at the University of Reykjavik.  Following our participatory design method, we spent the week working with Tom Manoury, exploring the augmentation of a euphonium using our MEMLNaut technology. We also working with Stefanos Vasilakis, who used the PAF synthesis MEMLNaut patch with external synth hardware. The week culminated in performances at Mengi, with the addition a duet with Andrea and Betty Accorsi on sax, and a Brain Dead Ensemble style trio with Thor Magnusson playing the Threnoscope, Chris playing MEMLNaut/Xiasri and Betty playing sax.</p>
 
 <!-- 
 gallery:
@@ -158,9 +190,4 @@ None of the above works</p>
 <div id="SussexAIDay2024" style="width:100%; height:800px;"></div>
 <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script>PDFObject.embed("/assets/pdf/SussexAIDay2024.pdf", "#SussexAIDay2024", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event report" /><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[We presented the project at the Sussex AI day 2024.]]></summary></entry><entry><title type="html">Sussex AI Launch</title><link href="http://localhost:4000/event%20report/sussex-ai-launch/" rel="alternate" type="text/html" title="Sussex AI Launch" /><published>2024-02-18T19:34:30+00:00</published><updated>2024-02-18T19:34:30+00:00</updated><id>http://localhost:4000/event%20report/sussex-ai-launch</id><content type="html" xml:base="http://localhost:4000/event%20report/sussex-ai-launch/"><![CDATA[<p>Before the project officially began,  Chris presented a prototype at the <a href="https://www.sussex.ac.uk/broadcast/read/63436">Sussex AI launch event</a>.  It was a DiffLogic network running on an RP2040 microcontroller (hosted on a uSEQ module). The network listened to patterns of kickdrums and improvised drum patterns around this.</p>
-
-<div id="pdfembedSussexAI" style="width:100%; height:800px;"></div>
-<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>PDFObject.embed("/assets/pdf/sussexAI.pdf", "#pdfembedSussexAI", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event report" /><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[Before the project officially began, Chris presented a prototype at the Sussex AI launch event. It was a DiffLogic network running on an RP2040 microcontroller (hosted on a uSEQ module). The network listened to patterns of kickdrums and improvised drum patterns around this.]]></summary></entry></feed>
+<script>PDFObject.embed("/assets/pdf/SussexAIDay2024.pdf", "#SussexAIDay2024", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="event report" /><category term="event" /><category term="presentation" /><summary type="html"><![CDATA[We presented the project at the Sussex AI day 2024.]]></summary></entry></feed>
