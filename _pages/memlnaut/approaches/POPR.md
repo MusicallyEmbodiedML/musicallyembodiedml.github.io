@@ -12,16 +12,39 @@ This approach to ML is conventionally refered to as Interactive Machine Learning
 
 1. Plug the unit in, turn the joystick (or move the input sensors),
 hear the untrained model in action.
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/01-explore.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/01-explore.mp4" type="video/mp4">
+</video>
+
 2. Flick **Toggle B1** switch up to *training mode*.
 3. Flick **Momentary B1** switch up to *randomise* the network.
 Repeat as many times as desired.
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/02-randomise.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/02-randomise.mp4" type="video/mp4">
+</video>
+
 4. When you find a sound that you want to keep, press the **head button of the
 joystick**, and keep it pressed. Move the joystick (or the input sensors) to
 a position where you would like the sound. Release the head of the joystick.
 You have *created a data point* in the dataset.
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/03-save.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/03-save.mp4" type="video/mp4">
+</video>
+
 5. Repeat step 4 as many times as desired.
 6. Flick **Toggle B1** down to *inference mode* (centre position). Your
 network is now trained.
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/05-train.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/05-train.mp4" type="video/mp4">
+</video>
 
 # Controls
 
@@ -30,6 +53,11 @@ network is now trained.
 **Momentary B1** (up): *randomise* the weights of the network. In training mode, this helps to explore the parameter space and collect training points. In inference mode, it resets or adds noise to the network weights.
 
 **Momentary B2** (down): *clear dataset*. Wipes all data points in training mode. Disabled in inference mode.
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/04-clear.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/04-clear.mp4" type="video/mp4">
+</video>
 
 ### Toggle switches
 
@@ -47,32 +75,25 @@ network is now trained.
 
 **X potentiometer**: Sets the scaling for randomisation. In training mode, a large scaling will increase the probability of jumping to a new sound in the parameter space. A small value will make a random modification to the existing sound, creating variations.
 
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/07-randomscale.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/07-randomscale.mp4" type="video/mp4">
+</video>
+
 **Z potentiometer**: Sets the maximum number of iterations the network will be trained for.
 
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/08-iterations.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/08-iterations.mp4" type="video/mp4">
+</video>
+
 **Y potentiometer**: Sets the zoom-in factor. Lower numbers make the zoom-in mode finer, higher number make it coarser (similar to the zoom-out mode).
-POPR.md
-3 KB
+
+<video controls loop width="100%">
+  <source src="/assets/video/memlnaut/06-zoom.webm" type="video/webm">
+  <source src="/assets/video/memlnaut/06-zoom.mp4" type="video/mp4">
+</video>
 
 # Screens
 
-### Messages
-
-Messages from the synthesiser about training and inference
-
-### Save Model
-
-Choose a numbered slot to save the current model to.  SD card required.
-
-### Load Model
-
-Choose a numbered slot to load a current model from.  SD card required.
-
-### Help
-
-Quick info about the controls
-
-### System Info
-
-Various info about the hardware and software.
-
-
+Refer to [GUI Elements](/memlnaut/features/#gui-elements) for an overview of the functionality of the graphical user interface in the display.

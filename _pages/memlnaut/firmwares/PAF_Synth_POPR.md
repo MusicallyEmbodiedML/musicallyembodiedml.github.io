@@ -4,7 +4,7 @@ title: "MEMLNaut Firmware: PAF Synth with POPR"
 sidebar:
   nav: "memlnaut"
 toc: true
-toc_sticky: true  
+toc_sticky: true
 ---
 
 # Overview
@@ -19,14 +19,17 @@ The PAF-POPR firmware offers exploration of Phase Aligned Formant synthesis, usi
 
 The PAF synth is controlled by MIDI. It listens for ```note on``` messages on channel 1.  These control the frequency of the first operator; the other two operators are detuned from this frequency.  The amplitude is also controlled by these messages.
 
+You can also use a specially made screen called "Play" - tap on the screen to generate a MIDI note and play the PAF synthesiser!
+
+![Play screen](/assets/images/screenshots/05-play.jpg)
+
 ## Outputs
 
 Mono sound is output to both channels of the line out and headphone sockets.
 
-
 # POPR approach
 
-Use the POPR controls to try and build a new instrument: a joystick that controls sound by interpolating between the position-sound pairs that are contained in the training data.
+Use the POPR controls to try and build a new instrument: a joystick that controls sound by interpolating between the position-sound pairs that are contained in the training data. See [POPR Approach](/memlnaut/approaches/POPR) for more information.
 
 # Files
 
