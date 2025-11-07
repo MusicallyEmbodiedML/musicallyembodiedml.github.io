@@ -5,5 +5,30 @@ search: false
 
 @charset "utf-8";
 
+$doc-font-size: 24;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// Force font size override after all imports
+html {
+  font-size: 24px !important;
+}
+
+@media (min-width: 48em) {
+  html {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 64em) {
+  html {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 80em) {
+  html {
+    font-size: 24px !important;
+  }
+}

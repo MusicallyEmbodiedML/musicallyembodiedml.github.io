@@ -2,9 +2,20 @@
    Dark skin
    ========================================================================== */
 
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap');
+
+$serif: "Charis SIL", "Charter", "Bitstream Charter", Georgia, Times, serif !default;
+$sans-serif: "Charis SIL", "Charter", "Bitstream Charter", Georgia, Times, serif !default;
+$doc-font-size: 24;
+$global-font-family: $serif !default;
+$header-font-family: $serif !default;
+$caption-font-family: $serif !default;
+$sans-serif-narrow: $serif !default;
+
 /* Colors */
 $background-color: #003c46 !default;
-$text-color: hsl(64, 78%, 96%) !default;
+$text-color: hsl(64, 100%, 100%) !default;
 $primary-color: #00adb5 !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
 $code-background-color: mix(#000, $background-color, 15%) !default;
@@ -18,6 +29,32 @@ $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: mix(#000, $text-color, 20%) !default;
 $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 
+/* Override base font size for all breakpoints */
+html {
+  font-size: #{$doc-font-size}px !important;
+
+  @media (min-width: 48em) {
+    font-size: #{$doc-font-size}px !important;
+  }
+
+  @media (min-width: 64em) {
+    font-size: #{$doc-font-size}px !important;
+  }
+
+  @media (min-width: 80em) {
+    font-size: #{$doc-font-size}px !important;
+  }
+}
+
+/* Increase line spacing */
+body {
+  line-height: 1.8;
+}
+
+p {
+  line-height: 1.8;
+}
+
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,
 .page__footer-follow .social-icons i,
@@ -27,4 +64,8 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 
 .ais-search-box .ais-search-box--input {
   background-color: $form-background-color;
+}
+
+.nav__title {
+  color: $text-color;
 }

@@ -54,6 +54,12 @@
 <loc>http://localhost:4000/memlnaut/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/memlnaut/approaches/nisps</loc>
+</url>
+<url>
+<loc>http://localhost:4000/memlnaut/firmwares/pafsynthnisps</loc>
+</url>
+<url>
 <loc>http://localhost:4000/memlnaut/firmwares/pafsynthpopr</loc>
 </url>
 <url>

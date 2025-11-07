@@ -5,6 +5,7 @@ sidebar:
   nav: "memlnaut"
 ---
 
+### *Note: CARL has now been superceded by [NISPS](nisps).  This information is left here for info.*
 
 # Introduction
 

@@ -21,6 +21,8 @@ memlnaut:
       url: /memlnaut/techspec
   - title: "ML Approaches"
     children:
+    - title: "NISPS"
+      url: /memlnaut/approaches/nisps
     - title: "POPR"
       url: /memlnaut/approaches/popr
     - title: "CARL"
@@ -29,6 +31,8 @@ memlnaut:
     children:
     - title: "Guide"
       url: /memlnaut/firmwares/guide
+    - title: PAF Synth (NISPS)
+      url: /memlnaut/firmwares/pafsynthnisps
     - title: "PAF Synth (CARL)"
       url: /memlnaut/firmwares/pafsynthrl
     - title: "PAF Synth (POPR)"

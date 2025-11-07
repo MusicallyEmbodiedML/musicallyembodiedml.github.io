@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>MEMLNaut Firmware: Multi-euclidean Sequencer with Reinforement Learning - Musically Embodied Machine Learning</title>
+<!-- begin _includes/seo.html --><title>MEMLNaut Firmware: PAF Synth with NISPS - Musically Embodied Machine Learning</title>
 <meta name="description" content="AHRC funded research project on musically embodied machine learning">
 
 
@@ -21,8 +21,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Musically Embodied Machine Learning">
-<meta property="og:title" content="MEMLNaut Firmware: Multi-euclidean Sequencer with Reinforement Learning">
-<meta property="og:url" content="http://localhost:4000/memlnaut/firmwares/multieuclideancarl">
+<meta property="og:title" content="MEMLNaut Firmware: PAF Synth with NISPS">
+<meta property="og:url" content="http://localhost:4000/memlnaut/firmwares/pafsynthnisps">
 
 
   <meta property="og:description" content="AHRC funded research project on musically embodied machine learning">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/memlnaut/firmwares/multieuclideancarl">
+<link rel="canonical" href="http://localhost:4000/memlnaut/firmwares/pafsynthnisps">
 
 
 
@@ -224,7 +224,7 @@
             
               <li><a href="/memlnaut/firmwares/guide">Guide</a></li>
             
-              <li><a href="/memlnaut/firmwares/pafsynthnisps">PAF Synth (NISPS)</a></li>
+              <li><a href="/memlnaut/firmwares/pafsynthnisps" class="active">PAF Synth (NISPS)</a></li>
             
               <li><a href="/memlnaut/firmwares/pafsynthrl">PAF Synth (CARL)</a></li>
             
@@ -234,7 +234,7 @@
             
               <li><a href="/memlnaut/firmwares/multifxpopr">Multi FX with POPR</a></li>
             
-              <li><a href="/memlnaut/firmwares/multieuclideancarl" class="active">Multi-Euclidean Rhythm Generator (CARL)</a></li>
+              <li><a href="/memlnaut/firmwares/multieuclideancarl">Multi-Euclidean Rhythm Generator (CARL)</a></li>
             
               <li><a href="/memlnaut/firmwares/doomcomppopr">Doom Compressor</a></li>
             
@@ -253,7 +253,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="MEMLNaut Firmware: Multi-euclidean Sequencer with Reinforement Learning">
+    <meta itemprop="headline" content="MEMLNaut Firmware: PAF Synth with NISPS">
     
     
     
@@ -262,7 +262,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/memlnaut/firmwares/multieuclideancarl" itemprop="url">MEMLNaut Firmware: Multi-euclidean Sequencer with Reinforement Learning
+            <a href="http://localhost:4000/memlnaut/firmwares/pafsynthnisps" itemprop="url">MEMLNaut Firmware: PAF Synth with NISPS
 </a>
           </h1>
           
@@ -276,31 +276,104 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#euclidean-sequencing">Euclidean Sequencing</a><ul><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#reinforcement-learning">Reinforcement Learning</a></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#paf">PAF</a><ul><li><a href="#inputs">Inputs</a></li><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#reinforcement-learning">Reinforcement Learning</a></li><li><a href="#physical-controls">Physical Controls</a></li><li><a href="#screens">Screens</a><ul><li><a href="#nn-output">NN Output</a></li><li><a href="#rl-stats">RL Stats</a></li><li><a href="#voice-spaces">Voice Spaces</a></li><li><a href="#nn-inputs">NN Inputs</a></li><li><a href="#messages">Messages</a></li><li><a href="#save-model">Save Model</a></li><li><a href="#load-model">Load Model</a></li><li><a href="#play">Play</a></li><li><a href="#help">Help</a></li><li><a href="#system-info">System Info</a></li></ul></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li><li><a href="#firmware-download">Firmware Download</a></li></ul></li></ul>
             </nav>
           </aside>
         
         <h1 id="overview">Overview</h1>
 
-<p>A bank of 8 euclidean sequencers are controlled by a neural network, mapped from 3 axes of the joystick.</p>
+<p>The PAF-NISPS firmware offers exploration of Phase Aligned Formant synthesis, using the <a href="../approaches/nisps">Neural Interactive Shaping of Parameter Spaces</a> approach to ML.</p>
 
-<h1 id="euclidean-sequencing">Euclidean Sequencing</h1>
+<h1 id="paf">PAF</h1>
 
-<p>Euclidean sequencing describes a process that generates events according to two numbers: <code class="language-plaintext highlighter-rouge">N</code> and <code class="language-plaintext highlighter-rouge">K</code>.  <code class="language-plaintext highlighter-rouge">N</code> is the number of divisions within a time period.  <code class="language-plaintext highlighter-rouge">K</code> is the number of events the algorithm tries to fit into these divisions.  If N is divisible by K then a regularly spaced pattern is generated, otherwise the closest fit is chosen, creating varied rhythms.</p>
+<p><a href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=a560464f05a6a0e20e1a9b8e1f5584f83151587a">Phase Aligned Formant synthesis</a> was developed my Miller Pucklette in the mid 90s.  It offers methods for creating complex spectra that avoid common issues with subtractive and FM.  The synth runs 4 PAF operators along with sine wave shaping, ring modulation, detuning, mixing and a delay effect. 33 sound generation parameters are controlled by the three axes of the joystick.</p>
 
-<p>A good analysis of euclidean rhythms can be found in Godfried Toussaint’s paper <a href="https://www-cgrl.cs.mcgill.ca/~godfried/teaching/dm-reading-assignments/Euclidean-Rhythms.pdf">The Euclidean Algorithm Generates Traditional Musical Rhythms</a></p>
+<h2 id="inputs">Inputs</h2>
+
+<p>The PAF synth is controlled by MIDI. It listens for note messages on channel 1.  These control the frequency of the first operator; the other operators are tuned relative to this frequency.  The amplitude is also controlled by these messages.</p>
 
 <h2 id="outputs">Outputs</h2>
 
-<p>MIDI notes are output each time a euclidean generator triggers an new event.</p>
+<p>Mono sound is output to both channels of the line out and headphone sockets.</p>
 
 <h1 id="reinforcement-learning">Reinforcement Learning</h1>
 
-<p>When you indicate a reward, you are rewarding (negatively or positively) how a particular joystick position is mapped to the sequence it’s generating. As you indicate preferences for these settings, the DDPG algorithm will start to tune how the actor reacts to the joystick.</p>
+<p>When you indicate a reward, you are rewarding (negatively or positively) how a particular joystick position is mapped to a sound. As you indicate preferences for these settings, the NISPS system will start to tune the mappings towards your preference. See the <a href="../approaches/nisps">NISPS</a> documentation for further info.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9_wnIUFG414?si=ASV7-8gImGS5WuYF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<h1 id="physical-controls">Physical Controls</h1>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Rotary Encoder</code>: Navigate betwen screens.</li>
+  <li><code class="language-plaintext highlighter-rouge">Momentary A Up</code>: Scramble neural network</li>
+  <li><code class="language-plaintext highlighter-rouge">Momentary A Down</code>: Jolt neural network</li>
+  <li><code class="language-plaintext highlighter-rouge">Momentary B Up</code>: Positive reward</li>
+  <li><code class="language-plaintext highlighter-rouge">Momentary B Down</code>: Negative reward</li>
+  <li><code class="language-plaintext highlighter-rouge">Joystick</code>: Explore</li>
+  <li><code class="language-plaintext highlighter-rouge">Joystick button</code>: Positive reward placement - drag a sound to a different place and release to positively reward it in this position</li>
+  <li><code class="language-plaintext highlighter-rouge">Toggle A Down</code>: Clear replay memory</li>
+  <li><code class="language-plaintext highlighter-rouge">Knob X</code>: Learning rate</li>
+  <li><code class="language-plaintext highlighter-rouge">Knob Y</code>: Reward scale</li>
+  <li><code class="language-plaintext highlighter-rouge">Knob Z</code>: Exploration noise (turned off when all the way to the left)</li>
+  <li><code class="language-plaintext highlighter-rouge">Knob G</code>: Volume</li>
+</ul>
+
+<h1 id="screens">Screens</h1>
+
+<p>Navigate between screens using the rotary encoder.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Jz2sxsOFroo?si=8-nA4GSPlnBFKj-p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+<h2 id="nn-output">NN Output</h2>
+
+<p>This shows the live outputs of the neural network.</p>
+
+<h2 id="rl-stats">RL Stats</h2>
+
+<p>Shows the loss of the neural network as it’s optimised.  If this number is high, then it’s struggling to train. If it’s low then the network is training ok (although possibly overfitting).</p>
+
+<h2 id="voice-spaces">Voice Spaces</h2>
+
+<p>Choose a voice space by pushing the rotary encooder focus the selector. Move the encoder to choose a space and then push again to keep the selection.</p>
+
+<h2 id="nn-inputs">NN Inputs</h2>
+
+<p>Shows the inputs to the neural network</p>
+
+<h2 id="messages">Messages</h2>
+
+<p>Various messages to log interactions with the system.</p>
+
+<h2 id="save-model">Save Model</h2>
+
+<p>Tap on a slot to save a model (note: this doesn’t save the voice space)</p>
+
+<h2 id="load-model">Load Model</h2>
+
+<p>Tap on a slot to load a model</p>
+
+<h2 id="play">Play</h2>
+
+<p>Tap on the screen to trigger a note. Pitch rises from left to right. Volume rises from bottom to top.</p>
+
+<h2 id="help">Help</h2>
+
+<p>This shows what the various controls do</p>
+
+<h2 id="system-info">System Info</h2>
+
+<p>System information about the MEMLNaut and current firmware.</p>
 
 <h1 id="files">Files</h1>
 
 <h2 id="code">Code</h2>
+
+<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-CARL">https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-CARL</a></p>
+
+<h2 id="firmware-download">Firmware Download</h2>
+
+<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-CARL/releases/tag/v1.0">https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-CARL/releases/tag/v1.0</a></p>
 
 
         
