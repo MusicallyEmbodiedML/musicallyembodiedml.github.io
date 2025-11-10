@@ -282,7 +282,7 @@
         
         <h1 id="introduction">Introduction</h1>
 
-<p>NISPS is a method for interactive engagement with the training process of machine learning models, based in reinforcement learning (RL) principles.  NISP merges exploration and optimisation into a continuous experience.  It builds on our <a href="./carl">first experiments with RL</a>, and also brings in exploration features from the <a href="./popr">POPR</a> approach that give further option for creating shaping of sound.   The approach is called NISPS because it allows you to creatively refine how the joystick on MEMLNaut controls sound, in a dialog between the musician and the instrument.</p>
+<p>NISPS is a method for interactive engagement with the training process of machine learning models, based in reinforcement learning (RL) principles.  NISPS merges exploration and optimisation into a continuous experience.  It builds on our <a href="./carl">first experiments with RL</a>, and also brings in exploration features from the <a href="./popr">POPR</a> approach that give further option for creating shaping of sound.   The approach is called NISPS because it allows you to creatively refine how the joystick on MEMLNaut controls sound, in a dialog between the musician and the instrument.</p>
 
 <h1 id="context">Context</h1>
 
@@ -290,7 +290,7 @@
 
 <h1 id="machine-learning-background">Machine Learning Background</h1>
 
-<p>NISPS draws on the core idea of reinforcement learning, that an algorithm is rewarded for doing something well, and penalised for doing something that is undesired.  Conventionally, RL systems are comprised of an <em>agent</em> and an <em>environment</em>; the agent explores the environment and is rewarded (or not) for it’s actions. The agent tries to estimate the value of current and future actions based on how it has been rewarded. Through ongoing exploration, the agent is optimised towards achieving a particular task, for example playing a game or controlling a robot.  In the context of the MEMLNaut, we have a different scenario from this traditional RL configuration;  there is no concept of <em>future</em> on which to estimate the value of rewards (we call this a <em>stateless</em> system), the ML system maps whatever the musician’s current input is into sound parameters, which no regard for what might happen next. Secondly, the concept of a penalty is ambiguous. In a typical RL system, the agent receives a penalty because if made an error or exhibited undesirable behaviour.  In a creative musical system, there’s no explicit wrong action, but instead there are actions that the musician has an aesthetic preference for or against (e.g. i don’t like the sound that happens when the joystick is in this position).</p>
+<p>NISPS draws on the core idea of reinforcement learning, that an algorithm is rewarded for doing something well, and penalised for doing something that is undesired.  Conventionally, RL systems are comprised of an <em>agent</em> and an <em>environment</em>; the agent explores the environment and is rewarded (or not) for its actions. The agent tries to estimate the value of current and future actions based on how it has been rewarded. Through ongoing exploration, the agent is optimised towards achieving a particular task, for example playing a game or controlling a robot.  In the context of the MEMLNaut, we have a different scenario from this traditional RL configuration;  there is no concept of <em>future</em> on which to estimate the value of rewards (we call this a <em>stateless</em> system), the ML system maps whatever the musician’s current input is into sound parameters, which no regard for what might happen next. Secondly, the concept of a penalty is ambiguous. In a typical RL system, the agent receives a penalty because if made an error or exhibited undesirable behaviour.  In a creative musical system, there’s no explicit wrong action, but instead there are actions that the musician has an aesthetic preference for or against (e.g. I don’t like the sound that happens when the joystick is in this position).</p>
 
 <h1 id="elements-of-nisps">Elements of NISPS</h1>
 
@@ -306,19 +306,19 @@
 
 <h2 id="sound-system">Sound System</h2>
 
-<p>This might be a synthesiser, an effects processor, or a combination of the two. The sound system will have a set of parameters available that determine it’s behaviour, the equivelant of the knobs and sliders on a synthesiser.</p>
+<p>This might be a synthesiser, an effects processor, or a combination of the two. The sound system will have a set of parameters available that determine its behaviour, the equivalent of the knobs and sliders on a synthesiser.</p>
 
 <h2 id="voice-spaces">Voice Spaces</h2>
 
-<p>A voice space is a hand-designed translation layer that sits between the outputs of the neural network and the controls of the sound system.  It biases the controls in certain ways, for example it might make a synthesis more likely to produce bass sounds, or it might make an effects unit more likely to produce distorted sounds.  It constrains the neural network to exploring certain areas of what the sound system is capable of making.</p>
+<p>A voice space is a hand-designed translation layer that sits between the outputs of the neural network and the controls of the sound system.  It biases the controls in certain ways, for example it might make a synthesiser more likely to produce bass sounds, or it might make an effects unit more likely to produce distorted sounds.  It constrains the neural network to exploring certain areas of what the sound system is capable of making.</p>
 
 <h2 id="the-neural-network">The Neural Network</h2>
 
-<p>The neural network takes input, and transforms this into parameters for controlling sound.  The net is malleable, and can continually change in use.  Everytime the input is changes, the sound control parameters will change.  If the system is not being optimised, the neural network will behave consistently, i.e. the same input will always produce the same output.  If the system is being optimised, then the relationship between input and output can be adjusted.</p>
+<p>The neural network takes input, and transforms this into parameters for controlling sound.  The net is malleable, and can continually change in use.  Everytime the input changes, the sound control parameters will change.  If the system is not being optimised, the neural network will behave consistently, i.e. the same input will always produce the same output.  If the system is being optimised, then the relationship between input and output can be adjusted.</p>
 
 <h2 id="rewards">Rewards</h2>
 
-<p>Rewards tell NISPS when the musician has a preference (positive or negative) for how the neural network behaves. i.e. how it takes input and translates it into parameters for sound control.  A positive reward tells NISPS that you like the sound that is being made for a particular input. A negative reward signifies the opposite.</p>
+<p>Rewards tell NISPS when the musician has a preference (positive or negative) for how the neural network behaves, i.e. how it takes input and translates it into parameters for sound control.  A positive reward tells NISPS that you like the sound that is being made for a particular input. A negative reward signifies the opposite.</p>
 
 <h2 id="replay-memory">Replay Memory</h2>
 
@@ -326,7 +326,7 @@
 
 <h2 id="optimisation">Optimisation</h2>
 
-<p>This is the process that continually runs in the background.  As soonas NISPS has enough memories to work with, it begins to adjust the neural network to match the musicians preferences.</p>
+<p>This is the process that continually runs in the background.  As soon as NISPS has enough memories to work with, it begins to adjust the neural network to match the musicians preferences.</p>
 
 <h2 id="controls-for-nisps">Controls for NISPS</h2>
 
@@ -354,15 +354,15 @@
 
 <h3 id="exploration-noise">Exploration Noise</h3>
 
-<p>The exploration noise control adds incresing amounts of slow moving noise to the outputs of the neural network.  This is a method, taking from reinforcement learning, that allows exploration of the sound space.  E.g. if you want to find a different sound for a particular place on the joystick, then turn up the exploration noise and wait until you like the sound, then reward the system for that sound and turn the noise off. You’ll find that the system now adjusts towards that sound.  <em>Note:</em> check that you don’t leave this control on all the time, as it will mask the true behaviour of the neural network.</p>
+<p>The exploration noise control adds incresing amounts of slow moving noise to the outputs of the neural network.  This is a method, taking from reinforcement learning, that allows exploration of the sound space, e.g. if you want to find a different sound for a particular place on the joystick, then turn up the exploration noise and wait until you like the sound, then reward the system for that sound and turn the noise off. You’ll find that the system now adjusts towards that sound.  <em>Note:</em> check that you don’t leave this control on all the time, as it will mask the true behaviour of the neural network.</p>
 
 <h3 id="positive-reward-placement">Positive Reward Placement</h3>
 
-<p>This is where you can not just reward the combination of input and sound, but move that input to somewhere else in the space of possible inputs. For example, using the joystick, you might take the input-sound combination for the joystick in the up position, but place the reward instead in the down position. NISPS will then adjust the neural network so that sound tends to appear in the down position.   This is a way of organised and editing the mappings of the neural network.  You can be creative with this system.  For example, you might place several input-sound combinations in the same position, and then the neural network will tend towards a sound that’s somewhere in between these sounds.</p>
+<p>This is where you can not just reward the combination of input and sound, but move that input to somewhere else in the space of possible inputs. For example, using the joystick, you might take the input-sound combination for the joystick in the up position, but place the reward instead in the down position. NISPS will then adjust the neural network so that sound tends to appear in the down position.   This is a way of organising and editing the mappings of the neural network.  You can be creative with this system.  For example, you might place several input-sound combinations in the same position, and then the neural network will tend towards a sound that’s somewhere in between these sounds.</p>
 
 <h3 id="forgetting">Forgetting</h3>
 
-<p>You might need a fresh start, in which case you can clear the replay memory of all the rewards you have collected, and collect new ones.  If you forget the memory and then ramdomise the network, you are starting from a completely new place.</p>
+<p>You might need a fresh start, in which case you can clear the replay memory of all the rewards you have collected, and collect new ones.  If you forget the memory and then randomise the network, you are starting from a completely new place.</p>
 
 
         
