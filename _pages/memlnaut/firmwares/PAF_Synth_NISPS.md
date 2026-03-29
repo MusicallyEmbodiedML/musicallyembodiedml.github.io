@@ -91,16 +91,21 @@ This shows what the various controls do
 
 System information about the MEMLNaut and current firmware.
 
+# MIDI
+
+The firmware sends out the first 16 neural network outputs as MIDI controllers, so you can use the MEMLNaut to control your hardware synths.
+
 
 # Files
 
 ## Code
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-NISPS)
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS)
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-NISPS/releases](https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-NISPS/releases)
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/PAF_1_1_0](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/PAF_1_1_0)
+
 
 See the firmware [guide](./guide) for installation instructions
 

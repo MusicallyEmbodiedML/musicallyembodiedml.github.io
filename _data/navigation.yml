@@ -27,12 +27,16 @@ memlnaut:
       url: /memlnaut/approaches/popr
     - title: "CARL"
       url: /memlnaut/approaches/carl
-  - title: "Firmwares"
+  - title: "Latest Firmwares"
     children:
     - title: "Guide"
       url: /memlnaut/firmwares/guide
-    - title: PAF Synth (NISPS)
+    - title: "VerbFX (NISPS)"
+      url: /memlnaut/firmwares/verbfxnisps
+    - title: "PAF Synth (NISPS)"
       url: /memlnaut/firmwares/pafsynthnisps
+  - title: "Firmware Archive"
+    children:
     - title: "PAF Synth (CARL)"
       url: /memlnaut/firmwares/pafsynthrl
     - title: "PAF Synth (POPR)"
