@@ -277,6 +277,9 @@ sitemap: false
     <textarea id="post-text" placeholder="Write your update…" maxlength="2000"></textarea>
     <div class="char-count" id="char-count">0 / 2000</div>
 
+    <label for="post-category">Category</label>
+    <input type="text" id="post-category" placeholder="e.g. notes, news, events" value="notes">
+
     <label for="post-tags">Tags</label>
     <input type="text" id="post-tags" placeholder="comma separated, e.g. demo, performance">
 
@@ -587,7 +590,7 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function buildPostMarkdown({ title, text, tags, mediaFiles }) {
+function buildPostMarkdown({ title, text, category, tags, mediaFiles }) {
   const tagsYaml = tags.length
     ? '\ntags:\n' + tags.map(t => `  - ${t}`).join('\n')
     : '';
@@ -607,7 +610,7 @@ function buildPostMarkdown({ title, text, tags, mediaFiles }) {
 title: "${title}"
 date: ${todayISO()}
 categories:
-  - notes${tagsYaml}
+  - ${category || 'notes'}${tagsYaml}
 author_profile: false
 ---
 
@@ -621,12 +624,12 @@ document.getElementById('btn-post').addEventListener('click', async () => {
   const cfg = loadConfig();
   if (!cfg) { openSettings(); return; }
 
-  const title = document.getElementById('post-title').value.trim();
-  const text = document.getElementById('post-text').value.trim();
+  const title    = document.getElementById('post-title').value.trim();
+  const text     = document.getElementById('post-text').value.trim();
   if (!text) { alert('Please write something first.'); return; }
-
-  const rawTags = document.getElementById('post-tags').value;
-  const tags = rawTags.split(',').map(t => t.trim()).filter(Boolean);
+  const category = document.getElementById('post-category').value.trim();
+  const rawTags  = document.getElementById('post-tags').value;
+  const tags     = rawTags.split(',').map(t => t.trim()).filter(Boolean);
 
   const btn = document.getElementById('btn-post');
   btn.disabled = true;
@@ -661,7 +664,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
 
     setStatus('Creating post…', 'loading');
 
-    const postMd = buildPostMarkdown({ title, text, tags, mediaFiles: uploadedMedia });
+    const postMd = buildPostMarkdown({ title, text, category, tags, mediaFiles: uploadedMedia });
     const postPath = `_posts/${fileBase}.md`;
     await githubPut(cfg, postPath, utf8ToBase64(postMd), `Add note ${fileBase}`);
 
