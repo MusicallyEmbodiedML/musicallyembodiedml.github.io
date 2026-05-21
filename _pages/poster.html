@@ -1,0 +1,583 @@
+---
+permalink: /poster/
+layout: none
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MEML Post</title>
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MEML Post">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0f0;
+      min-height: 100dvh;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .screen { display: none; flex-direction: column; min-height: 100dvh; }
+    .screen.active { display: flex; }
+
+    header {
+      background: #16162a;
+      border-bottom: 1px solid #2a2a44;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #c0c0e0;
+    }
+    .btn-icon {
+      background: none;
+      border: none;
+      color: #7070a0;
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 1.2rem;
+      line-height: 1;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .btn-icon:hover { color: #e0e0f0; background: #2a2a44; }
+
+    main { flex: 1; padding: 16px; max-width: 600px; width: 100%; margin: 0 auto; }
+
+    h2 { font-size: 1.3rem; margin-bottom: 8px; }
+
+    p.hint {
+      color: #7070a0;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    p.hint a { color: #8888cc; }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #8888aa;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+    label:first-of-type { margin-top: 0; }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      background: #1c1c32;
+      border: 1.5px solid #2c2c4c;
+      border-radius: 10px;
+      color: #e0e0f0;
+      font-size: 1rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    input:focus, textarea:focus { border-color: #6666bb; }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+      line-height: 1.6;
+      font-family: inherit;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 20px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-primary { background: #5555bb; color: #fff; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.88; }
+
+    .attach-wrap { margin-top: 18px; }
+    #file-input { display: none; }
+
+    .attach-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1c1c32;
+      border: 1.5px dashed #3a3a60;
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #8888aa;
+      cursor: pointer;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: border-color 0.2s, color 0.2s;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .attach-btn:hover, .attach-btn:active { border-color: #6666bb; color: #e0e0f0; }
+    .attach-btn .icon { font-size: 1.3rem; }
+
+    .file-info {
+      font-size: 0.8rem;
+      color: #7070a0;
+      margin-top: 8px;
+      padding: 0 4px;
+    }
+    .file-info.warn { color: #cc8855; }
+
+    .media-preview {
+      margin-top: 12px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111122;
+    }
+    .media-preview:empty { display: none; }
+    .media-preview img,
+    .media-preview video {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+    }
+    .remove-media {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.72);
+      border: none;
+      color: #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+    }
+    .status.active { display: block; }
+    .status.success { background: #152815; border: 1px solid #2a5a2a; color: #80cc80; }
+    .status.error   { background: #281515; border: 1px solid #5a2a2a; color: #cc8080; }
+    .status.loading { background: #151528; border: 1px solid #2a2a5a; color: #8080cc; }
+
+    .char-count {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #555577;
+      margin-top: 5px;
+    }
+    .char-count.over { color: #cc5555; }
+
+    footer-note {
+      display: block;
+      text-align: center;
+      padding: 20px 16px 32px;
+      font-size: 0.8rem;
+      color: #444466;
+    }
+    footer-note a {
+      color: #444466;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Setup screen ───────────────────────────────────────────────────── -->
+<div id="screen-setup" class="screen">
+  <header>
+    <h1>MEML POST — SETUP</h1>
+  </header>
+  <main>
+    <h2>GitHub Access</h2>
+    <p class="hint">
+      Create a <a href="https://github.com/settings/tokens?type=beta" target="_blank">GitHub fine-grained token</a>
+      with <strong>Contents: Read and write</strong> on this repo.
+      Everything is stored only in this browser.
+    </p>
+
+    <label for="cfg-token">Personal Access Token</label>
+    <input type="password" id="cfg-token" placeholder="github_pat_… or ghp_…" autocomplete="off">
+
+    <label for="cfg-owner">Repository Owner</label>
+    <input type="text" id="cfg-owner" value="MusicallyEmbodiedML">
+
+    <label for="cfg-repo">Repository Name</label>
+    <input type="text" id="cfg-repo" value="musicallyembodiedml.github.io">
+
+    <label for="cfg-branch">Branch</label>
+    <input type="text" id="cfg-branch" value="main">
+
+    <button class="btn btn-primary" id="btn-save-config">Save &amp; Continue</button>
+  </main>
+</div>
+
+<!-- ── Post screen ────────────────────────────────────────────────────── -->
+<div id="screen-post" class="screen">
+  <header>
+    <h1>MEML POST</h1>
+    <button class="btn-icon" id="btn-settings" title="Settings">⚙</button>
+  </header>
+  <main>
+    <label for="post-text">What's happening?</label>
+    <textarea id="post-text" placeholder="Write your update…" maxlength="2000"></textarea>
+    <div class="char-count" id="char-count">0 / 2000</div>
+
+    <label for="post-tags">Tags</label>
+    <input type="text" id="post-tags" placeholder="comma separated, e.g. demo, performance">
+
+    <div class="attach-wrap">
+      <input type="file" id="file-input" accept="image/*,video/*" capture="environment">
+      <button class="attach-btn" id="btn-attach">
+        <span class="icon">📎</span>
+        <span>Attach photo or video</span>
+      </button>
+      <div class="file-info" id="file-info"></div>
+      <div class="media-preview" id="media-preview"></div>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <button class="btn btn-primary" id="btn-post">Publish</button>
+  </main>
+  <footer-note>
+    <a id="link-reconfigure">Change GitHub settings</a>
+  </footer-note>
+</div>
+
+<script>
+'use strict';
+
+const CONFIG_KEY = 'meml_poster_v1';
+const MAX_MB = 50;
+const MAX_CHARS = 2000;
+
+// ── Storage ────────────────────────────────────────────────────────────────
+
+function loadConfig() {
+  try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || null; }
+  catch { return null; }
+}
+
+function saveConfig(cfg) {
+  localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
+}
+
+// ── UI helpers ─────────────────────────────────────────────────────────────
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status active ' + type;
+}
+
+function clearStatus() {
+  const el = document.getElementById('status');
+  el.className = 'status';
+  el.textContent = '';
+}
+
+// ── Character counter ──────────────────────────────────────────────────────
+
+document.getElementById('post-text').addEventListener('input', function () {
+  const n = this.value.length;
+  const el = document.getElementById('char-count');
+  el.textContent = `${n} / ${MAX_CHARS}`;
+  el.className = n > MAX_CHARS * 0.9 ? 'char-count over' : 'char-count';
+});
+
+// ── Setup screen ───────────────────────────────────────────────────────────
+
+document.getElementById('btn-save-config').addEventListener('click', () => {
+  const token  = document.getElementById('cfg-token').value.trim();
+  const owner  = document.getElementById('cfg-owner').value.trim() || 'MusicallyEmbodiedML';
+  const repo   = document.getElementById('cfg-repo').value.trim()  || 'musicallyembodiedml.github.io';
+  const branch = document.getElementById('cfg-branch').value.trim() || 'main';
+  if (!token) { alert('Please enter a GitHub token.'); return; }
+  saveConfig({ token, owner, repo, branch });
+  showScreen('screen-post');
+});
+
+function openSettings() {
+  const cfg = loadConfig() || {};
+  document.getElementById('cfg-token').value  = cfg.token  || '';
+  document.getElementById('cfg-owner').value  = cfg.owner  || 'MusicallyEmbodiedML';
+  document.getElementById('cfg-repo').value   = cfg.repo   || 'musicallyembodiedml.github.io';
+  document.getElementById('cfg-branch').value = cfg.branch || 'main';
+  showScreen('screen-setup');
+}
+
+document.getElementById('btn-settings').addEventListener('click', openSettings);
+document.getElementById('link-reconfigure').addEventListener('click', openSettings);
+
+// ── File picker ────────────────────────────────────────────────────────────
+
+let selectedFile = null;
+
+document.getElementById('btn-attach').addEventListener('click', () => {
+  document.getElementById('file-input').click();
+});
+
+document.getElementById('file-input').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const sizeMB = file.size / 1024 / 1024;
+  const infoEl = document.getElementById('file-info');
+  const preview = document.getElementById('media-preview');
+
+  if (sizeMB > MAX_MB) {
+    infoEl.textContent = `File is ${sizeMB.toFixed(1)} MB — limit is ${MAX_MB} MB. Choose a smaller file.`;
+    infoEl.className = 'file-info warn';
+    selectedFile = null;
+    preview.innerHTML = '';
+    this.value = '';
+    return;
+  }
+
+  selectedFile = file;
+  const sizeLabel = sizeMB >= 1 ? `${sizeMB.toFixed(1)} MB` : `${(file.size / 1024).toFixed(0)} KB`;
+  infoEl.textContent = `${file.name} · ${sizeLabel}`;
+  infoEl.className = sizeMB > 25 ? 'file-info warn' : 'file-info';
+
+  const objectUrl = URL.createObjectURL(file);
+  const isVideo = file.type.startsWith('video/');
+
+  if (isVideo) {
+    preview.innerHTML = `<video src="${objectUrl}" controls playsinline></video>
+                         <button class="remove-media" id="btn-remove" aria-label="Remove">✕</button>`;
+  } else {
+    preview.innerHTML = `<img src="${objectUrl}" alt="preview">
+                         <button class="remove-media" id="btn-remove" aria-label="Remove">✕</button>`;
+  }
+
+  document.getElementById('btn-remove').addEventListener('click', () => {
+    selectedFile = null;
+    preview.innerHTML = '';
+    infoEl.textContent = '';
+    infoEl.className = 'file-info';
+    document.getElementById('file-input').value = '';
+    URL.revokeObjectURL(objectUrl);
+  });
+});
+
+// ── GitHub API ─────────────────────────────────────────────────────────────
+
+async function githubGetSha(cfg, path) {
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}?ref=${cfg.branch}`;
+  const resp = await fetch(url, {
+    headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (resp.status === 404) return null;
+  if (!resp.ok) throw new Error(`GitHub ${resp.status} on GET ${path}`);
+  const data = await resp.json();
+  return data.sha;
+}
+
+async function githubPut(cfg, path, base64Content, message) {
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}`;
+  const sha = await githubGetSha(cfg, path);
+
+  const body = { message, content: base64Content, branch: cfg.branch };
+  if (sha) body.sha = sha;
+
+  const resp = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${cfg.token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!resp.ok) {
+    let msg = `GitHub API error ${resp.status}`;
+    try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
+    throw new Error(msg);
+  }
+  return resp.json();
+}
+
+// ── Encoding helpers ───────────────────────────────────────────────────────
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary);
+}
+
+// ── Post creation ──────────────────────────────────────────────────────────
+
+function slugify(text) {
+  return text.toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 40)
+    .replace(/-+$/, '') || 'post';
+}
+
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function buildPostMarkdown({ text, tags, mediaPath, mediaType, mimeType }) {
+  const tagsYaml = tags.length
+    ? '\ntags:\n' + tags.map(t => `  - ${t}`).join('\n')
+    : '';
+
+  let mediaBlock = '';
+  if (mediaPath) {
+    if (mediaType === 'video') {
+      mediaBlock = `\n\n<video controls playsinline style="width:100%;border-radius:8px">
+  <source src="/${mediaPath}" type="${mimeType}">
+</video>`;
+    } else {
+      mediaBlock = `\n\n![](/assets/images/posts/${mediaPath.split('/').pop()})`;
+    }
+  }
+
+  return `---
+title: ""
+date: ${todayISO()}
+categories:
+  - notes${tagsYaml}
+author_profile: false
+---
+
+${text}${mediaBlock}
+`;
+}
+
+// ── Publish ────────────────────────────────────────────────────────────────
+
+document.getElementById('btn-post').addEventListener('click', async () => {
+  const cfg = loadConfig();
+  if (!cfg) { openSettings(); return; }
+
+  const text = document.getElementById('post-text').value.trim();
+  if (!text) { alert('Please write something first.'); return; }
+
+  const rawTags = document.getElementById('post-tags').value;
+  const tags = rawTags.split(',').map(t => t.trim()).filter(Boolean);
+
+  const btn = document.getElementById('btn-post');
+  btn.disabled = true;
+  clearStatus();
+
+  try {
+    const date = todayISO();
+    const firstWords = text.split(/\s+/).slice(0, 6).join(' ');
+    const slug = slugify(firstWords);
+    const fileBase = `${date}-${slug}`;
+
+    let mediaPath = null;
+    let mediaType = null;
+
+    if (selectedFile) {
+      setStatus('Uploading media…', 'loading');
+      const isVideo  = selectedFile.type.startsWith('video/');
+      const ext      = selectedFile.name.split('.').pop().toLowerCase();
+      const folder   = isVideo ? 'assets/video/posts' : 'assets/images/posts';
+      mediaPath      = `${folder}/${fileBase}.${ext}`;
+      mediaType      = isVideo ? 'video' : 'image';
+
+      const b64 = await fileToBase64(selectedFile);
+      await githubPut(cfg, mediaPath, b64, `Upload media for ${fileBase}`);
+    }
+
+    setStatus('Creating post…', 'loading');
+
+    const postMd = buildPostMarkdown({
+      text, tags, mediaPath, mediaType,
+      mimeType: selectedFile ? selectedFile.type : null
+    });
+    const postPath = `_posts/${fileBase}.md`;
+    await githubPut(cfg, postPath, utf8ToBase64(postMd), `Add note ${fileBase}`);
+
+    setStatus('✓ Published! GitHub Pages will rebuild in ~1 minute.', 'success');
+
+    // Reset form
+    document.getElementById('post-text').value = '';
+    document.getElementById('post-tags').value = '';
+    document.getElementById('char-count').textContent = `0 / ${MAX_CHARS}`;
+    document.getElementById('media-preview').innerHTML = '';
+    document.getElementById('file-info').textContent = '';
+    document.getElementById('file-input').value = '';
+    selectedFile = null;
+
+  } catch (err) {
+    setStatus(`Error: ${err.message}`, 'error');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+
+const cfg = loadConfig();
+if (cfg && cfg.token) {
+  showScreen('screen-post');
+} else {
+  showScreen('screen-setup');
+}
+</script>
+</body>
+</html>
