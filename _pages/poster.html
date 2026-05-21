@@ -374,6 +374,14 @@ document.getElementById('link-reconfigure').addEventListener('click', openSettin
 
 let selectedFiles = [];
 const _objectUrls = [];
+const fileMetaMap = new Map(); // File → { w, h } for videos
+
+function resolutionLabel(h) {
+  if (h >= 2160) return '4K';
+  if (h >= 1440) return '1440p';
+  if (h >= 1080) return '1080p';
+  return `${h}p`;
+}
 
 function updateFileInfo() {
   const infoEl = document.getElementById('file-info');
@@ -390,8 +398,33 @@ function updateFileInfo() {
   infoEl.textContent = selectedFiles.length === 1
     ? `${selectedFiles[0].name} · ${sizeLabel}`
     : `${selectedFiles.length} files · ${sizeLabel}`;
-  infoEl.className = totalMB > 25 ? 'file-info warn' : 'file-info';
-  label.textContent = `Add more photos or videos`;
+
+  const largeVideos = selectedFiles.filter(f => {
+    const m = fileMetaMap.get(f);
+    return m && m.h > 720;
+  });
+  if (largeVideos.length > 0) {
+    const labels = largeVideos.map(f => resolutionLabel(fileMetaMap.get(f).h));
+    infoEl.textContent += ` — ${labels.join(', ')} video${largeVideos.length > 1 ? 's' : ''} will upload at full size`;
+    infoEl.className = 'file-info warn';
+  } else {
+    infoEl.className = totalMB > 25 ? 'file-info warn' : 'file-info';
+  }
+  label.textContent = 'Add more photos or videos';
+}
+
+async function checkVideoMeta(file) {
+  const dims = await new Promise((resolve) => {
+    const v = document.createElement('video');
+    const u = URL.createObjectURL(file);
+    v.onloadedmetadata = () => { URL.revokeObjectURL(u); resolve({ w: v.videoWidth, h: v.videoHeight }); };
+    v.onerror = () => { URL.revokeObjectURL(u); resolve(null); };
+    v.src = u;
+  });
+  if (dims && selectedFiles.includes(file)) {
+    fileMetaMap.set(file, dims);
+    updateFileInfo();
+  }
 }
 
 function renderPreviews() {
@@ -414,6 +447,7 @@ function renderPreviews() {
     btn.setAttribute('aria-label', 'Remove');
     btn.textContent = '✕';
     btn.addEventListener('click', () => {
+      fileMetaMap.delete(selectedFiles[idx]);
       selectedFiles.splice(idx, 1);
       renderPreviews();
       updateFileInfo();
@@ -435,6 +469,7 @@ document.getElementById('file-input').addEventListener('change', function () {
     const sizeMB = file.size / 1024 / 1024;
     if (sizeMB > MAX_MB) { skipped++; continue; }
     selectedFiles.push(file);
+    if (file.type.startsWith('video/')) checkVideoMeta(file);
   }
   if (skipped) {
     infoEl.textContent = `${skipped} file(s) skipped — over ${MAX_MB} MB limit.`;
@@ -505,8 +540,7 @@ function utf8ToBase64(str) {
 
 // ── Media processing ───────────────────────────────────────────────────────
 
-const MAX_IMAGE_WIDTH  = 1000;
-const MAX_VIDEO_HEIGHT = 720;
+const MAX_IMAGE_WIDTH = 1000;
 
 async function processImage(file) {
   return new Promise((resolve) => {
@@ -528,61 +562,6 @@ async function processImage(file) {
     img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
     img.src = url;
   });
-}
-
-let _ffmpeg = null;
-
-async function loadFFmpeg() {
-  if (_ffmpeg) return _ffmpeg;
-  const { FFmpeg } = await import('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.6/+esm');
-  const ffmpeg = new FFmpeg();
-  await ffmpeg.load({
-    coreURL: 'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/umd/ffmpeg-core.js',
-    wasmURL:  'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/umd/ffmpeg-core.wasm',
-  });
-  _ffmpeg = ffmpeg;
-  return ffmpeg;
-}
-
-async function processVideo(file, onProgress) {
-  // Check actual dimensions before bothering to load ffmpeg
-  const dims = await new Promise((resolve) => {
-    const v = document.createElement('video');
-    const u = URL.createObjectURL(file);
-    v.onloadedmetadata = () => { URL.revokeObjectURL(u); resolve({ w: v.videoWidth, h: v.videoHeight }); };
-    v.onerror = () => { URL.revokeObjectURL(u); resolve(null); };
-    v.src = u;
-  });
-  if (!dims || dims.h <= MAX_VIDEO_HEIGHT) return file;
-
-  let ffmpeg;
-  try {
-    ffmpeg = await loadFFmpeg();
-  } catch (e) {
-    console.warn('ffmpeg.wasm failed to load, uploading original:', e);
-    return file;
-  }
-
-  const ext = file.name.split('.').pop().toLowerCase() || 'mp4';
-  if (onProgress) ffmpeg.on('progress', ({ progress }) => onProgress(Math.max(0, Math.min(1, progress))));
-
-  await ffmpeg.writeFile(`input.${ext}`, new Uint8Array(await file.arrayBuffer()));
-  await ffmpeg.exec([
-    '-i', `input.${ext}`,
-    '-vf', `scale=-2:${MAX_VIDEO_HEIGHT}`,
-    '-c:v', 'libx264', '-preset', 'fast', '-crf', '28',
-    '-c:a', 'aac', '-b:a', '128k',
-    '-movflags', '+faststart',
-    'output.mp4'
-  ]);
-
-  const data = await ffmpeg.readFile('output.mp4');
-  const copy = data.slice(); // detach from WASM memory before cleanup
-  await ffmpeg.deleteFile(`input.${ext}`);
-  await ffmpeg.deleteFile('output.mp4');
-  if (onProgress) ffmpeg.off('progress');
-
-  return new File([copy], file.name.replace(/\.[^.]+$/, '.mp4'), { type: 'video/mp4' });
 }
 
 // ── Post creation ──────────────────────────────────────────────────────────
@@ -660,10 +639,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
         const isVideo = raw.type.startsWith('video/');
         const n = selectedFiles.length > 1 ? ` ${i + 1} of ${selectedFiles.length}` : '';
 
-        setStatus(`Processing ${isVideo ? 'video' : 'image'}${n}…`, 'loading');
-        const file = isVideo
-          ? await processVideo(raw, (p) => setStatus(`Transcoding video${n}: ${Math.round(p * 100)}%…`, 'loading'))
-          : await processImage(raw);
+        const file = isVideo ? raw : await processImage(raw);
 
         setStatus(`Uploading${n}…`, 'loading');
         const ext    = file.name.split('.').pop().toLowerCase();
@@ -690,6 +666,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
     document.getElementById('post-tags').value = '';
     document.getElementById('char-count').textContent = `0 / ${MAX_CHARS}`;
     selectedFiles = [];
+    fileMetaMap.clear();
     renderPreviews();
     updateFileInfo();
     document.getElementById('file-input').value = '';
