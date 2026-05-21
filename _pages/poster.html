@@ -151,33 +151,44 @@ sitemap: false
     }
     .file-info.warn { color: #cc8855; }
 
-    .media-preview {
+    .preview-grid {
       margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .preview-grid:empty { display: none; }
+    .preview-item {
       position: relative;
       border-radius: 10px;
       overflow: hidden;
       background: #111122;
     }
-    .media-preview:empty { display: none; }
-    .media-preview img,
-    .media-preview video {
+    .preview-item.video-item { grid-column: 1 / -1; }
+    .preview-item img {
       width: 100%;
-      max-height: 320px;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .preview-item video {
+      width: 100%;
+      max-height: 260px;
       object-fit: contain;
       display: block;
     }
     .remove-media {
       position: absolute;
-      top: 8px;
-      right: 8px;
+      top: 6px;
+      right: 6px;
       background: rgba(0, 0, 0, 0.72);
       border: none;
       color: #fff;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 26px;
+      height: 26px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -257,6 +268,9 @@ sitemap: false
     <button class="btn-icon" id="btn-settings" title="Settings">⚙</button>
   </header>
   <main>
+    <label for="post-title">Title <span style="color:#555577;font-weight:400;text-transform:none">(optional)</span></label>
+    <input type="text" id="post-title" placeholder="Leave blank for untitled">
+
     <label for="post-text">What's happening?</label>
     <textarea id="post-text" placeholder="Write your update…" maxlength="2000"></textarea>
     <div class="char-count" id="char-count">0 / 2000</div>
@@ -265,13 +279,13 @@ sitemap: false
     <input type="text" id="post-tags" placeholder="comma separated, e.g. demo, performance">
 
     <div class="attach-wrap">
-      <input type="file" id="file-input" accept="image/*,video/*" capture="environment">
+      <input type="file" id="file-input" accept="image/*,video/*" multiple>
       <button class="attach-btn" id="btn-attach">
         <span class="icon">📎</span>
-        <span>Attach photo or video</span>
+        <span id="attach-label">Attach photos or videos</span>
       </button>
       <div class="file-info" id="file-info"></div>
-      <div class="media-preview" id="media-preview"></div>
+      <div class="preview-grid" id="media-preview"></div>
     </div>
 
     <div class="status" id="status"></div>
@@ -356,53 +370,77 @@ document.getElementById('link-reconfigure').addEventListener('click', openSettin
 
 // ── File picker ────────────────────────────────────────────────────────────
 
-let selectedFile = null;
+let selectedFiles = [];
+const _objectUrls = [];
+
+function updateFileInfo() {
+  const infoEl = document.getElementById('file-info');
+  const label  = document.getElementById('attach-label');
+  if (selectedFiles.length === 0) {
+    infoEl.textContent = '';
+    infoEl.className = 'file-info';
+    label.textContent = 'Attach photos or videos';
+    return;
+  }
+  const totalBytes = selectedFiles.reduce((sum, f) => sum + f.size, 0);
+  const totalMB = totalBytes / 1024 / 1024;
+  const sizeLabel = totalMB >= 1 ? `${totalMB.toFixed(1)} MB` : `${(totalBytes / 1024).toFixed(0)} KB`;
+  infoEl.textContent = selectedFiles.length === 1
+    ? `${selectedFiles[0].name} · ${sizeLabel}`
+    : `${selectedFiles.length} files · ${sizeLabel}`;
+  infoEl.className = totalMB > 25 ? 'file-info warn' : 'file-info';
+  label.textContent = `Add more photos or videos`;
+}
+
+function renderPreviews() {
+  const grid = document.getElementById('media-preview');
+  _objectUrls.forEach(u => URL.revokeObjectURL(u));
+  _objectUrls.length = 0;
+  grid.innerHTML = '';
+  selectedFiles.forEach((file, idx) => {
+    const isVideo = file.type.startsWith('video/');
+    const url = URL.createObjectURL(file);
+    _objectUrls.push(url);
+    const item = document.createElement('div');
+    item.className = 'preview-item' + (isVideo ? ' video-item' : '');
+    const media = document.createElement(isVideo ? 'video' : 'img');
+    media.src = url;
+    if (isVideo) { media.controls = true; media.setAttribute('playsinline', ''); }
+    else { media.alt = 'preview'; }
+    const btn = document.createElement('button');
+    btn.className = 'remove-media';
+    btn.setAttribute('aria-label', 'Remove');
+    btn.textContent = '✕';
+    btn.addEventListener('click', () => {
+      selectedFiles.splice(idx, 1);
+      renderPreviews();
+      updateFileInfo();
+    });
+    item.appendChild(media);
+    item.appendChild(btn);
+    grid.appendChild(item);
+  });
+}
 
 document.getElementById('btn-attach').addEventListener('click', () => {
   document.getElementById('file-input').click();
 });
 
 document.getElementById('file-input').addEventListener('change', function () {
-  const file = this.files[0];
-  if (!file) return;
-
-  const sizeMB = file.size / 1024 / 1024;
   const infoEl = document.getElementById('file-info');
-  const preview = document.getElementById('media-preview');
-
-  if (sizeMB > MAX_MB) {
-    infoEl.textContent = `File is ${sizeMB.toFixed(1)} MB — limit is ${MAX_MB} MB. Choose a smaller file.`;
+  let skipped = 0;
+  for (const file of Array.from(this.files)) {
+    const sizeMB = file.size / 1024 / 1024;
+    if (sizeMB > MAX_MB) { skipped++; continue; }
+    selectedFiles.push(file);
+  }
+  if (skipped) {
+    infoEl.textContent = `${skipped} file(s) skipped — over ${MAX_MB} MB limit.`;
     infoEl.className = 'file-info warn';
-    selectedFile = null;
-    preview.innerHTML = '';
-    this.value = '';
-    return;
   }
-
-  selectedFile = file;
-  const sizeLabel = sizeMB >= 1 ? `${sizeMB.toFixed(1)} MB` : `${(file.size / 1024).toFixed(0)} KB`;
-  infoEl.textContent = `${file.name} · ${sizeLabel}`;
-  infoEl.className = sizeMB > 25 ? 'file-info warn' : 'file-info';
-
-  const objectUrl = URL.createObjectURL(file);
-  const isVideo = file.type.startsWith('video/');
-
-  if (isVideo) {
-    preview.innerHTML = `<video src="${objectUrl}" controls playsinline></video>
-                         <button class="remove-media" id="btn-remove" aria-label="Remove">✕</button>`;
-  } else {
-    preview.innerHTML = `<img src="${objectUrl}" alt="preview">
-                         <button class="remove-media" id="btn-remove" aria-label="Remove">✕</button>`;
-  }
-
-  document.getElementById('btn-remove').addEventListener('click', () => {
-    selectedFile = null;
-    preview.innerHTML = '';
-    infoEl.textContent = '';
-    infoEl.className = 'file-info';
-    document.getElementById('file-input').value = '';
-    URL.revokeObjectURL(objectUrl);
-  });
+  this.value = '';
+  renderPreviews();
+  updateFileInfo();
 });
 
 // ── GitHub API ─────────────────────────────────────────────────────────────
@@ -461,6 +499,87 @@ function utf8ToBase64(str) {
   return btoa(binary);
 }
 
+// ── Media processing ───────────────────────────────────────────────────────
+
+const MAX_IMAGE_WIDTH  = 1000;
+const MAX_VIDEO_HEIGHT = 720;
+
+async function processImage(file) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      if (img.naturalWidth <= MAX_IMAGE_WIDTH) { resolve(file); return; }
+      const w = MAX_IMAGE_WIDTH;
+      const h = Math.round(img.naturalHeight * (MAX_IMAGE_WIDTH / img.naturalWidth));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      canvas.toBlob(
+        (blob) => resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' })),
+        'image/jpeg', 0.85
+      );
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+
+let _ffmpeg = null;
+
+async function loadFFmpeg() {
+  if (_ffmpeg) return _ffmpeg;
+  const { FFmpeg } = await import('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.6/+esm');
+  const ffmpeg = new FFmpeg();
+  await ffmpeg.load({
+    coreURL: 'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/umd/ffmpeg-core.js',
+    wasmURL:  'https://unpkg.com/@ffmpeg/core-st@0.12.6/dist/umd/ffmpeg-core.wasm',
+  });
+  _ffmpeg = ffmpeg;
+  return ffmpeg;
+}
+
+async function processVideo(file, onProgress) {
+  // Check actual dimensions before bothering to load ffmpeg
+  const dims = await new Promise((resolve) => {
+    const v = document.createElement('video');
+    const u = URL.createObjectURL(file);
+    v.onloadedmetadata = () => { URL.revokeObjectURL(u); resolve({ w: v.videoWidth, h: v.videoHeight }); };
+    v.onerror = () => { URL.revokeObjectURL(u); resolve(null); };
+    v.src = u;
+  });
+  if (!dims || dims.h <= MAX_VIDEO_HEIGHT) return file;
+
+  let ffmpeg;
+  try {
+    ffmpeg = await loadFFmpeg();
+  } catch (e) {
+    console.warn('ffmpeg.wasm failed to load, uploading original:', e);
+    return file;
+  }
+
+  const ext = file.name.split('.').pop().toLowerCase() || 'mp4';
+  if (onProgress) ffmpeg.on('progress', ({ progress }) => onProgress(Math.max(0, Math.min(1, progress))));
+
+  await ffmpeg.writeFile(`input.${ext}`, new Uint8Array(await file.arrayBuffer()));
+  await ffmpeg.exec([
+    '-i', `input.${ext}`,
+    '-vf', `scale=-2:${MAX_VIDEO_HEIGHT}`,
+    '-c:v', 'libx264', '-preset', 'fast', '-crf', '28',
+    '-c:a', 'aac', '-b:a', '128k',
+    '-movflags', '+faststart',
+    'output.mp4'
+  ]);
+
+  const data = await ffmpeg.readFile('output.mp4');
+  await ffmpeg.deleteFile(`input.${ext}`);
+  await ffmpeg.deleteFile('output.mp4');
+  if (onProgress) ffmpeg.off('progress');
+
+  return new File([data.buffer], file.name.replace(/\.[^.]+$/, '.mp4'), { type: 'video/mp4' });
+}
+
 // ── Post creation ──────────────────────────────────────────────────────────
 
 function slugify(text) {
@@ -477,24 +596,24 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function buildPostMarkdown({ text, tags, mediaPath, mediaType, mimeType }) {
+function buildPostMarkdown({ title, text, tags, mediaFiles }) {
   const tagsYaml = tags.length
     ? '\ntags:\n' + tags.map(t => `  - ${t}`).join('\n')
     : '';
 
   let mediaBlock = '';
-  if (mediaPath) {
-    if (mediaType === 'video') {
-      mediaBlock = `\n\n<video controls playsinline style="width:100%;border-radius:8px">
-  <source src="/${mediaPath}" type="${mimeType}">
+  for (const { path, type, mimeType } of mediaFiles) {
+    if (type === 'video') {
+      mediaBlock += `\n\n<video controls playsinline style="width:100%;border-radius:8px">
+  <source src="/${path}" type="${mimeType}">
 </video>`;
     } else {
-      mediaBlock = `\n\n![](/assets/images/posts/${mediaPath.split('/').pop()})`;
+      mediaBlock += `\n\n![](/assets/images/posts/${path.split('/').pop()})`;
     }
   }
 
   return `---
-title: ""
+title: "${title}"
 date: ${todayISO()}
 categories:
   - notes${tagsYaml}
@@ -511,6 +630,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
   const cfg = loadConfig();
   if (!cfg) { openSettings(); return; }
 
+  const title = document.getElementById('post-title').value.trim();
   const text = document.getElementById('post-text').value.trim();
   if (!text) { alert('Please write something first.'); return; }
 
@@ -527,40 +647,47 @@ document.getElementById('btn-post').addEventListener('click', async () => {
     const slug = slugify(firstWords);
     const fileBase = `${date}-${slug}`;
 
-    let mediaPath = null;
-    let mediaType = null;
+    const uploadedMedia = [];
 
-    if (selectedFile) {
-      setStatus('Uploading media…', 'loading');
-      const isVideo  = selectedFile.type.startsWith('video/');
-      const ext      = selectedFile.name.split('.').pop().toLowerCase();
-      const folder   = isVideo ? 'assets/video/posts' : 'assets/images/posts';
-      mediaPath      = `${folder}/${fileBase}.${ext}`;
-      mediaType      = isVideo ? 'video' : 'image';
+    if (selectedFiles.length > 0) {
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const raw = selectedFiles[i];
+        const isVideo = raw.type.startsWith('video/');
+        const n = selectedFiles.length > 1 ? ` ${i + 1} of ${selectedFiles.length}` : '';
 
-      const b64 = await fileToBase64(selectedFile);
-      await githubPut(cfg, mediaPath, b64, `Upload media for ${fileBase}`);
+        setStatus(`Processing ${isVideo ? 'video' : 'image'}${n}…`, 'loading');
+        const file = isVideo
+          ? await processVideo(raw, (p) => setStatus(`Transcoding video${n}: ${Math.round(p * 100)}%…`, 'loading'))
+          : await processImage(raw);
+
+        setStatus(`Uploading${n}…`, 'loading');
+        const ext    = file.name.split('.').pop().toLowerCase();
+        const folder = isVideo ? 'assets/video/posts' : 'assets/images/posts';
+        const suffix = selectedFiles.length > 1 ? `-${i + 1}` : '';
+        const path   = `${folder}/${fileBase}${suffix}.${ext}`;
+        const b64 = await fileToBase64(file);
+        await githubPut(cfg, path, b64, `Upload media for ${fileBase}`);
+        uploadedMedia.push({ path, type: isVideo ? 'video' : 'image', mimeType: file.type });
+      }
     }
 
     setStatus('Creating post…', 'loading');
 
-    const postMd = buildPostMarkdown({
-      text, tags, mediaPath, mediaType,
-      mimeType: selectedFile ? selectedFile.type : null
-    });
+    const postMd = buildPostMarkdown({ title, text, tags, mediaFiles: uploadedMedia });
     const postPath = `_posts/${fileBase}.md`;
     await githubPut(cfg, postPath, utf8ToBase64(postMd), `Add note ${fileBase}`);
 
     setStatus('✓ Published! GitHub Pages will rebuild in ~1 minute.', 'success');
 
     // Reset form
+    document.getElementById('post-title').value = '';
     document.getElementById('post-text').value = '';
     document.getElementById('post-tags').value = '';
     document.getElementById('char-count').textContent = `0 / ${MAX_CHARS}`;
-    document.getElementById('media-preview').innerHTML = '';
-    document.getElementById('file-info').textContent = '';
+    selectedFiles = [];
+    renderPreviews();
+    updateFileInfo();
     document.getElementById('file-input').value = '';
-    selectedFile = null;
 
   } catch (err) {
     setStatus(`Error: ${err.message}`, 'error');
