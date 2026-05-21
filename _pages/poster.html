@@ -475,7 +475,6 @@ document.getElementById('file-input').addEventListener('change', function () {
     infoEl.textContent = `${skipped} file(s) skipped — over ${MAX_MB} MB limit.`;
     infoEl.className = 'file-info warn';
   }
-  this.value = '';
   renderPreviews();
   updateFileInfo();
 });
@@ -521,14 +520,22 @@ async function githubPut(cfg, path, base64Content, message) {
 // ── Encoding helpers ───────────────────────────────────────────────────────
 
 async function fileToBase64(file) {
-  const buf = await file.arrayBuffer();
-  const bytes = new Uint8Array(buf);
-  let binary = '';
-  const chunk = 0x8000;
-  for (let i = 0; i < bytes.length; i += chunk) {
-    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+  // Use an object URL so access is independent of the file input's lifetime
+  const url = URL.createObjectURL(file);
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Failed to read file');
+    const buf = await resp.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    let binary = '';
+    const chunk = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunk) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(binary);
+  } finally {
+    URL.revokeObjectURL(url);
   }
-  return btoa(binary);
 }
 
 function utf8ToBase64(str) {
