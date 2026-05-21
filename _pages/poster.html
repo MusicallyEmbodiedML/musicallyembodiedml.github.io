@@ -173,9 +173,11 @@ sitemap: false
     }
     .preview-item video {
       width: 100%;
+      min-height: 160px;
       max-height: 260px;
       object-fit: contain;
       display: block;
+      background: #000;
     }
     .remove-media {
       position: absolute;
@@ -405,7 +407,7 @@ function renderPreviews() {
     item.className = 'preview-item' + (isVideo ? ' video-item' : '');
     const media = document.createElement(isVideo ? 'video' : 'img');
     media.src = url;
-    if (isVideo) { media.controls = true; media.setAttribute('playsinline', ''); }
+    if (isVideo) { media.controls = true; media.setAttribute('playsinline', ''); media.setAttribute('preload', 'metadata'); }
     else { media.alt = 'preview'; }
     const btn = document.createElement('button');
     btn.className = 'remove-media';
