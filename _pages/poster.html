@@ -466,17 +466,17 @@ document.getElementById('btn-attach').addEventListener('click', () => {
 });
 
 document.getElementById('file-input').addEventListener('change', function () {
-  const infoEl = document.getElementById('file-info');
-  let skipped = 0;
+  const rejected = [];
   for (const file of Array.from(this.files)) {
-    const sizeMB = file.size / 1024 / 1024;
-    if (sizeMB > MAX_MB) { skipped++; continue; }
+    if (file.size / 1024 / 1024 > MAX_MB) { rejected.push(file.name); continue; }
     selectedFiles.push(file);
     if (file.type.startsWith('video/')) checkVideoMeta(file);
   }
-  if (skipped) {
-    infoEl.textContent = `${skipped} file(s) skipped — over ${MAX_MB} MB limit.`;
-    infoEl.className = 'file-info warn';
+  if (rejected.length) {
+    setStatus(
+      `${rejected.length > 1 ? 'These files are' : `"${rejected[0]}" is`} over the ${MAX_MB} MB limit and wasn't added:\n${rejected.join(', ')}`,
+      'error'
+    );
   }
   renderPreviews();
   updateFileInfo();
