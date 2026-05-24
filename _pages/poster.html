@@ -259,6 +259,9 @@ sitemap: false
     <label for="cfg-branch">Branch</label>
     <input type="text" id="cfg-branch" value="main">
 
+    <label for="cfg-proxy">Video Upload Proxy URL <span style="color:#555577;font-weight:400;text-transform:none">(optional — needed for large videos)</span></label>
+    <input type="text" id="cfg-proxy" placeholder="https://luuma.net/upload-video" autocomplete="off">
+
     <button class="btn btn-primary" id="btn-save-config">Save &amp; Continue</button>
   </main>
 </div>
@@ -355,18 +358,20 @@ document.getElementById('btn-save-config').addEventListener('click', () => {
   const token  = document.getElementById('cfg-token').value.trim();
   const owner  = document.getElementById('cfg-owner').value.trim() || 'MusicallyEmbodiedML';
   const repo   = document.getElementById('cfg-repo').value.trim()  || 'musicallyembodiedml.github.io';
-  const branch = document.getElementById('cfg-branch').value.trim() || 'main';
+  const branch   = document.getElementById('cfg-branch').value.trim() || 'main';
+  const proxyUrl = document.getElementById('cfg-proxy').value.trim().replace(/\/$/, '');
   if (!token) { alert('Please enter a GitHub token.'); return; }
-  saveConfig({ token, owner, repo, branch });
+  saveConfig({ token, owner, repo, branch, proxyUrl });
   showScreen('screen-post');
 });
 
 function openSettings() {
   const cfg = loadConfig() || {};
-  document.getElementById('cfg-token').value  = cfg.token  || '';
-  document.getElementById('cfg-owner').value  = cfg.owner  || 'MusicallyEmbodiedML';
-  document.getElementById('cfg-repo').value   = cfg.repo   || 'musicallyembodiedml.github.io';
-  document.getElementById('cfg-branch').value = cfg.branch || 'main';
+  document.getElementById('cfg-token').value  = cfg.token    || '';
+  document.getElementById('cfg-owner').value  = cfg.owner    || 'MusicallyEmbodiedML';
+  document.getElementById('cfg-repo').value   = cfg.repo     || 'musicallyembodiedml.github.io';
+  document.getElementById('cfg-branch').value = cfg.branch   || 'main';
+  document.getElementById('cfg-proxy').value  = cfg.proxyUrl || '';
   showScreen('screen-setup');
 }
 
@@ -550,20 +555,27 @@ async function getOrCreateMediaRelease(cfg) {
 
 async function githubUploadVideoAsset(cfg, filename, file) {
   const releaseId = await getOrCreateMediaRelease(cfg);
-  const resp = await fetch(
-    `https://uploads.github.com/repos/${cfg.owner}/${cfg.repo}/releases/${releaseId}/assets?name=${encodeURIComponent(filename)}`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `token ${cfg.token}`,
-        Accept: 'application/vnd.github.v3+json',
-        'Content-Type': file.type || 'application/octet-stream'
-      },
-      body: file
-    }
-  );
+
+  let uploadUrl, headers;
+  if (cfg.proxyUrl) {
+    const params = new URLSearchParams({ owner: cfg.owner, repo: cfg.repo, release_id: releaseId, name: filename });
+    uploadUrl = `${cfg.proxyUrl}?${params}`;
+    headers = {
+      Authorization: `token ${cfg.token}`,
+      'Content-Type': file.type || 'application/octet-stream'
+    };
+  } else {
+    uploadUrl = `https://uploads.github.com/repos/${cfg.owner}/${cfg.repo}/releases/${releaseId}/assets?name=${encodeURIComponent(filename)}`;
+    headers = {
+      Authorization: `token ${cfg.token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': file.type || 'application/octet-stream'
+    };
+  }
+
+  const resp = await fetch(uploadUrl, { method: 'POST', headers, body: file });
   if (!resp.ok) {
-    let msg = `GitHub upload error ${resp.status}`;
+    let msg = `Upload error ${resp.status}`;
     try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
     throw new Error(msg);
   }
