@@ -523,22 +523,12 @@ async function githubPut(cfg, path, base64Content, message) {
 // ── Encoding helpers ───────────────────────────────────────────────────────
 
 async function fileToBase64(file) {
-  // Use an object URL so access is independent of the file input's lifetime
-  const url = URL.createObjectURL(file);
-  try {
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error('Failed to read file');
-    const buf = await resp.arrayBuffer();
-    const bytes = new Uint8Array(buf);
-    let binary = '';
-    const chunk = 0x8000;
-    for (let i = 0; i < bytes.length; i += chunk) {
-      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
-    }
-    return btoa(binary);
-  } finally {
-    URL.revokeObjectURL(url);
-  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = () => reject(new Error(`Failed to read file: ${reader.error?.message || 'unknown error'}`));
+    reader.readAsDataURL(file);
+  });
 }
 
 function utf8ToBase64(str) {
@@ -651,7 +641,9 @@ document.getElementById('btn-post').addEventListener('click', async () => {
 
         const file = isVideo ? raw : await processImage(raw);
 
-        setStatus(`Uploading${n}…`, 'loading');
+        const sizeMB = file.size / 1024 / 1024;
+        const sizeNote = sizeMB > 10 ? ` (${sizeMB.toFixed(0)} MB — may take a while)` : '';
+        setStatus(`Uploading${n}${sizeNote}…`, 'loading');
         const ext    = file.name.split('.').pop().toLowerCase();
         const folder = isVideo ? 'assets/video/posts' : 'assets/images/posts';
         const suffix = selectedFiles.length > 1 ? `-${i + 1}` : '';
