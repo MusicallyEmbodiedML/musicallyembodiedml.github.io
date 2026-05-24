@@ -259,8 +259,11 @@ sitemap: false
     <label for="cfg-branch">Branch</label>
     <input type="text" id="cfg-branch" value="main">
 
-    <label for="cfg-proxy">Video Upload Proxy URL <span style="color:#555577;font-weight:400;text-transform:none">(optional — needed for large videos)</span></label>
-    <input type="text" id="cfg-proxy" placeholder="https://luuma.net/upload-video" autocomplete="off">
+    <label for="cfg-r2-url">R2 Worker URL <span style="color:#555577;font-weight:400;text-transform:none">(for video uploads)</span></label>
+    <input type="text" id="cfg-r2-url" placeholder="https://upload.your-worker.workers.dev" autocomplete="off">
+
+    <label for="cfg-r2-secret">R2 Upload Secret</label>
+    <input type="password" id="cfg-r2-secret" placeholder="shared secret" autocomplete="off">
 
     <button class="btn btn-primary" id="btn-save-config">Save &amp; Continue</button>
   </main>
@@ -358,20 +361,22 @@ document.getElementById('btn-save-config').addEventListener('click', () => {
   const token  = document.getElementById('cfg-token').value.trim();
   const owner  = document.getElementById('cfg-owner').value.trim() || 'MusicallyEmbodiedML';
   const repo   = document.getElementById('cfg-repo').value.trim()  || 'musicallyembodiedml.github.io';
-  const branch   = document.getElementById('cfg-branch').value.trim() || 'main';
-  const proxyUrl = document.getElementById('cfg-proxy').value.trim().replace(/\/$/, '');
+  const branch    = document.getElementById('cfg-branch').value.trim() || 'main';
+  const r2WorkerUrl = document.getElementById('cfg-r2-url').value.trim().replace(/\/$/, '');
+  const r2Secret    = document.getElementById('cfg-r2-secret').value.trim();
   if (!token) { alert('Please enter a GitHub token.'); return; }
-  saveConfig({ token, owner, repo, branch, proxyUrl });
+  saveConfig({ token, owner, repo, branch, r2WorkerUrl, r2Secret });
   showScreen('screen-post');
 });
 
 function openSettings() {
   const cfg = loadConfig() || {};
-  document.getElementById('cfg-token').value  = cfg.token    || '';
-  document.getElementById('cfg-owner').value  = cfg.owner    || 'MusicallyEmbodiedML';
-  document.getElementById('cfg-repo').value   = cfg.repo     || 'musicallyembodiedml.github.io';
-  document.getElementById('cfg-branch').value = cfg.branch   || 'main';
-  document.getElementById('cfg-proxy').value  = cfg.proxyUrl || '';
+  document.getElementById('cfg-token').value     = cfg.token       || '';
+  document.getElementById('cfg-owner').value     = cfg.owner       || 'MusicallyEmbodiedML';
+  document.getElementById('cfg-repo').value      = cfg.repo        || 'musicallyembodiedml.github.io';
+  document.getElementById('cfg-branch').value    = cfg.branch      || 'main';
+  document.getElementById('cfg-r2-url').value    = cfg.r2WorkerUrl || '';
+  document.getElementById('cfg-r2-secret').value = cfg.r2Secret    || '';
   showScreen('screen-setup');
 }
 
@@ -525,61 +530,25 @@ async function githubPut(cfg, path, base64Content, message) {
   return resp.json();
 }
 
-// Videos are stored as GitHub Release assets (raw binary upload, up to 2 GB).
-const MEDIA_RELEASE_TAG = 'blog-media';
-
-async function getOrCreateMediaRelease(cfg) {
-  const headers = {
-    Authorization: `token ${cfg.token}`,
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  };
-  const base = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
-  const resp = await fetch(`${base}/releases/tags/${MEDIA_RELEASE_TAG}`, { headers });
-  if (resp.ok) return (await resp.json()).id;
-  if (resp.status !== 404) throw new Error(`GitHub ${resp.status} checking media release`);
-  const create = await fetch(`${base}/releases`, {
-    method: 'POST', headers,
-    body: JSON.stringify({
-      tag_name: MEDIA_RELEASE_TAG, name: 'Blog Media',
-      body: 'Video files for blog posts.', draft: false, prerelease: true
-    })
+// Videos are uploaded to Cloudflare R2 via a small Worker that handles auth + CORS.
+async function r2UploadVideo(cfg, filename, file) {
+  if (!cfg.r2WorkerUrl) throw new Error('No R2 worker URL set — go to Settings.');
+  const resp = await fetch(cfg.r2WorkerUrl, {
+    method: 'POST',
+    headers: {
+      'X-Upload-Secret': cfg.r2Secret || '',
+      'X-Filename':      filename,
+      'Content-Type':    file.type || 'application/octet-stream',
+    },
+    body: file,
   });
-  if (!create.ok) {
-    let msg = `GitHub ${create.status} creating media release`;
-    try { const j = await create.json(); if (j.message) msg = j.message; } catch {}
-    throw new Error(msg);
-  }
-  return (await create.json()).id;
-}
-
-async function githubUploadVideoAsset(cfg, filename, file) {
-  const releaseId = await getOrCreateMediaRelease(cfg);
-
-  let uploadUrl, headers;
-  if (cfg.proxyUrl) {
-    const params = new URLSearchParams({ owner: cfg.owner, repo: cfg.repo, release_id: releaseId, name: filename });
-    uploadUrl = `${cfg.proxyUrl}?${params}`;
-    headers = {
-      Authorization: `token ${cfg.token}`,
-      'Content-Type': file.type || 'application/octet-stream'
-    };
-  } else {
-    uploadUrl = `https://uploads.github.com/repos/${cfg.owner}/${cfg.repo}/releases/${releaseId}/assets?name=${encodeURIComponent(filename)}`;
-    headers = {
-      Authorization: `token ${cfg.token}`,
-      Accept: 'application/vnd.github.v3+json',
-      'Content-Type': file.type || 'application/octet-stream'
-    };
-  }
-
-  const resp = await fetch(uploadUrl, { method: 'POST', headers, body: file });
   if (!resp.ok) {
-    let msg = `Upload error ${resp.status}`;
-    try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
+    let msg = `R2 upload error ${resp.status}`;
+    try { const j = await resp.json(); if (j.error || j.message) msg = j.error || j.message; } catch {}
     throw new Error(msg);
   }
-  return `https://github.com/${cfg.owner}/${cfg.repo}/releases/download/${MEDIA_RELEASE_TAG}/${filename}`;
+  const { url } = await resp.json();
+  return url;
 }
 
 // ── Encoding helpers ───────────────────────────────────────────────────────
@@ -709,7 +678,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
           const sizeMB   = raw.size / 1024 / 1024;
           const sizeNote = sizeMB > 10 ? ` (${sizeMB.toFixed(0)} MB — may take a while)` : '';
           setStatus(`Uploading video${n}${sizeNote}…`, 'loading');
-          const src = await githubUploadVideoAsset(cfg, filename, raw);
+          const src = await r2UploadVideo(cfg, filename, raw);
           uploadedMedia.push({ src, type: 'video', mimeType: raw.type });
         } else {
           const file     = await processImage(raw);
