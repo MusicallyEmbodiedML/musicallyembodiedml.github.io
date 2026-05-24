@@ -306,7 +306,7 @@ sitemap: false
 'use strict';
 
 const CONFIG_KEY = 'meml_poster_v1';
-const MAX_MB = 50;
+const MAX_MB = 100;
 const MAX_CHARS = 2000;
 
 // ── Storage ────────────────────────────────────────────────────────────────
@@ -520,6 +520,47 @@ async function githubPut(cfg, path, base64Content, message) {
   return resp.json();
 }
 
+// Uses the Git Data API (blob → tree → commit → ref) to support files up to ~100 MB.
+async function githubPutLarge(cfg, path, base64Content, message) {
+  const headers = {
+    Authorization: `token ${cfg.token}`,
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  };
+  const base = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+
+  async function ghFetch(url, opts) {
+    const resp = await fetch(url, { headers, ...opts });
+    if (!resp.ok) {
+      let msg = `GitHub ${resp.status}`;
+      try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
+      throw new Error(msg);
+    }
+    return resp.json();
+  }
+
+  const blob      = await ghFetch(`${base}/git/blobs`, {
+    method: 'POST', body: JSON.stringify({ content: base64Content, encoding: 'base64' })
+  });
+  const ref       = await ghFetch(`${base}/git/ref/heads/${cfg.branch}`);
+  const headSha   = ref.object.sha;
+  const commit    = await ghFetch(`${base}/git/commits/${headSha}`);
+  const tree      = await ghFetch(`${base}/git/trees`, {
+    method: 'POST',
+    body: JSON.stringify({
+      base_tree: commit.tree.sha,
+      tree: [{ path, mode: '100644', type: 'blob', sha: blob.sha }]
+    })
+  });
+  const newCommit = await ghFetch(`${base}/git/commits`, {
+    method: 'POST',
+    body: JSON.stringify({ message, tree: tree.sha, parents: [headSha] })
+  });
+  await ghFetch(`${base}/git/refs/heads/${cfg.branch}`, {
+    method: 'PATCH', body: JSON.stringify({ sha: newCommit.sha })
+  });
+}
+
 // ── Encoding helpers ───────────────────────────────────────────────────────
 
 async function fileToBase64(file) {
@@ -649,7 +690,11 @@ document.getElementById('btn-post').addEventListener('click', async () => {
         const suffix = selectedFiles.length > 1 ? `-${i + 1}` : '';
         const path   = `${folder}/${fileBase}${suffix}.${ext}`;
         const b64 = await fileToBase64(file);
-        await githubPut(cfg, path, b64, `Upload media for ${fileBase}`);
+        if (isVideo) {
+          await githubPutLarge(cfg, path, b64, `Upload media for ${fileBase}`);
+        } else {
+          await githubPut(cfg, path, b64, `Upload media for ${fileBase}`);
+        }
         uploadedMedia.push({ path, type: isVideo ? 'video' : 'image', mimeType: file.type });
       }
     }
