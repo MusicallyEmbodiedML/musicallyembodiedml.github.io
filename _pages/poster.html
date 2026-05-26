@@ -210,6 +210,32 @@ sitemap: false
     .status.error   { background: #281515; border: 1px solid #5a2a2a; color: #cc8080; }
     .status.loading { background: #151528; border: 1px solid #2a2a5a; color: #8080cc; }
 
+    .progress-wrap {
+      display: none;
+      margin-top: 12px;
+    }
+    .progress-wrap.active { display: block; }
+    .progress-bar-track {
+      background: #1c1c32;
+      border: 1.5px solid #2c2c4c;
+      border-radius: 8px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #5555bb;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .progress-label {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #8080cc;
+      margin-top: 4px;
+    }
+
     .char-count {
       text-align: right;
       font-size: 0.78rem;
@@ -299,6 +325,11 @@ sitemap: false
       <div class="preview-grid" id="media-preview"></div>
     </div>
 
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-bar"></div></div>
+      <div class="progress-label" id="progress-label">0%</div>
+    </div>
+
     <div class="status" id="status"></div>
 
     <button class="btn btn-primary" id="btn-post">Publish</button>
@@ -344,6 +375,19 @@ function clearStatus() {
   const el = document.getElementById('status');
   el.className = 'status';
   el.textContent = '';
+}
+
+function setProgress(pct) {
+  const wrap  = document.getElementById('progress-wrap');
+  const bar   = document.getElementById('progress-bar');
+  const label = document.getElementById('progress-label');
+  if (pct <= 0 || pct >= 100) {
+    wrap.classList.remove('active');
+  } else {
+    wrap.classList.add('active');
+    bar.style.width   = `${pct}%`;
+    label.textContent = `${pct}%`;
+  }
 }
 
 // ── Character counter ──────────────────────────────────────────────────────
@@ -559,25 +603,34 @@ async function getOrCreateMediaRelease(cfg) {
   return (await create.json()).id;
 }
 
-async function uploadVideo(cfg, filename, file) {
+async function uploadVideo(cfg, filename, file, onProgress) {
   if (!cfg.proxyUrl) throw new Error('No video proxy URL set — go to Settings.');
   const releaseId = await getOrCreateMediaRelease(cfg);
   const params = new URLSearchParams({ owner: cfg.owner, repo: cfg.repo, release_id: releaseId, name: filename });
-  const resp = await fetch(`${cfg.proxyUrl}?${params}`, {
-    method: 'POST',
-    headers: {
-      'Authorization':    `token ${cfg.token}`,
-      'Content-Type':     file.type || 'application/octet-stream',
-      'X-Proxy-Secret':   cfg.proxySecret || '',
-    },
-    body: file,
+  const url = `${cfg.proxyUrl}?${params}`;
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Authorization',  `token ${cfg.token}`);
+    xhr.setRequestHeader('Content-Type',   file.type || 'application/octet-stream');
+    xhr.setRequestHeader('X-Proxy-Secret', cfg.proxySecret || '');
+    xhr.timeout = 900000; // 15 min
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100));
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(`https://github.com/${cfg.owner}/${cfg.repo}/releases/download/${MEDIA_RELEASE_TAG}/${filename}`);
+      } else {
+        let msg = `Upload error ${xhr.status}`;
+        try { const j = JSON.parse(xhr.responseText); if (j.message) msg = j.message; } catch {}
+        reject(new Error(msg));
+      }
+    };
+    xhr.onerror   = () => reject(new Error('Network error during upload'));
+    xhr.ontimeout = () => reject(new Error('Upload timed out after 15 minutes'));
+    xhr.send(file);
   });
-  if (!resp.ok) {
-    let msg = `Upload error ${resp.status}`;
-    try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
-    throw new Error(msg);
-  }
-  return `https://github.com/${cfg.owner}/${cfg.repo}/releases/download/${MEDIA_RELEASE_TAG}/${filename}`;
 }
 
 // ── Encoding helpers ───────────────────────────────────────────────────────
@@ -707,7 +760,10 @@ document.getElementById('btn-post').addEventListener('click', async () => {
           const sizeMB   = raw.size / 1024 / 1024;
           const sizeNote = sizeMB > 10 ? ` (${sizeMB.toFixed(0)} MB — may take a while)` : '';
           setStatus(`Uploading video${n}${sizeNote}…`, 'loading');
-          const src = await uploadVideo(cfg, filename, raw);
+          const src = await uploadVideo(cfg, filename, raw, (pct) => {
+            setProgress(pct);
+            setStatus(`Uploading video${n} — ${pct}%`, 'loading');
+          });
           uploadedMedia.push({ src, type: 'video', mimeType: raw.type });
         } else {
           const file     = await processImage(raw);
@@ -728,6 +784,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
     const postPath = `_posts/${fileBase}.md`;
     await githubPut(cfg, postPath, utf8ToBase64(postMd), `Add note ${fileBase}`);
 
+    setProgress(0);
     setStatus('✓ Published! GitHub Pages will rebuild in ~1 minute.', 'success');
 
     // Reset form
@@ -742,6 +799,7 @@ document.getElementById('btn-post').addEventListener('click', async () => {
     document.getElementById('file-input').value = '';
 
   } catch (err) {
+    setProgress(0);
     setStatus(`Error: ${err.message}`, 'error');
     console.error(err);
   } finally {
