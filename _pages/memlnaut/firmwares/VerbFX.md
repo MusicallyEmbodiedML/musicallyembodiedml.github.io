@@ -62,6 +62,14 @@ When you indicate a reward, you are rewarding (negatively or positively) how a p
 
 Navigate between screens using the rotary encoder.
 
+## RL 
+
+Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.
+
+## Focus
+
+Selecting one or more items in the focus menu freezes all *unfocused* neural network outputs at their current value, so that NISPS only changed the *focused* values.  This let's you do detailed training, e.g. if you just want to adjust the reverb but not other sounds.
+
 ## FX Enable
 
 Toggle each of the six effect blocks on or off: FilterBnk, Reverb, ShortDly, MedDly, LongDly, Dly→Verb.
@@ -87,14 +95,6 @@ Available voice spaces:
 
 These voice spaces bias the neural network mappings in particular directions.
 
-## NN Output
-
-Shows the live outputs of the neural network.
-
-## RL Stats
-
-Shows the loss of the neural network as it optimises. If this number is high, the network is struggling to train. If it's low the network is training ok (though possibly overfitting).
-
 ## NN Inputs
 
 Shows the inputs to the neural network.
@@ -105,11 +105,18 @@ Various messages logging interactions with the system.
 
 ## Save Model
 
-Tap on a slot to save a model (note: this doesn't save the voice space).
+Tap on a slot to save a model and current voice space,
 
 ## Load Model
 
 Tap on a slot to load a model.
+
+## Input Source
+
+Choose from 
+- the joystick that matches your hardware (3D or 4D) 
+- machine listening analysis of the line input (allows the system to adapt to different sounds)
+- various configurations of MIDI controllers
 
 ## Help
 
@@ -131,6 +138,6 @@ The firmware sends out the first 16 neural network outputs as MIDI controllers, 
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX)
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0)
 
 See the firmware [guide](./guide) for installation instructions.

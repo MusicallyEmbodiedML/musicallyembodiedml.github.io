@@ -290,7 +290,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#verbfx">VerbFX</a><ul><li><a href="#signal-flow">Signal Flow</a></li><li><a href="#effect-blocks">Effect Blocks</a></li><li><a href="#inputs">Inputs</a></li><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#nisps">NISPS</a></li><li><a href="#physical-controls">Physical Controls</a></li><li><a href="#screens">Screens</a><ul><li><a href="#fx-enable">FX Enable</a></li><li><a href="#voice-spaces">Voice Spaces</a></li><li><a href="#nn-output">NN Output</a></li><li><a href="#rl-stats">RL Stats</a></li><li><a href="#nn-inputs">NN Inputs</a></li><li><a href="#messages">Messages</a></li><li><a href="#save-model">Save Model</a></li><li><a href="#load-model">Load Model</a></li><li><a href="#help">Help</a></li><li><a href="#system-info">System Info</a></li></ul></li><li><a href="#midi">MIDI</a></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li><li><a href="#firmware-download">Firmware Download</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#verbfx">VerbFX</a><ul><li><a href="#signal-flow">Signal Flow</a></li><li><a href="#effect-blocks">Effect Blocks</a></li><li><a href="#inputs">Inputs</a></li><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#nisps">NISPS</a></li><li><a href="#physical-controls">Physical Controls</a></li><li><a href="#screens">Screens</a><ul><li><a href="#rl">RL</a></li><li><a href="#focus">Focus</a></li><li><a href="#fx-enable">FX Enable</a></li><li><a href="#voice-spaces">Voice Spaces</a></li><li><a href="#nn-output">NN Output</a></li><li><a href="#rl-stats">RL Stats</a></li><li><a href="#nn-inputs">NN Inputs</a></li><li><a href="#messages">Messages</a></li><li><a href="#save-model">Save Model</a></li><li><a href="#load-model">Load Model</a></li><li><a href="#help">Help</a></li><li><a href="#system-info">System Info</a></li></ul></li><li><a href="#midi">MIDI</a></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li><li><a href="#firmware-download">Firmware Download</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -351,6 +351,14 @@
 <h1 id="screens">Screens</h1>
 
 <p>Navigate between screens using the rotary encoder.</p>
+
+<h2 id="rl">RL</h2>
+
+<p>Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.</p>
+
+<h2 id="focus">Focus</h2>
+
+<p>Selecting one or more items in the focus menu freezes all <em>unfocused</em> neural network outputs at their current value, so that NISPS only changed the <em>focused</em> values.  This let’s you do detailed training, e.g. if you just want to adjust the reverb but not other sounds.</p>
 
 <h2 id="fx-enable">FX Enable</h2>
 
@@ -423,7 +431,7 @@
 
 <h2 id="firmware-download">Firmware Download</h2>
 
-<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX">https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX</a></p>
+<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0">https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0</a></p>
 
 <p>See the firmware <a href="./guide">guide</a> for installation instructions.</p>
 

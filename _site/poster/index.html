@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MEML Post</title>
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MEML Post">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0f0;
+      min-height: 100dvh;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .screen { display: none; flex-direction: column; min-height: 100dvh; }
+    .screen.active { display: flex; }
+
+    header {
+      background: #16162a;
+      border-bottom: 1px solid #2a2a44;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #c0c0e0;
+    }
+    .btn-icon {
+      background: none;
+      border: none;
+      color: #7070a0;
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 1.2rem;
+      line-height: 1;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .btn-icon:hover { color: #e0e0f0; background: #2a2a44; }
+
+    main { flex: 1; padding: 16px; max-width: 600px; width: 100%; margin: 0 auto; }
+
+    h2 { font-size: 1.3rem; margin-bottom: 8px; }
+
+    p.hint {
+      color: #7070a0;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    p.hint a { color: #8888cc; }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #8888aa;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+    label:first-of-type { margin-top: 0; }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      background: #1c1c32;
+      border: 1.5px solid #2c2c4c;
+      border-radius: 10px;
+      color: #e0e0f0;
+      font-size: 1rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    input:focus, textarea:focus { border-color: #6666bb; }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+      line-height: 1.6;
+      font-family: inherit;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 20px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-primary { background: #5555bb; color: #fff; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.88; }
+
+    .attach-wrap { margin-top: 18px; }
+    #file-input { display: none; }
+
+    .attach-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1c1c32;
+      border: 1.5px dashed #3a3a60;
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #8888aa;
+      cursor: pointer;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: border-color 0.2s, color 0.2s;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .attach-btn:hover, .attach-btn:active { border-color: #6666bb; color: #e0e0f0; }
+    .attach-btn .icon { font-size: 1.3rem; }
+
+    .file-info {
+      font-size: 0.8rem;
+      color: #7070a0;
+      margin-top: 8px;
+      padding: 0 4px;
+    }
+    .file-info.warn { color: #cc8855; }
+
+    .preview-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .preview-grid:empty { display: none; }
+    .preview-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111122;
+    }
+    .preview-item.video-item { grid-column: 1 / -1; }
+    .preview-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .preview-item video {
+      width: 100%;
+      min-height: 160px;
+      max-height: 260px;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+    .remove-media {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0, 0, 0, 0.72);
+      border: none;
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+    }
+    .status.active { display: block; }
+    .status.success { background: #152815; border: 1px solid #2a5a2a; color: #80cc80; }
+    .status.error   { background: #281515; border: 1px solid #5a2a2a; color: #cc8080; }
+    .status.loading { background: #151528; border: 1px solid #2a2a5a; color: #8080cc; }
+
+    .progress-wrap {
+      display: none;
+      margin-top: 12px;
+    }
+    .progress-wrap.active { display: block; }
+    .progress-bar-track {
+      background: #1c1c32;
+      border: 1.5px solid #2c2c4c;
+      border-radius: 8px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #5555bb;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .progress-label {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #8080cc;
+      margin-top: 4px;
+    }
+
+    .char-count {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #555577;
+      margin-top: 5px;
+    }
+    .char-count.over { color: #cc5555; }
+
+    footer-note {
+      display: block;
+      text-align: center;
+      padding: 20px 16px 32px;
+      font-size: 0.8rem;
+      color: #444466;
+    }
+    footer-note a {
+      color: #444466;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Setup screen ───────────────────────────────────────────────────── -->
+<div id="screen-setup" class="screen">
+  <header>
+    <h1>MEML POST — SETUP</h1>
+  </header>
+  <main>
+    <h2>GitHub Access</h2>
+    <p class="hint">
+      Create a <a href="https://github.com/settings/tokens?type=beta" target="_blank">GitHub fine-grained token</a>
+      with <strong>Contents: Read and write</strong> on this repo.
+      Everything is stored only in this browser.
+    </p>
+
+    <label for="cfg-token">Personal Access Token</label>
+    <input type="password" id="cfg-token" placeholder="github_pat_… or ghp_…" autocomplete="off">
+
+    <label for="cfg-owner">Repository Owner</label>
+    <input type="text" id="cfg-owner" value="MusicallyEmbodiedML">
+
+    <label for="cfg-repo">Repository Name</label>
+    <input type="text" id="cfg-repo" value="musicallyembodiedml.github.io">
+
+    <label for="cfg-branch">Branch</label>
+    <input type="text" id="cfg-branch" value="main">
+
+    <label for="cfg-proxy">Video Proxy URL <span style="color:#555577;font-weight:400;text-transform:none">(needed for large videos)</span></label>
+    <input type="text" id="cfg-proxy" placeholder="https://luuma.net/upload-video" autocomplete="off">
+
+    <label for="cfg-proxy-secret">Video Proxy Secret</label>
+    <input type="password" id="cfg-proxy-secret" placeholder="shared secret" autocomplete="off">
+
+    <button class="btn btn-primary" id="btn-save-config">Save &amp; Continue</button>
+  </main>
+</div>
+
+<!-- ── Post screen ────────────────────────────────────────────────────── -->
+<div id="screen-post" class="screen">
+  <header>
+    <h1>MEML POST</h1>
+    <button class="btn-icon" id="btn-settings" title="Settings">⚙</button>
+  </header>
+  <main>
+    <label for="post-title">Title <span style="color:#555577;font-weight:400;text-transform:none">(optional)</span></label>
+    <input type="text" id="post-title" placeholder="Leave blank for untitled">
+
+    <label for="post-text">What's happening?</label>
+    <textarea id="post-text" placeholder="Write your update…" maxlength="2000"></textarea>
+    <div class="char-count" id="char-count">0 / 2000</div>
+
+    <label for="post-category">Category</label>
+    <input type="text" id="post-category" placeholder="e.g. notes, news, events" value="notes">
+
+    <label for="post-tags">Tags</label>
+    <input type="text" id="post-tags" placeholder="comma separated, e.g. demo, performance">
+
+    <div class="attach-wrap">
+      <input type="file" id="file-input" accept="image/*,video/*" multiple>
+      <button class="attach-btn" id="btn-attach">
+        <span class="icon">📎</span>
+        <span id="attach-label">Attach photos or videos</span>
+      </button>
+      <div class="file-info" id="file-info"></div>
+      <div class="preview-grid" id="media-preview"></div>
+    </div>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-bar"></div></div>
+      <div class="progress-label" id="progress-label">0%</div>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <button class="btn btn-primary" id="btn-post">Publish</button>
+  </main>
+  <footer-note>
+    <a id="link-reconfigure">Change GitHub settings</a>
+  </footer-note>
+</div>
+
+<script>
+'use strict';
+
+const CONFIG_KEY = 'meml_poster_v1';
+const MAX_MB = 100;
+const MAX_CHARS = 2000;
+
+// ── Storage ────────────────────────────────────────────────────────────────
+
+function loadConfig() {
+  try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || null; }
+  catch { return null; }
+}
+
+function saveConfig(cfg) {
+  localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
+}
+
+// ── UI helpers ─────────────────────────────────────────────────────────────
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status active ' + type;
+}
+
+function clearStatus() {
+  const el = document.getElementById('status');
+  el.className = 'status';
+  el.textContent = '';
+}
+
+function setProgress(pct) {
+  const wrap  = document.getElementById('progress-wrap');
+  const bar   = document.getElementById('progress-bar');
+  const label = document.getElementById('progress-label');
+  if (pct <= 0 || pct >= 100) {
+    wrap.classList.remove('active');
+  } else {
+    wrap.classList.add('active');
+    bar.style.width   = `${pct}%`;
+    label.textContent = `${pct}%`;
+  }
+}
+
+// ── Character counter ──────────────────────────────────────────────────────
+
+document.getElementById('post-text').addEventListener('input', function () {
+  const n = this.value.length;
+  const el = document.getElementById('char-count');
+  el.textContent = `${n} / ${MAX_CHARS}`;
+  el.className = n > MAX_CHARS * 0.9 ? 'char-count over' : 'char-count';
+});
+
+// ── Setup screen ───────────────────────────────────────────────────────────
+
+document.getElementById('btn-save-config').addEventListener('click', () => {
+  const token  = document.getElementById('cfg-token').value.trim();
+  const owner  = document.getElementById('cfg-owner').value.trim() || 'MusicallyEmbodiedML';
+  const repo   = document.getElementById('cfg-repo').value.trim()  || 'musicallyembodiedml.github.io';
+  const branch      = document.getElementById('cfg-branch').value.trim() || 'main';
+  const proxyUrl    = document.getElementById('cfg-proxy').value.trim().replace(/\/$/, '');
+  const proxySecret = document.getElementById('cfg-proxy-secret').value.trim();
+  if (!token) { alert('Please enter a GitHub token.'); return; }
+  saveConfig({ token, owner, repo, branch, proxyUrl, proxySecret });
+  showScreen('screen-post');
+});
+
+function openSettings() {
+  const cfg = loadConfig() || {};
+  document.getElementById('cfg-token').value     = cfg.token       || '';
+  document.getElementById('cfg-owner').value     = cfg.owner       || 'MusicallyEmbodiedML';
+  document.getElementById('cfg-repo').value      = cfg.repo        || 'musicallyembodiedml.github.io';
+  document.getElementById('cfg-branch').value    = cfg.branch      || 'main';
+  document.getElementById('cfg-proxy').value        = cfg.proxyUrl    || '';
+  document.getElementById('cfg-proxy-secret').value = cfg.proxySecret || '';
+  showScreen('screen-setup');
+}
+
+document.getElementById('btn-settings').addEventListener('click', openSettings);
+document.getElementById('link-reconfigure').addEventListener('click', openSettings);
+
+// ── File picker ────────────────────────────────────────────────────────────
+
+let selectedFiles = [];
+const _objectUrls = [];
+const fileMetaMap = new Map(); // File → { w, h } for videos
+
+function resolutionLabel(h) {
+  if (h >= 2160) return '4K';
+  if (h >= 1440) return '1440p';
+  if (h >= 1080) return '1080p';
+  return `${h}p`;
+}
+
+function updateFileInfo() {
+  const infoEl = document.getElementById('file-info');
+  const label  = document.getElementById('attach-label');
+  if (selectedFiles.length === 0) {
+    infoEl.textContent = '';
+    infoEl.className = 'file-info';
+    label.textContent = 'Attach photos or videos';
+    return;
+  }
+  const totalBytes = selectedFiles.reduce((sum, f) => sum + f.size, 0);
+  const totalMB = totalBytes / 1024 / 1024;
+  const sizeLabel = totalMB >= 1 ? `${totalMB.toFixed(1)} MB` : `${(totalBytes / 1024).toFixed(0)} KB`;
+  infoEl.textContent = selectedFiles.length === 1
+    ? `${selectedFiles[0].name} · ${sizeLabel}`
+    : `${selectedFiles.length} files · ${sizeLabel}`;
+
+  const largeVideos = selectedFiles.filter(f => {
+    const m = fileMetaMap.get(f);
+    return m && m.h > 720;
+  });
+  if (largeVideos.length > 0) {
+    const labels = largeVideos.map(f => resolutionLabel(fileMetaMap.get(f).h));
+    infoEl.textContent += ` — ${labels.join(', ')} video${largeVideos.length > 1 ? 's' : ''} will upload at full size`;
+    infoEl.className = 'file-info warn';
+  } else {
+    infoEl.className = totalMB > 25 ? 'file-info warn' : 'file-info';
+  }
+  label.textContent = 'Add more photos or videos';
+}
+
+async function checkVideoMeta(file) {
+  const dims = await new Promise((resolve) => {
+    const v = document.createElement('video');
+    const u = URL.createObjectURL(file);
+    v.onloadedmetadata = () => { URL.revokeObjectURL(u); resolve({ w: v.videoWidth, h: v.videoHeight }); };
+    v.onerror = () => { URL.revokeObjectURL(u); resolve(null); };
+    v.src = u;
+  });
+  if (dims && selectedFiles.includes(file)) {
+    fileMetaMap.set(file, dims);
+    updateFileInfo();
+  }
+}
+
+function renderPreviews() {
+  const grid = document.getElementById('media-preview');
+  _objectUrls.forEach(u => URL.revokeObjectURL(u));
+  _objectUrls.length = 0;
+  grid.innerHTML = '';
+  selectedFiles.forEach((file, idx) => {
+    const isVideo = file.type.startsWith('video/');
+    const url = URL.createObjectURL(file);
+    _objectUrls.push(url);
+    const item = document.createElement('div');
+    item.className = 'preview-item' + (isVideo ? ' video-item' : '');
+    const media = document.createElement(isVideo ? 'video' : 'img');
+    media.src = url;
+    if (isVideo) { media.controls = true; media.setAttribute('playsinline', ''); media.setAttribute('preload', 'metadata'); }
+    else { media.alt = 'preview'; }
+    const btn = document.createElement('button');
+    btn.className = 'remove-media';
+    btn.setAttribute('aria-label', 'Remove');
+    btn.textContent = '✕';
+    btn.addEventListener('click', () => {
+      fileMetaMap.delete(selectedFiles[idx]);
+      selectedFiles.splice(idx, 1);
+      renderPreviews();
+      updateFileInfo();
+    });
+    item.appendChild(media);
+    item.appendChild(btn);
+    grid.appendChild(item);
+  });
+}
+
+document.getElementById('btn-attach').addEventListener('click', () => {
+  document.getElementById('file-input').click();
+});
+
+document.getElementById('file-input').addEventListener('change', function () {
+  const rejected = [];
+  for (const file of Array.from(this.files)) {
+    if (file.size / 1024 / 1024 > MAX_MB) { rejected.push(file.name); continue; }
+    selectedFiles.push(file);
+    if (file.type.startsWith('video/')) checkVideoMeta(file);
+  }
+  if (rejected.length) {
+    setStatus(
+      `${rejected.length > 1 ? 'These files are' : `"${rejected[0]}" is`} over the ${MAX_MB} MB limit and wasn't added:\n${rejected.join(', ')}`,
+      'error'
+    );
+  }
+  renderPreviews();
+  updateFileInfo();
+});
+
+// ── GitHub API ─────────────────────────────────────────────────────────────
+
+async function githubGetSha(cfg, path) {
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}?ref=${cfg.branch}`;
+  const resp = await fetch(url, {
+    headers: { Authorization: `token ${cfg.token}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (resp.status === 404) return null;
+  if (!resp.ok) throw new Error(`GitHub ${resp.status} on GET ${path}`);
+  const data = await resp.json();
+  return data.sha;
+}
+
+async function githubPut(cfg, path, base64Content, message) {
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path)}`;
+  const sha = await githubGetSha(cfg, path);
+
+  const body = { message, content: base64Content, branch: cfg.branch };
+  if (sha) body.sha = sha;
+
+  const resp = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${cfg.token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!resp.ok) {
+    let msg = `GitHub API error ${resp.status}`;
+    try { const j = await resp.json(); if (j.message) msg = j.message; } catch {}
+    throw new Error(msg);
+  }
+  return resp.json();
+}
+
+// Videos are uploaded via a server-side proxy (to bypass CORS on uploads.github.com),
+// then stored as GitHub Release assets under the 'blog-media' pre-release tag.
+const MEDIA_RELEASE_TAG = 'blog-media';
+
+async function getOrCreateMediaRelease(cfg) {
+  const headers = {
+    Authorization: `token ${cfg.token}`,
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  };
+  const base = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+  const resp = await fetch(`${base}/releases/tags/${MEDIA_RELEASE_TAG}`, { headers });
+  if (resp.ok) return (await resp.json()).id;
+  if (resp.status !== 404) throw new Error(`GitHub ${resp.status} checking media release`);
+  const create = await fetch(`${base}/releases`, {
+    method: 'POST', headers,
+    body: JSON.stringify({
+      tag_name: MEDIA_RELEASE_TAG, name: 'Blog Media',
+      body: 'Video files for blog posts.', draft: false, prerelease: true
+    })
+  });
+  if (!create.ok) {
+    let msg = `GitHub ${create.status} creating media release`;
+    try { const j = await create.json(); if (j.message) msg = j.message; } catch {}
+    throw new Error(msg);
+  }
+  return (await create.json()).id;
+}
+
+async function uploadVideo(cfg, filename, file, onProgress) {
+  if (!cfg.proxyUrl) throw new Error('No video proxy URL set — go to Settings.');
+  const releaseId = await getOrCreateMediaRelease(cfg);
+  const params = new URLSearchParams({ owner: cfg.owner, repo: cfg.repo, release_id: releaseId, name: filename });
+  const url = `${cfg.proxyUrl}?${params}`;
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Authorization',  `token ${cfg.token}`);
+    xhr.setRequestHeader('Content-Type',   file.type || 'application/octet-stream');
+    xhr.setRequestHeader('X-Proxy-Secret', cfg.proxySecret || '');
+    xhr.timeout = 900000; // 15 min
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100));
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(`https://github.com/${cfg.owner}/${cfg.repo}/releases/download/${MEDIA_RELEASE_TAG}/${filename}`);
+      } else {
+        let msg = `Upload error ${xhr.status}`;
+        try { const j = JSON.parse(xhr.responseText); if (j.message) msg = j.message; } catch {}
+        reject(new Error(msg));
+      }
+    };
+    xhr.onerror   = () => reject(new Error('Network error during upload'));
+    xhr.ontimeout = () => reject(new Error('Upload timed out after 15 minutes'));
+    xhr.send(file);
+  });
+}
+
+// ── Encoding helpers ───────────────────────────────────────────────────────
+
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = () => reject(new Error(`Failed to read file: ${reader.error?.message || 'unknown error'}`));
+    reader.readAsDataURL(file);
+  });
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary);
+}
+
+// ── Media processing ───────────────────────────────────────────────────────
+
+const MAX_IMAGE_WIDTH = 1000;
+
+async function processImage(file) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      if (img.naturalWidth <= MAX_IMAGE_WIDTH) { resolve(file); return; }
+      const w = MAX_IMAGE_WIDTH;
+      const h = Math.round(img.naturalHeight * (MAX_IMAGE_WIDTH / img.naturalWidth));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      canvas.toBlob(
+        (blob) => resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' })),
+        'image/jpeg', 0.85
+      );
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+
+// ── Post creation ──────────────────────────────────────────────────────────
+
+function slugify(text) {
+  return text.toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 40)
+    .replace(/-+$/, '') || 'post';
+}
+
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function buildPostMarkdown({ title, text, category, tags, mediaFiles }) {
+  const tagsYaml = tags.length
+    ? '\ntags:\n' + tags.map(t => `  - ${t}`).join('\n')
+    : '';
+
+  let mediaBlock = '';
+  for (const { src, type, mimeType } of mediaFiles) {
+    if (type === 'video') {
+      mediaBlock += `\n\n<video controls playsinline style="width:100%;border-radius:8px">
+  <source src="${src}" type="${mimeType}">
+</video>`;
+    } else {
+      mediaBlock += `\n\n![](${src})`;
+    }
+  }
+
+  return `---
+title: "${title}"
+date: ${todayISO()}
+categories:
+  - ${category || 'notes'}${tagsYaml}
+author_profile: false
+---
+
+${text}${mediaBlock}
+`;
+}
+
+// ── Publish ────────────────────────────────────────────────────────────────
+
+document.getElementById('btn-post').addEventListener('click', async () => {
+  const cfg = loadConfig();
+  if (!cfg) { openSettings(); return; }
+
+  const title    = document.getElementById('post-title').value.trim();
+  const text     = document.getElementById('post-text').value.trim();
+  if (!text) { alert('Please write something first.'); return; }
+  const category = document.getElementById('post-category').value.trim();
+  const rawTags  = document.getElementById('post-tags').value;
+  const tags     = rawTags.split(',').map(t => t.trim()).filter(Boolean);
+
+  const btn = document.getElementById('btn-post');
+  btn.disabled = true;
+  clearStatus();
+
+  try {
+    const date = todayISO();
+    const firstWords = text.split(/\s+/).slice(0, 6).join(' ');
+    const slug = slugify(firstWords);
+    const fileBase = `${date}-${slug}`;
+
+    const uploadedMedia = [];
+
+    if (selectedFiles.length > 0) {
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const raw = selectedFiles[i];
+        const isVideo = raw.type.startsWith('video/');
+        const n = selectedFiles.length > 1 ? ` ${i + 1} of ${selectedFiles.length}` : '';
+
+        const suffix = selectedFiles.length > 1 ? `-${i + 1}` : '';
+
+        if (isVideo) {
+          const ext      = raw.name.split('.').pop().toLowerCase();
+          const filename = `${fileBase}${suffix}.${ext}`;
+          const sizeMB   = raw.size / 1024 / 1024;
+          const sizeNote = sizeMB > 10 ? ` (${sizeMB.toFixed(0)} MB — may take a while)` : '';
+          setStatus(`Uploading video${n}${sizeNote}…`, 'loading');
+          const src = await uploadVideo(cfg, filename, raw, (pct) => {
+            setProgress(pct);
+            setStatus(`Uploading video${n} — ${pct}%`, 'loading');
+          });
+          uploadedMedia.push({ src, type: 'video', mimeType: raw.type });
+        } else {
+          const file     = await processImage(raw);
+          const ext      = file.name.split('.').pop().toLowerCase();
+          const path     = `assets/images/posts/${fileBase}${suffix}.${ext}`;
+          const sizeMB   = file.size / 1024 / 1024;
+          const sizeNote = sizeMB > 10 ? ` (${sizeMB.toFixed(0)} MB — may take a while)` : '';
+          setStatus(`Uploading image${n}${sizeNote}…`, 'loading');
+          await githubPut(cfg, path, await fileToBase64(file), `Upload media for ${fileBase}`);
+          uploadedMedia.push({ src: `/${path}`, type: 'image', mimeType: file.type });
+        }
+      }
+    }
+
+    setStatus('Creating post…', 'loading');
+
+    const postMd = buildPostMarkdown({ title, text, category, tags, mediaFiles: uploadedMedia });
+    const postPath = `_posts/${fileBase}.md`;
+    await githubPut(cfg, postPath, utf8ToBase64(postMd), `Add note ${fileBase}`);
+
+    setProgress(0);
+    setStatus('✓ Published! GitHub Pages will rebuild in ~1 minute.', 'success');
+
+    // Reset form
+    document.getElementById('post-title').value = '';
+    document.getElementById('post-text').value = '';
+    document.getElementById('post-tags').value = '';
+    document.getElementById('char-count').textContent = `0 / ${MAX_CHARS}`;
+    selectedFiles = [];
+    fileMetaMap.clear();
+    renderPreviews();
+    updateFileInfo();
+    document.getElementById('file-input').value = '';
+
+  } catch (err) {
+    setProgress(0);
+    setStatus(`Error: ${err.message}`, 'error');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+
+const cfg = loadConfig();
+if (cfg && cfg.token) {
+  showScreen('screen-post');
+} else {
+  showScreen('screen-setup');
+}
+</script>
+</body>
+</html>
