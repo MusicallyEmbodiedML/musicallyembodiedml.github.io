@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-16T16:50:51+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Musically Embodied Machine Learning</title><subtitle>AHRC funded research project on musically embodied machine learning</subtitle><author><name>First Lastname</name></author><entry><title type="html">Memlnaut and the Waldorf MicroQ</title><link href="http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from/" rel="alternate" type="text/html" title="Memlnaut and the Waldorf MicroQ" /><published>2026-05-26T00:00:00+01:00</published><updated>2026-05-26T00:00:00+01:00</updated><id>http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from</id><content type="html" xml:base="http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from/"><![CDATA[<p>Exploring patches with MIDI ccs from the neural net, with Linas @ Geeky Punks in Vilnius</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-22T16:01:51+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Musically Embodied Machine Learning</title><subtitle>AHRC funded research project on musically embodied machine learning</subtitle><author><name>First Lastname</name></author><entry><title type="html">Roland TR6S drum machine with the MEMLNaut</title><link href="http://localhost:4000/demo/controlling-fx-and-drum-parameters-using/" rel="alternate" type="text/html" title="Roland TR6S drum machine with the MEMLNaut" /><published>2026-05-29T00:00:00+01:00</published><updated>2026-05-29T00:00:00+01:00</updated><id>http://localhost:4000/demo/controlling-fx-and-drum-parameters-using</id><content type="html" xml:base="http://localhost:4000/demo/controlling-fx-and-drum-parameters-using/"><![CDATA[<p>Controlling FX and drum parameters using NISPS</p>
+
+<video controls="" playsinline="" style="width:100%;border-radius:8px">
+  <source src="https://github.com/MusicallyEmbodiedML/musicallyembodiedml.github.io/releases/download/blog-media/2026-05-29-controlling-fx-and-drum-parameters-using.mp4" type="video/mp4" />
+</video>]]></content><author><name>First Lastname</name></author><category term="Demo" /><category term="Midi" /><category term="tr6s" /><category term="nisps" /><summary type="html"><![CDATA[Controlling FX and drum parameters using NISPS]]></summary></entry><entry><title type="html">Memlnaut sax</title><link href="http://localhost:4000/demo/experimenting-with-grain-delays-today/" rel="alternate" type="text/html" title="Memlnaut sax" /><published>2026-05-27T00:00:00+01:00</published><updated>2026-05-27T00:00:00+01:00</updated><id>http://localhost:4000/demo/experimenting-with-grain-delays-today</id><content type="html" xml:base="http://localhost:4000/demo/experimenting-with-grain-delays-today/"><![CDATA[<p>Experimenting with grain delays today</p>
+
+<video controls="" playsinline="" style="width:100%;border-radius:8px">
+  <source src="https://github.com/MusicallyEmbodiedML/musicallyembodiedml.github.io/releases/download/blog-media/2026-05-27-experimenting-with-grain-delays-today.mp4" type="video/mp4" />
+</video>]]></content><author><name>First Lastname</name></author><category term="Demo" /><category term="Sax. Fx" /><summary type="html"><![CDATA[Experimenting with grain delays today]]></summary></entry><entry><title type="html">Memlnaut dj fx</title><link href="http://localhost:4000/demo/in-vilnius-we-prototyped-a-dj/" rel="alternate" type="text/html" title="Memlnaut dj fx" /><published>2026-05-27T00:00:00+01:00</published><updated>2026-05-27T00:00:00+01:00</updated><id>http://localhost:4000/demo/in-vilnius-we-prototyped-a-dj</id><content type="html" xml:base="http://localhost:4000/demo/in-vilnius-we-prototyped-a-dj/"><![CDATA[<p>In Vilnius we prototyped a DJ effects unit. Moving the joystick away from the centre fades in effects controlled by the neural net</p>
+
+<video controls="" playsinline="" style="width:100%;border-radius:8px">
+  <source src="https://github.com/MusicallyEmbodiedML/musicallyembodiedml.github.io/releases/download/blog-media/2026-05-27-in-vilnius-we-prototyped-a-dj-1.mp4" type="video/mp4" />
+</video>
+
+<video controls="" playsinline="" style="width:100%;border-radius:8px">
+  <source src="https://github.com/MusicallyEmbodiedML/musicallyembodiedml.github.io/releases/download/blog-media/2026-05-27-in-vilnius-we-prototyped-a-dj-2.mp4" type="video/mp4" />
+</video>]]></content><author><name>First Lastname</name></author><category term="Demo" /><category term="Memlnaut" /><category term="fx. Dj" /><summary type="html"><![CDATA[In Vilnius we prototyped a DJ effects unit. Moving the joystick away from the centre fades in effects controlled by the neural net]]></summary></entry><entry><title type="html">Memlnaut and the Waldorf MicroQ</title><link href="http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from/" rel="alternate" type="text/html" title="Memlnaut and the Waldorf MicroQ" /><published>2026-05-26T00:00:00+01:00</published><updated>2026-05-26T00:00:00+01:00</updated><id>http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from</id><content type="html" xml:base="http://localhost:4000/memlnaut/exploring-patches-with-midi-ccs-from/"><![CDATA[<p>Exploring patches with MIDI ccs from the neural net, with Linas @ Geeky Punks in Vilnius</p>
 
 <video controls="" playsinline="" style="width:100%;border-radius:8px">
   <source src="https://github.com/MusicallyEmbodiedML/musicallyembodiedml.github.io/releases/download/blog-media/2026-05-26-exploring-patches-with-midi-ccs-from.mp4" type="video/mp4" />
@@ -56,125 +72,4 @@ gallery:
 <div id="pdf" style="width:100%; height:800px;"></div>
 <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script>PDFObject.embed("/assets/pdf/UPF-MEML-Presentation.pdf", "#pdf", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="presentation" /><category term="presentation" /><summary type="html"><![CDATA[Chris was visiting the Music Technology Group to examine Behzad Haki’s fascinating PhD research on generative realtime rhythmic accompaniment. He also gave a presentation on the MEML project. Here are the slides from the presentation:]]></summary></entry><entry><title type="html">MEML Workshop at CHIME 2024</title><link href="http://localhost:4000/workshop/conference/chime-workshop/" rel="alternate" type="text/html" title="MEML Workshop at CHIME 2024" /><published>2024-12-01T00:00:00+00:00</published><updated>2024-12-01T00:00:00+00:00</updated><id>http://localhost:4000/workshop/conference/chime-workshop</id><content type="html" xml:base="http://localhost:4000/workshop/conference/chime-workshop/"><![CDATA[<h1 id="the-instruments">The Instruments</h1>
-
-<p>We have three instruments to use in the workshop, all with a similar interface.  Each instrument has a large-ish parameter space which is controlled by a 3D joystick, supported by other controls for engaging with machine learning models.</p>
-
-<p>The instruments:</p>
-
-<ul>
-  <li>a multi-fx processor</li>
-  <li>a sequencer</li>
-  <li>an FM synthesiser</li>
-</ul>
-
-<h1 id="connecting-to-the-web-interfaces">Connecting to the web interfaces</h1>
-
-<p>Each instrument is running a small web interface for extended options that control machine learning.</p>
-
-<h1 id="documentation">Documentation</h1>
-
-<h2 id="quick-start-tutorial">Quick-start tutorial</h2>
-
-<ol>
-  <li>
-    <p>Make sure you are in Inference mode: the LED on the unit should be Off, and the Web GUI should display the training radio button under the Training section.</p>
-  </li>
-  <li>
-    <p>Wiggle the joystick (and play a note at the same time, if required): you will hear the sound changing as you move the joystick. With the joystick, you can interact with the model and map the joystick’s coordinates to your desired sounds. The joystick moves around in two dimensions and you can twist its top knob too.</p>
-  </li>
-  <li>
-    <p>Switch the toggle on the unit up: the LED lights up, and you will be in Training mode.</p>
-  </li>
-  <li>
-    <p>Press the green button to the LEFT (“Draw”): the sounds mapped to the joystick will change randomly. This is the start of your training session.</p>
-  </li>
-  <li>Explore the new sounds with the joystick. Once you find one that you like, you have two options:
-    <ul>
-      <li>Press Draw again: the current sound will be manipulated with further random noise (see “Exploration Modes” in the Web GUI) so you can explore sounds that are similar to it, and fine-tune your base sound. By default, it will put the current sound at the centre of the joystick (“Pre-train” mode).</li>
-      <li>Press and hold the button on top of the joystick (“Save”): move the joystick to the desired position, and release the Save button. This creates a data point in the Dataset. After training, the selected sound will be in that position when you go back to Inference mode.</li>
-    </ul>
-  </li>
-  <li>After a data point is saved into the Dataset, press “Draw” again: the network will be re-randomised, and you can repeat Step 5 to create more data points.</li>
-  <li>
-    <p>If you want to start the acquisition process again, the green button on the RIGHT (“Clear”) will clear the dataset. You can then start again from Step 3.</p>
-  </li>
-  <li>
-    <p>Experiment with populating a dataset with a few data points. Then, flick the toggle switch down to Inference. The Model will train for a few seconds, then display its final loss value on the Web interface.</p>
-  </li>
-  <li>Your Model is trained! Play around with it, find your saved sounds and explore the ones in between that the Model has generated. Then, start creating more than one Dataset and training more than one Model. Use different Exploration Modes too.</li>
-</ol>
-
-<p>See the GUI guide for a detailed explanation.</p>
-
-<h2 id="hardware-interface-elements">Hardware interface elements</h2>
-
-<h3 id="joystick">Joystick</h3>
-
-<p>The joystick lets you control the parameters of the instrument, by providing input data to the Model. The joystick operates in three dimensions: X-Y axis movements, and bi-directional twists of its knob. The button on top is the Save button (see below).</p>
-
-<h3 id="traininginference-switch">Training/Inference switch</h3>
-<p>This switch lets you go in and out of Training or Inference mode. In Training mode (green LED ON), you can acquire data and create a dataset. In Inference mode, the Model is trained for the set amount of Iterations, then the joystick guides you through the parameter space using the trained Model.
-This switch is equivalent to the Train/Acquire button in the Web GUI.</p>
-
-<h3 id="draw-button">Draw button</h3>
-<p>The Draw button moves the training process by one step. At the start, it draws new random parameters. After that, it lets you “zoom” into the sound that the joystick points to when the Draw button is pressed, according to the selected Exploration mode (see Web GUI elements).</p>
-
-<h3 id="clear-button">Clear button</h3>
-<p>This button clears the current Dataset and re-initialises the training sequence (Step 3 in the Quick Start guide). It is equivalent to the “Clear” button for Datasets in the Web GUI. 
-Web GUI elements</p>
-
-<h3 id="datasets">Datasets</h3>
-<p>Each radio button represents one Dataset. You can change between Datasets in Training mode. Datasets can be cleared at any time with the Clear button below. A Model cannot be trained on an empty dataset.</p>
-
-<h3 id="models">Models</h3>
-<p>Each radio button represents one Model. You can change between Models either in Training or in Inference mode. Models can be reset to random weights with the Reset button below.</p>
-
-<h2 id="modes">Modes</h2>
-<p>There are two modes, “Training” and “Inference”. You can switch between them either by flicking the hardware switch on the unit, or by pressing the “Train”/”Acquire” button on the web interface. Every time you switch from Training to Inference mode, the current Model will get trained on the current Dataset.
-The green LED on the unit is turned on if you are in Training mode.
-If you switch in and out of Inference mode more than once on the same dataset, the network will train for longer on the same dataset.</p>
-
-<h3 id="iterations">Iterations</h3>
-<p>How long you want the network to train on your data? This slider sets the number of epochs from 1 to 2000. Loosely-trained models may also make inspiring sounds.</p>
-
-<h3 id="exploration-modes">Exploration modes</h3>
-
-<p>Exploration modes are different ways to navigate random parameter spaces during training. Each of them is a different way to re-randomise the weights of a Model around a sound that you select with the joystick. The Exploration modes are:</p>
-
-<ul>
-  <li>NN Weights: Gaussian noise is summed to the weights of a neural network. Exploration Range controls the variance of the noise.</li>
-  <li>Pre-Train: The network is pre-trained so that a selected sound is moved to the centre of the joystick’s parameter space. Exploration Range controls the range around the centre that the joystick can reach.</li>
-  <li>Zoom: This mode “zooms in” around the sound that was selected by the joystick position. The Model’s weights are unaffected. Exploration Range sets the amount of zooming-in: less range means more zoom.</li>
-</ul>
-
-<p>You can change Exploration modes and range at any point as you acquire more data in Training mode.</p>
-
-<h2 id="troubleshooting">Troubleshooting</h2>
-
-<h3 id="the-microsoft-way">The Microsoft way</h3>
-<p>Unplug the USB-A cable going from the back of the unit to the power supply or USB hub, and plug it back in after a few seconds.</p>
-
-<h3 id="web-gui-is-unresponsive">Web GUI is unresponsive</h3>
-<p>Have a laptop with a serial terminal ready (e.g. screen). Disconnect the main USB cable from the unit. Connect a MicroUSB cable to the Pi Pico contained in the unit. Open the device /dev/ttyACM0. Disconnect and reconnect the MicroUSB cable into the Pico. Then connect the main USB cable of the unit. Upon boot-up, the Pico should display two things:</p>
-<ul>
-  <li>the IP address that it uses for serving the Web GUI</li>
-  <li>A message acknowledging that the XMOS board has booted up and has supplied a status message</li>
-</ul>
-
-<p>Check that the webpage refreshes correctly and the browser points at the right IP address, and is connected to the same network. Check that the XMOS board is powered up.
-None of the above works</p>
-
-<p>Ask for help from the workshop organisers!</p>]]></content><author><name>First Lastname</name></author><category term="workshop" /><category term="conference" /><category term="workshop" /><category term="documentation" /><category term="instruments" /><summary type="html"><![CDATA[The Instruments]]></summary></entry><entry><title type="html">Further Experiments in Neural Mapping Design</title><link href="http://localhost:4000/demo/joystickexpts/" rel="alternate" type="text/html" title="Further Experiments in Neural Mapping Design" /><published>2024-11-19T00:00:00+00:00</published><updated>2024-11-19T00:00:00+00:00</updated><id>http://localhost:4000/demo/joystickexpts</id><content type="html" xml:base="http://localhost:4000/demo/joystickexpts/"><![CDATA[<p>In the last month or so we’ve been doing some more experimentation with hardware instruments and mapping design using neural networks. In October, ahead of a visit to Machina Bristronica, Eric from <a href="https://schlappiengineering.com/">Schlappi Engineering</a> visited for a week long hack session, and we made a new instrument based on our FM synthesis joystick prototype, converted to use for sequencing in modular synthesis.</p>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PAwbFgUveCI?si=xEitO005prkhqiG9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-
-<p>The sequencing engine runs a set of four <a href="https://erikdemaine.org/papers/DeepRhythms_CGTA/paper.pdf">euclidean sequencers</a>, with four parameters <em>(n, k, speed, offset)</em> controlling the rhythm they generate.  This space of 16 parameters is mapped to the three dimensional joystick, via a neural network. Controls on the module allow the player to collect points in the parameter space and train the mappings in the neural network. This results in a joystick controlled techno!</p>
-
-<p>Another experiment we’ve done is to take a similar system and use it to control a larger parameter space in a multifx engine.</p>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6G7BbbTWlO4?si=pd53CWvXd97U1TPa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-
-<p>This video shows us trying out the engine, with modular synth drums, e-drums and guitar.  There are four effects (flange, delay, ring mod and filter). These are mixed together through a mixing matrix, which means that each effect takes a mix of itself and other effects as the input, in addition to the live signal from the instrument.  The neural network controls all of the levels in the mixing matrix, in addition to the mix levels of the live input and the parameters of the effects.  This results different in effects fading in and out in different areas of the joystick, and makes some interesting and unexpected surprises.</p>
-
-<p>These different instruments are creating a basis for us to run experiments in different ways to interact with neural networks as we train, modify and evolve them towards musical goals.</p>]]></content><author><name>First Lastname</name></author><category term="demo" /><category term="prototype" /><category term="xmos" /><category term="multifx" /><category term="modular" /><category term="sequencing" /><category term="dsp" /><category term="neuralnetwork" /><category term="mapping" /><summary type="html"><![CDATA[In the last month or so we’ve been doing some more experimentation with hardware instruments and mapping design using neural networks. In October, ahead of a visit to Machina Bristronica, Eric from Schlappi Engineering visited for a week long hack session, and we made a new instrument based on our FM synthesis joystick prototype, converted to use for sequencing in modular synthesis.]]></summary></entry><entry><title type="html">Upcoming: PhD Course @ AAU Copenhagen</title><link href="http://localhost:4000/course/event/phd-course-announcement/" rel="alternate" type="text/html" title="Upcoming: PhD Course @ AAU Copenhagen" /><published>2024-09-25T00:00:00+01:00</published><updated>2024-09-25T00:00:00+01:00</updated><id>http://localhost:4000/course/event/phd-course-announcement</id><content type="html" xml:base="http://localhost:4000/course/event/phd-course-announcement/"><![CDATA[<p>We’re happy to announce that we’ll be running a PhD Course on Musically Embodied Machine Learning at AAU Copenhagen, in collaboration with <a href="https://vbn.aau.dk/en/persons/dano">Dan Overholt</a>.  The course will take place from 15th-17th January 2025. We’ll be announcing more information soon, but please get in contact if you’re interested in attending.</p>]]></content><author><name>First Lastname</name></author><category term="course" /><category term="event" /><category term="phd" /><summary type="html"><![CDATA[We’re happy to announce that we’ll be running a PhD Course on Musically Embodied Machine Learning at AAU Copenhagen, in collaboration with Dan Overholt. The course will take place from 15th-17th January 2025. We’ll be announcing more information soon, but please get in contact if you’re interested in attending.]]></summary></entry></feed>
+<script>PDFObject.embed("/assets/pdf/UPF-MEML-Presentation.pdf", "#pdf", {height: "100%"});</script>]]></content><author><name>First Lastname</name></author><category term="presentation" /><category term="presentation" /><summary type="html"><![CDATA[Chris was visiting the Music Technology Group to examine Behzad Haki’s fascinating PhD research on generative realtime rhythmic accompaniment. He also gave a presentation on the MEML project. Here are the slides from the presentation:]]></summary></entry></feed>

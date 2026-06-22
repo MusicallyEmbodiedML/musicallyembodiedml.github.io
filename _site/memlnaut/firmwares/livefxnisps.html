@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>MEMLNaut Firmware: VerbFX with NISPS - Musically Embodied Machine Learning</title>
+<!-- begin _includes/seo.html --><title>MEMLNaut Firmware: LiveFX with NISPS - Musically Embodied Machine Learning</title>
 <meta name="description" content="AHRC funded research project on musically embodied machine learning">
 
 
@@ -21,8 +21,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Musically Embodied Machine Learning">
-<meta property="og:title" content="MEMLNaut Firmware: VerbFX with NISPS">
-<meta property="og:url" content="http://localhost:4000/memlnaut/firmwares/verbfxnisps">
+<meta property="og:title" content="MEMLNaut Firmware: LiveFX with NISPS">
+<meta property="og:url" content="http://localhost:4000/memlnaut/firmwares/livefxnisps">
 
 
   <meta property="og:description" content="AHRC funded research project on musically embodied machine learning">
@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/memlnaut/firmwares/verbfxnisps">
+<link rel="canonical" href="http://localhost:4000/memlnaut/firmwares/livefxnisps">
 
 
 
@@ -224,9 +224,9 @@
             
               <li><a href="/memlnaut/firmwares/guide">Guide</a></li>
             
-              <li><a href="/memlnaut/firmwares/verbfxnisps" class="active">VerbFX (NISPS)</a></li>
+              <li><a href="/memlnaut/firmwares/verbfxnisps">VerbFX (NISPS)</a></li>
             
-              <li><a href="/memlnaut/firmwares/livefxnisps">LiveFX (NISPS)</a></li>
+              <li><a href="/memlnaut/firmwares/livefxnisps" class="active">LiveFX (NISPS)</a></li>
             
               <li><a href="/memlnaut/firmwares/pafsynthnisps">PAF Synth (NISPS)</a></li>
             
@@ -269,7 +269,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="MEMLNaut Firmware: VerbFX with NISPS">
+    <meta itemprop="headline" content="MEMLNaut Firmware: LiveFX with NISPS">
     
     
     
@@ -278,7 +278,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/memlnaut/firmwares/verbfxnisps" itemprop="url">MEMLNaut Firmware: VerbFX with NISPS
+            <a href="http://localhost:4000/memlnaut/firmwares/livefxnisps" itemprop="url">MEMLNaut Firmware: LiveFX with NISPS
 </a>
           </h1>
           
@@ -292,42 +292,124 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#verbfx">VerbFX</a><ul><li><a href="#signal-flow">Signal Flow</a></li><li><a href="#effect-blocks">Effect Blocks</a></li><li><a href="#inputs">Inputs</a></li><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#nisps">NISPS</a></li><li><a href="#physical-controls">Physical Controls</a></li><li><a href="#screens">Screens</a><ul><li><a href="#rl">RL</a></li><li><a href="#focus">Focus</a></li><li><a href="#fx-enable">FX Enable</a></li><li><a href="#voice-spaces">Voice Spaces</a></li><li><a href="#nn-inputs">NN Inputs</a></li><li><a href="#messages">Messages</a></li><li><a href="#save-model">Save Model</a></li><li><a href="#load-model">Load Model</a></li><li><a href="#input-source">Input Source</a></li><li><a href="#help">Help</a></li><li><a href="#system-info">System Info</a></li></ul></li><li><a href="#midi">MIDI</a></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li><li><a href="#firmware-download">Firmware Download</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#livefx">LiveFX</a><ul><li><a href="#signal-flow">Signal Flow</a></li><li><a href="#effect-blocks">Effect Blocks</a><ul><li><a href="#dj-filter">DJ Filter</a></li><li><a href="#downsampler">Downsampler</a></li><li><a href="#ring-modulator">Ring Modulator</a></li><li><a href="#allpass">Allpass</a></li><li><a href="#flanger">Flanger</a></li><li><a href="#chorus">Chorus</a></li><li><a href="#grain-delay-1">Grain Delay 1</a></li><li><a href="#grain-delay-2">Grain Delay 2</a></li><li><a href="#delay">Delay</a></li><li><a href="#stutter">Stutter</a></li><li><a href="#reverb">Reverb</a></li></ul></li><li><a href="#audio-inputs">Audio Inputs</a></li><li><a href="#outputs">Outputs</a></li></ul></li><li><a href="#nisps">NISPS</a></li><li><a href="#physical-controls">Physical Controls</a></li><li><a href="#screens">Screens</a><ul><li><a href="#rl">RL</a></li><li><a href="#focus">Focus</a></li><li><a href="#fx-enable">FX Enable</a></li><li><a href="#vu">VU</a></li><li><a href="#nn-inputs">NN Inputs</a></li><li><a href="#messages">Messages</a></li><li><a href="#save-model">Save Model</a></li><li><a href="#load-model">Load Model</a></li><li><a href="#input-source">Input Source</a></li><li><a href="#options">Options</a></li><li><a href="#help">Help</a></li><li><a href="#system-info">System Info</a></li></ul></li><li><a href="#midi">MIDI</a></li><li><a href="#files">Files</a><ul><li><a href="#code">Code</a></li><li><a href="#firmware-download">Firmware Download</a></li></ul></li></ul>
             </nav>
           </aside>
         
         <h1 id="overview">Overview</h1>
 
-<p>The VerbFX firmware offers exploration of a multi-effects reverb processor, using the <a href="../approaches/nisps">NISPS</a> approach to ML.</p>
+<p>The LiveFX firmware is a creative, interactive effects processor, using the <a href="../approaches/nisps">NISPS</a> approach to ML.</p>
 
-<h1 id="verbfx">VerbFX</h1>
+<h1 id="livefx">LiveFX</h1>
 
-<p>VerbFX is a multi-effects processor built around a Freeverb-based reverb algorithm with a filterbank and delays. 47 sound processing parameters are controlled by the joystick. Six effect routing options can be individually enabled or disabled via the FX Enable screen.</p>
+<p>LiveFX is an interactive FX unit with 10 different effects.  It can be used in ‘DJ Mode’ as a DJ effect processor controlled by the 3D joystick, mixing in effects when the joystick moves away from the centre position.  It can also be used as a traditional FX unit with a manually set wet/dry balance.</p>
 
 <h2 id="signal-flow">Signal Flow</h2>
 
-<p>Input → FilterBank → Delays (Short / Medium / Long) → Reverb → Wet/Dry Mix → Output</p>
-
-<p>The FilterBank can receive feedback from the delay outputs. The delay outputs can also be routed into the reverb input.</p>
+<p>Input → DJ Filter → Downsampler → Ring Modulator → Allpass → Flanger → Chorus → Grain Delay 1 → Grain Delay 2 → Delay → Stutter → Reverb → Output</p>
 
 <h2 id="effect-blocks">Effect Blocks</h2>
 
-<ol>
-  <li><strong>FilterBank</strong> — 8 bandpass filters in parallel.</li>
-  <li><strong>Reverb</strong> — Freeverb algorithm (8 low-pass feedback comb filters + 4 allpass filters)</li>
-  <li><strong>Short Delay</strong> — 512 sample delay buffer</li>
-  <li><strong>Medium Delay</strong> — 2048 sample delay buffer</li>
-  <li><strong>Long Delay</strong> — 16384 sample delay buffer</li>
-  <li><strong>Delay → Reverb</strong> — Routes the delay mix into the reverb input</li>
-</ol>
+<p>LiveFX chains ten effect blocks, plus a DJ-style input filter. Each block can be switched
+on or off independently from the <a href="#fx-enable">FX Enable</a> screen, and its parameters are
+driven by the neural network as you explore with the joystick.</p>
 
-<h2 id="inputs">Inputs</h2>
+<p>The time-based blocks (both grain delays, the delay, and the stutter gate) are <strong>tempo
+synced</strong> — their times snap to musical subdivisions of the current BPM rather than to free
+values, so rhythmic effects lock to the beat.</p>
 
-<p>The processor takes a stereo input. Left and right channels are summed to mono before processing.</p>
+<p>Most blocks have their own internal <strong>wet/dry “mix”</strong> parameter with a built-in dead zone:
+the effect stays silent until its control passes roughly 30%, then fades in up to fully wet.
+This means a neural-network output sitting near its centre leaves the effect inactive, and
+only deliberate movement brings it in — keeping the sound clean until you reach for it.</p>
+
+<h3 id="dj-filter">DJ Filter</h3>
+
+<p>A single-knob DJ-style sweep filter applied to the input before any other processing. Turn
+the knob left of centre for a <strong>low-pass</strong> sweep (gently rolling off from 20 kHz down to a
+muffled 40 Hz) and right of centre for a <strong>high-pass</strong> sweep (thinning out from 20 Hz up to
+20 kHz). At centre the filter is transparent. (Active only in DJ Mode; with DJ Mode off this
+knob becomes the manual wet/dry control instead.)</p>
+
+<h3 id="downsampler">Downsampler</h3>
+
+<p>A sample-rate reducer for lo-fi, “crushed” digital textures. Reducing the effective rate by
+a factor of 1–32 introduces aliasing and grit, from a subtle digital edge to harsh,
+ring-modulator-like artefacts at the extreme.</p>
+
+<h3 id="ring-modulator">Ring Modulator</h3>
+
+<p>Multiplies the signal by an internal sine oscillator whose frequency sweeps from 1 Hz up to
+2 kHz. Low frequencies give slow tremolo; higher frequencies produce the classic clangorous,
+metallic, inharmonic ring-mod timbre.</p>
+
+<h3 id="allpass">Allpass</h3>
+
+<p>An allpass filter with a modulating delay line — a resonant, phasey colouration that smears
+transients without changing the overall tone balance. The delay length (≈100–2000 samples)
+sets the character, an internal LFO (0.1–10 Hz, with adjustable depth) animates it, and a
+feedback coefficient (0.3–0.8) controls how pronounced and resonant the effect becomes.</p>
+
+<h3 id="flanger">Flanger</h3>
+
+<p>A short modulated delay (≈5–240 samples) swept by an LFO at 0.1–5 Hz to create a
+sweeping comb-filter effect. With feedback (up to ~0.9) the swept notches become
+sharp and resonant for a more intense, metallic flange.</p>
+
+<h3 id="chorus">Chorus</h3>
+
+<p>A longer modulated delay (≈240–1440 samples) at 0.1–3 Hz that thickens and widens the sound
+by detuning a delayed copy against the original. Gentler than the flanger, with milder
+feedback, for warmth and shimmer rather than dramatic sweeps.</p>
+
+<h3 id="grain-delay-1">Grain Delay 1</h3>
+
+<p>A granular delay that chops the input into overlapping grains and replays them. Grain 1 uses
+<strong>longer grains (30–250 ms)</strong> for smeared, textural, ambient clouds. Each grain can be
+<strong>pitch-shifted</strong> up or down by an octave, with an adjustable amount of random <strong>pitch
+spread</strong> across grains for shimmering, detuned tails. The grain trigger time snaps to a beat
+subdivision (1/16 up to a dotted 1/2 note), feedback recirculates the grains for building
+textures, and a <strong>freeze</strong> switch latches the current buffer into an infinite, evolving pad.</p>
+
+<h3 id="grain-delay-2">Grain Delay 2</h3>
+
+<p>A second, independent grain delay tuned for <strong>shorter grains (10–100 ms)</strong> — tighter,
+glitchier, more rhythmic stutters and buzzes — with its own pitch shift, a wider pitch-spread
+range, beat-synced trigger time, feedback, and freeze. Grains 1 and 2 run in parallel and are
+blended by a crossfade control, then mixed back with the dry signal, so you can morph between
+long ambient washes and short glitchy textures.</p>
+
+<h3 id="delay">Delay</h3>
+
+<p>A tempo-synced feedback delay. The delay time snaps to a beat subdivision (1/16 up to a
+dotted 1/2 note, up to ~340 ms) and feedback (up to ~0.95) sets how many repeats build up.
+Its feedback path runs through a <strong>resonant band-pass filter</strong> (40 Hz–16 kHz, Q up to 10)
+that progressively colours each repeat — useful for dub-style filtered echoes that darken,
+brighten, or resonate as they decay.</p>
+
+<h3 id="stutter">Stutter</h3>
+
+<p>A beat-synced gate that rhythmically chops the signal on and off. The gate rate locks to a
+musical subdivision (1, 2, 4, 8, or 16 steps per beat) and the <strong>duty cycle</strong> (5%–95%) sets
+how long the gate stays open each step — from short rhythmic clicks to long held pulses, for
+gated/trance-gate and glitch effects.</p>
+
+<h3 id="reverb">Reverb</h3>
+
+<p>A modulated stereo reverb on the wet bus, and the only block that produces a true stereo
+image. It offers a full set of controls: <strong>size</strong> and <strong>decay</strong> for the space and tail
+length, <strong>damping</strong> and <strong>low cut</strong> for tonal shaping, <strong>diffusion</strong> for density,
+<strong>modulation</strong> (depth and rate) for a chorused, shimmering tail, <strong>pre-delay</strong> to separate
+the reverb from the dry sound, <strong>stereo width</strong>, and <strong>saturation</strong> for a warmer, driven
+character.</p>
+
+<h2 id="audio-inputs">Audio Inputs</h2>
+
+<p>The processor takes a stereo input.</p>
 
 <h2 id="outputs">Outputs</h2>
 
-<p>Mono processed sound is output to both channels of the line out and headphone sockets.</p>
+<p>The dry signal is output in stereo.  The effects signal is added in mono.</p>
 
 <h1 id="nisps">NISPS</h1>
 
@@ -345,7 +427,7 @@
   <li><code class="language-plaintext highlighter-rouge">Joystick button</code>: Positive reward placement — drag a sound to a different place and release to positively reward it in this position</li>
   <li><code class="language-plaintext highlighter-rouge">Toggle A Down</code>: Clear replay memory</li>
   <li><code class="language-plaintext highlighter-rouge">Knob X</code>: Learning rate</li>
-  <li><code class="language-plaintext highlighter-rouge">Knob Y</code>: Wet/Dry Mix</li>
+  <li><code class="language-plaintext highlighter-rouge">Knob Y</code>: Mode dependent</li>
   <li><code class="language-plaintext highlighter-rouge">Knob Z</code>: Exploration noise (turned off when all the way to the left)</li>
   <li><code class="language-plaintext highlighter-rouge">Knob G</code>: Volume</li>
 </ul>
@@ -356,7 +438,7 @@
 
 <h2 id="rl">RL</h2>
 
-<p>Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.</p>
+<p>Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.  The green button is a tap-tempo for synchronising delay lines.</p>
 
 <h2 id="focus">Focus</h2>
 
@@ -364,30 +446,12 @@
 
 <h2 id="fx-enable">FX Enable</h2>
 
-<p>Toggle each of the six effect blocks on or off: FilterBnk, Reverb, ShortDly, MedDly, LongDly, Dly→Verb.</p>
+<p>Toggle each of the ten effect blocks on or off: Allpass, Flanger, Chorus, Grain 1, Grain 2, Delay, Downsamp, Stutter, Ring Mod, Reverb.</p>
 
-<h2 id="voice-spaces">Voice Spaces</h2>
+<h2 id="vu">VU</h2>
 
-<p>Choose a voice space by pushing the rotary encoder to focus the selector. Move the encoder to choose a space and then push again to confirm the selection.</p>
-
-<p>Available voice spaces:</p>
-
-<ol>
-  <li>Default</li>
-  <li>Resonant</li>
-  <li>Soft</li>
-  <li>Cathedral</li>
-  <li>Shimmer</li>
-  <li>Chamber</li>
-  <li>Metallic</li>
-  <li>Granular</li>
-  <li>Diffuse</li>
-  <li>Dark</li>
-  <li>Bright</li>
-  <li>Harmonic</li>
-</ol>
-
-<p>These voice spaces bias the neural network mappings in particular directions.</p>
+<p>Four VU meters showing input and output levels — In L, In R, Out L, Out R — useful for
+setting input levels and confirming the signal is reaching both channels.</p>
 
 <h2 id="nn-inputs">NN Inputs</h2>
 
@@ -414,6 +478,17 @@
   <li>various configurations of MIDI controllers</li>
 </ul>
 
+<h2 id="options">Options</h2>
+
+<p>A single toggle for <strong>DJ Mode</strong>:</p>
+
+<ul>
+  <li><strong>On</strong> (default): the joystick position drives the wet/dry mix (dry at centre, fading to
+fully wet as you move away), and the DJ Filter knob sweeps the input filter.</li>
+  <li><strong>Off</strong>: the wet/dry mix is set manually with the knob, and the input filter is bypassed —
+use this for a traditional FX unit with a fixed wet/dry balance.</li>
+</ul>
+
 <h2 id="help">Help</h2>
 
 <p>Shows what the various controls do.</p>
@@ -434,7 +509,7 @@
 
 <h2 id="firmware-download">Firmware Download</h2>
 
-<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0">https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/VerbFX_1.1.0</a></p>
+<p><a href="https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/LiveFX_1.0.0">https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/LiveFX_1.0.0</a></p>
 
 <p>See the firmware <a href="./guide">guide</a> for installation instructions.</p>
 

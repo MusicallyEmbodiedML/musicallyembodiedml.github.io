@@ -33,6 +33,8 @@ memlnaut:
       url: /memlnaut/firmwares/guide
     - title: "VerbFX (NISPS)"
       url: /memlnaut/firmwares/verbfxnisps
+    - title: "LiveFX (NISPS)"
+      url: /memlnaut/firmwares/livefxnisps
     - title: "PAF Synth (NISPS)"
       url: /memlnaut/firmwares/pafsynthnisps
   - title: "Firmware Archive"
