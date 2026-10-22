@@ -68,10 +68,6 @@ Info on the neural network - the outputs, the current error rate, the number of 
 
 Shows the inputs to the neural network.
 
-## Messages
-
-Various messages logging interactions with the system.
-
 ## Save Model
 
 Tap on a slot to save a model.
