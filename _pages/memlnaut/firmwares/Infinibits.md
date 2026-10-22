@@ -70,11 +70,11 @@ Shows the inputs to the neural network.
 
 ## Save Model
 
-Tap on a slot to save a model.
+Tap on a slot to save a model. The current waveform is saved with it.
 
 ## Load Model
 
-Tap on a slot to load a model.
+Tap on a slot to load a model, along with the waveform it was saved with.
 
 ## Waveform
 
