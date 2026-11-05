@@ -39,7 +39,7 @@ The momentary switches spring back to the middle. The toggles stay where you put
 |---|---|---|
 | **Momentary A** (left) | **Scramble**: new random network, a whole new set of sounds | **Jolt**: add new sounds in parts of the joystick range you haven't taught yet, keeping the sounds you like |
 | **Momentary B** (right) | **Like**: store the current joystick position and sound as a pair you like | **Dislike**: change this sound. Pressing it again in the same place tries harder ([see below](#what-a-dislike-does)) |
-| **Toggle A** (left) | **Forget**: empty the memory of likes | Not used |
+| **Toggle A** (left) | Not used | **Forget**: empty the memory of likes |
 | **Toggle B** (right) | **Drag**: freeze the sound while you move the joystick; switching back stores it at the new position | Mode-specific (for example sequencer start/stop) |
 
 Pressing the joystick down also works as **Drag**.

@@ -181,7 +181,7 @@ def build(fw):
     desc = [f"MEMLNaut front panel with the {name} controls.",
             "Momentary switch A (left): up scrambles the network, down jolts it.",
             "Momentary B (right): up likes the current sound, down dislikes it.",
-            "Toggle A (left) up forgets the memory; toggle B (right) up drags a sound to a new place"
+            "Toggle A (left) down forgets the memory; toggle B (right) up drags a sound to a new place"
             + (", down stops or restarts the sequencer." if fw["tog_b_down"] else "."),
             f"Knob X sets the learning rate, knob {title.replace(' · ', ' sets the ')}"
             + (f" ({note}; {extra})" if extra else f" ({note})") + ", Z the exploration.",

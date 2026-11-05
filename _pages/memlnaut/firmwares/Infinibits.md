@@ -50,7 +50,7 @@ When you indicate a reward, you are rewarding (negatively or positively) how a p
 - `Momentary B Down`: Negative reward
 - `Joystick`: Explore
 - `Joystick button`: Positive reward placement — drag a sound to a different place and release to positively reward it in this position
-- `Toggle A Up`: Clear replay memory
+- `Toggle A Down`: Clear replay memory
 - `Knob X`: Learning rate
 - `Knob Y`: Feedback amount, scaling all the grain feedback from none (left) to double (right)
 - `Knob Z`: Exploration noise (turned off when all the way to the left)
