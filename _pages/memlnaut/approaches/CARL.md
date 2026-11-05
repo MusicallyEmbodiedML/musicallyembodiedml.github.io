@@ -5,7 +5,8 @@ sidebar:
   nav: "memlnaut"
 ---
 
-### *Note: CARL has now been superceded by [NISPS](nisps).  This information is left here for info.*
+**CARL has been superseded by [NISPS](/memlnaut/approaches/nisps).** The CARL firmwares are kept as legacy downloads. New firmwares use NISPS, which replaces the actor and critic with a single network trained directly from your feedback.
+{: .notice--info}
 
 # Introduction
 

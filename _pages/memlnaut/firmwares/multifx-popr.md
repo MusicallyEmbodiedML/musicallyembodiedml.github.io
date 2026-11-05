@@ -42,9 +42,8 @@ Use the POPR approach to create joystick mappings that interpolate between multi
 
 [https://github.com/MusicallyEmbodiedML/memlnaut-multifx-popr](https://github.com/MusicallyEmbodiedML/memlnaut-multifx-popr)
 
+## Firmware Download
 
+Download the `.uf2` file from the latest release:
 
-
-
-
-
+[https://github.com/MusicallyEmbodiedML/memlnaut-multifx-popr/releases/latest](https://github.com/MusicallyEmbodiedML/memlnaut-multifx-popr/releases/latest)

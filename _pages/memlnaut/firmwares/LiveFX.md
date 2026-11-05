@@ -125,24 +125,40 @@ The processor takes a stereo input.
 The dry signal is output in stereo.  The effects signal is added in mono.
 
 
+# Quick start
+
+1. Flash the firmware, connect a sound source to the line input and turn up **G**.
+2. On the **RL** screen, tap the tempo button four times in time with the music.
+3. Push the joystick away from the centre. In DJ Mode, the further you push, the more of the effects you hear. At rest the sound is dry.
+4. Like, dislike, drag and jolt as described on the [NISPS page](/memlnaut/approaches/nisps#quick-start).
+
 # NISPS
 
 When you indicate a reward, you are rewarding (negatively or positively) how a particular joystick position is mapped to the effect sound it's producing. As you indicate preferences for these settings, the NISPS system will start to tune the mappings towards your preference. See the [NISPS](../approaches/nisps) documentation for further info.
 
-# Physical Controls
+# Controls
 
-- `Rotary Encoder`: Navigate between screens
-- `Momentary A Up`: Scramble neural network
-- `Momentary A Down`: Jolt neural network
-- `Momentary B Up`: Positive reward
-- `Momentary B Down`: Negative reward
-- `Joystick`: Explore
-- `Joystick button`: Positive reward placement — drag a sound to a different place and release to positively reward it in this position
-- `Toggle A Down`: Clear replay memory
-- `Knob X`: Learning rate
-- `Knob Y`: Mode dependent
-- `Knob Z`: Exploration noise (turned off when all the way to the left)
-- `Knob G`: Volume
+<a href="{{ '/assets/images/nisps/panel-livefx.svg' | relative_url }}" class="image-popup" title="MEMLNaut panel with the LiveFX controls"><img src="{{ '/assets/images/nisps/panel-livefx.svg' | relative_url }}" alt="MEMLNaut panel with the LiveFX controls. Controls that differ from standard NISPS are ringed in gold." class="img-responsive"></a>
+
+*Click the panel to enlarge it. Controls ringed in gold work differently from the standard NISPS controls.*
+
+The controls are the standard [NISPS controls](/memlnaut/approaches/nisps#controls), with these changes.
+
+## DJ Mode (on by default)
+
+| Control | In DJ Mode |
+|---|---|
+| **Joystick X and Y** | Explore, and also set the wet/dry mix: dry at the centre, fully wet near the edge |
+| **Knob Y** | DJ filter: low-pass when turned left of centre, high-pass when turned right, no filter at the centre |
+
+## DJ Mode off
+
+| Control | With DJ Mode off |
+|---|---|
+| **Joystick** | Explore only |
+| **Knob Y** | Wet/dry mix. The DJ filter is bypassed |
+
+Turn DJ Mode on or off on the [Options](#options) screen.
 
 # Screens
 
@@ -205,15 +221,43 @@ Shows what the various controls do.
 
 System information about the MEMLNaut and current firmware.
 
+# Parameters
+
+| Outputs | What they control |
+|---|---|
+| 0–7 | Grain delay 1: grain length, start time (in beat divisions), feedback, pitch, pitch spread, freeze and more |
+| 8–15 | Grain delay 2 |
+| 16–17 | Crossfade and mix between the grain delays |
+| 18–20 | Delay |
+| 21–25 | Flanger |
+| 26–30 | Chorus |
+| 31–35 | Allpass and its LFO |
+| 36–37 | Downsampler |
+| 38–40 | Stutter gate |
+| 41–42 | Ring modulator |
+| 43–45 | Band-pass filter in the delay feedback: frequency, Q and mix |
+| 46–56 | Reverb |
+
 # MIDI
 
-The firmware sends out the first 16 neural network outputs as MIDI controllers, so you can use the MEMLNaut to control your hardware synths.
+This firmware doesn't send the neural network outputs as MIDI. It does listen for MIDI CCs, so you can control NISPS from a footcontroller or similar:
+
+| CC | Action |
+|---|---|
+| 1 | Positive reward |
+| 2 | Negative reward |
+| 3 | Scramble neural network |
+| 4 | Clear replay memory |
+| 5 | Exploration noise |
+| 6 | Training speed |
+
+If you choose a MIDI controller on the [Input Source](#input-source) screen, CCs 1-8 become inputs to the neural network instead.
 
 # Files
 
 ## Code
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS)
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS). To build this firmware, define `MODE_DJFX` in `MEMLNaut-NISPS.ino` (LiveFX was previously called DJFX).
 
 ## Firmware Download
 

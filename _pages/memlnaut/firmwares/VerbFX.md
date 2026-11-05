@@ -39,24 +39,28 @@ The processor takes a stereo input. Left and right channels are summed to mono b
 Mono processed sound is output to both channels of the line out and headphone sockets.
 
 
+# Quick start
+
+1. Flash the firmware, connect a sound source to the line input and turn up **G**.
+2. Set the wet/dry balance with **knob Y**.
+3. Choose a starting character on the **Voice Spaces** screen.
+4. Move the joystick, then like, dislike, drag and jolt as described on the [NISPS page](/memlnaut/approaches/nisps#quick-start).
+
 # NISPS
 
 When you indicate a reward, you are rewarding (negatively or positively) how a particular joystick position is mapped to the effect sound it's producing. As you indicate preferences for these settings, the NISPS system will start to tune the mappings towards your preference. See the [NISPS](../approaches/nisps) documentation for further info.
 
-# Physical Controls
+# Controls
 
-- `Rotary Encoder`: Navigate between screens
-- `Momentary A Up`: Scramble neural network
-- `Momentary A Down`: Jolt neural network
-- `Momentary B Up`: Positive reward
-- `Momentary B Down`: Negative reward
-- `Joystick`: Explore
-- `Joystick button`: Positive reward placement — drag a sound to a different place and release to positively reward it in this position
-- `Toggle A Down`: Clear replay memory
-- `Knob X`: Learning rate
-- `Knob Y`: Wet/Dry Mix
-- `Knob Z`: Exploration noise (turned off when all the way to the left)
-- `Knob G`: Volume
+<a href="{{ '/assets/images/nisps/panel-verbfx.svg' | relative_url }}" class="image-popup" title="MEMLNaut panel with the VerbFX controls"><img src="{{ '/assets/images/nisps/panel-verbfx.svg' | relative_url }}" alt="MEMLNaut panel with the VerbFX controls. Controls that differ from standard NISPS are ringed in gold." class="img-responsive"></a>
+
+*Click the panel to enlarge it. Controls ringed in gold work differently from the standard NISPS controls.*
+
+The controls are the standard [NISPS controls](/memlnaut/approaches/nisps#controls), with this change:
+
+| Control | In VerbFX |
+|---|---|
+| **Knob Y** | Wet/dry mix (instead of reward scale) |
 
 # Screens
 
@@ -99,10 +103,6 @@ These voice spaces bias the neural network mappings in particular directions.
 
 Shows the inputs to the neural network.
 
-## Messages
-
-Various messages logging interactions with the system.
-
 ## Save Model
 
 Tap on a slot to save a model and current voice space,
@@ -126,15 +126,38 @@ Shows what the various controls do.
 
 System information about the MEMLNaut and current firmware.
 
+# Parameters
+
+| Outputs | What they control |
+|---|---|
+| 0 | Crossfade between filterbank and delays |
+| 1–16 | Comb filters: feedback and cutoff for each of the eight |
+| 17–20 | Allpass filter feedback |
+| 21–28 | Filterbank frequencies |
+| 29–36 | Filterbank resonance |
+| 37–42 | Delay times and feedback |
+| 43–46 | Routing: reverb against delay, delay into reverb, delay morph and blend |
+
 # MIDI
 
-The firmware sends out the first 16 neural network outputs as MIDI controllers, so you can use the MEMLNaut to control your hardware synths.
+This firmware doesn't send the neural network outputs as MIDI. It does listen for MIDI CCs, so you can control NISPS from a footcontroller or similar:
+
+| CC | Action |
+|---|---|
+| 1 | Positive reward |
+| 2 | Negative reward |
+| 3 | Scramble neural network |
+| 4 | Clear replay memory |
+| 5 | Exploration noise |
+| 6 | Training speed |
+
+If you choose a MIDI controller on the [Input Source](#input-source) screen, CCs 1-8 become inputs to the neural network instead.
 
 # Files
 
 ## Code
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS)
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS). To build this firmware, define `MODE_VERBFX` in `MEMLNaut-NISPS.ino`.
 
 ## Firmware Download
 

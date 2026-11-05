@@ -7,6 +7,9 @@ toc: true
 toc_sticky: true  
 ---
 
+**Legacy firmware.** This firmware uses the CARL approach and was built with an older version of memllib. It still works, but it is no longer updated. For current firmwares, see [NISPS](/memlnaut/approaches/nisps) and the [firmware guide](/memlnaut/firmwares/guide).
+{: .notice--warning}
+
 # Overview
 
 This firmware offers exploration of multi fx, using the [CARL](../approaches/carl) approach to ML.

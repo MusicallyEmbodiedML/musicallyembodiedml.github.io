@@ -1,6 +1,6 @@
 ---
 permalink: /memlnaut/firmwares/doomcomppopr
-title: "MEMLNaut Firmware: PAF Synth with POPR"
+title: "MEMLNaut Firmware: Doom Compressor with POPR"
 sidebar:
   nav: "memlnaut"
 toc: true
@@ -23,9 +23,9 @@ The output is complex, and can be very sensitive to joystick input in some areas
 Mono sound is output to both channels of the line out and headphone sockets.
 
 
-# CARL approach
+# POPR approach
 
-Reinforcement learning helps you to explore the complex soundscape of the doom compressor.
+[POPR](../approaches/popr) helps you to explore the complex soundscape of the doom compressor.
 
 # Files
 
@@ -35,7 +35,9 @@ Reinforcement learning helps you to explore the complex soundscape of the doom c
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-DoomComp/releases/tag/v1.0](https://github.com/MusicallyEmbodiedML/MEMLNaut-DoomComp/releases/tag/v1.0)
+Download the `.uf2` file from the latest release:
+
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-DoomComp/releases/latest](https://github.com/MusicallyEmbodiedML/MEMLNaut-DoomComp/releases/latest)
 
 
 

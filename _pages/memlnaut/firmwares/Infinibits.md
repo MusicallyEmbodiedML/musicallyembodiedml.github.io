@@ -50,7 +50,7 @@ When you indicate a reward, you are rewarding (negatively or positively) how a p
 - `Momentary B Down`: Negative reward
 - `Joystick`: Explore
 - `Joystick button`: Positive reward placement — drag a sound to a different place and release to positively reward it in this position
-- `Toggle A Down`: Clear replay memory
+- `Toggle A Up`: Clear replay memory
 - `Knob X`: Learning rate
 - `Knob Y`: Feedback amount, scaling all the grain feedback from none (left) to double (right)
 - `Knob Z`: Exploration noise (turned off when all the way to the left)
@@ -97,7 +97,18 @@ System information about the MEMLNaut and current firmware.
 
 # MIDI
 
-The firmware sends out the first 16 neural network outputs as MIDI controllers, so you can use the MEMLNaut to control your hardware synths.
+This firmware doesn't send the neural network outputs as MIDI. It does listen for MIDI CCs, so you can control NISPS from a footcontroller or similar:
+
+| CC | Action |
+|---|---|
+| 1 | Positive reward |
+| 2 | Negative reward |
+| 3 | Scramble neural network |
+| 4 | Clear replay memory |
+| 5 | Exploration noise |
+| 6 | Training speed |
+
+If you choose a MIDI controller on the [Input Source](#input-source) screen, CCs 1-8 become inputs to the neural network instead.
 
 # Files
 

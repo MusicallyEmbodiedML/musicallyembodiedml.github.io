@@ -39,7 +39,9 @@ Use the POPR controls to try and build a new instrument: a joystick that control
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-POPR/releases/tag/v1.1](https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-POPR/releases/tag/v1.1)
+Download the `.uf2` file from the latest release:
+
+[https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-POPR/releases/latest](https://github.com/MusicallyEmbodiedML/MEMLNaut-PAF-POPR/releases/latest)
 
 
 

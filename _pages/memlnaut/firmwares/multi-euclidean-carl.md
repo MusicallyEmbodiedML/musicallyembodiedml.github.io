@@ -7,6 +7,9 @@ toc: true
 toc_sticky: true  
 ---
 
+**Legacy firmware.** This firmware uses the CARL approach and was built with an older version of memllib. It still works, but it is no longer updated. For current firmwares, see [NISPS](/memlnaut/approaches/nisps) and the [firmware guide](/memlnaut/firmwares/guide).
+{: .notice--warning}
+
 # Overview
 
 A bank of 8 euclidean sequencers are controlled by a neural network, mapped from 3 axes of the joystick.

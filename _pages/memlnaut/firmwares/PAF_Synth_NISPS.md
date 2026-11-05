@@ -38,7 +38,7 @@ When you indicate a reward, you are rewarding (negatively or positively) how a p
 - ```Momentary B Down```: Negative reward
 - ```Joystick```: Explore
 - ```Joystick button```: Positive reward placement - drag a sound to a different place and release to positively reward it in this position
-- ```Toggle A Down```: Clear replay memory
+- ```Toggle A Up```: Clear replay memory
 - ```Knob X```: Learning rate 
 - ```Knob Y```: Reward scale
 - ```Knob Z```: Exploration noise (turned off when all the way to the left)
@@ -51,13 +51,9 @@ Navigate between screens using the rotary encoder.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Jz2sxsOFroo?si=8-nA4GSPlnBFKj-p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-## NN Output
+## RL
 
-This shows the live outputs of the neural network.
-
-## RL Stats
-
-Shows the loss of the neural network as it's optimised.  If this number is high, then it's struggling to train. If it's low then the network is training ok (although possibly overfitting).
+Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.
 
 ## Voice Spaces
 
@@ -82,6 +78,16 @@ Tap on a slot to load a model
 ## Play
 
 Tap on the screen to trigger a note. Pitch rises from left to right. Volume rises from bottom to top.
+
+## Input Source
+
+Choose from
+- the joystick that matches your hardware (3D or 4D)
+- various configurations of MIDI controllers
+
+## MIDI CC Out
+
+Choose the CC numbers that the neural network outputs are sent on.
 
 ## Help
 

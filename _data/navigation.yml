@@ -19,37 +19,41 @@ memlnaut:
       url: /memlnaut/features
     - title: "Technical Spec"
       url: /memlnaut/techspec
-  - title: "ML Approaches"
-    children:
     - title: "NISPS"
       url: /memlnaut/approaches/nisps
+  - title: "Firmwares"
+    children:
+    - title: "Guide"
+      url: /memlnaut/firmwares/guide
+    - title: "MEMLCelium"
+      url: /memlnaut/firmwares/memlcelium
+    - title: "MixMasterMEML"
+      url: /memlnaut/firmwares/mixmastermeml
+    - title: "VerbFX"
+      url: /memlnaut/firmwares/verbfxnisps
+    - title: "LiveFX"
+      url: /memlnaut/firmwares/livefxnisps
+    - title: "Infinibits"
+      url: /memlnaut/firmwares/infinibitsnisps
+    - title: "Paramsite"
+      url: /memlnaut/firmwares/paramsitenisps
+    - title: "PAF Synth"
+      url: /memlnaut/firmwares/pafsynthnisps
+  - title: "Legacy"
+    children:
     - title: "POPR"
       url: /memlnaut/approaches/popr
     - title: "CARL"
       url: /memlnaut/approaches/carl
-  - title: "Latest Firmwares"
-    children:
-    - title: "Guide"
-      url: /memlnaut/firmwares/guide
-    - title: "VerbFX (NISPS)"
-      url: /memlnaut/firmwares/verbfxnisps
-    - title: "LiveFX (NISPS)"
-      url: /memlnaut/firmwares/livefxnisps
-    - title: "Infinibits (NISPS)"
-      url: /memlnaut/firmwares/infinibitsnisps
-    - title: "PAF Synth (NISPS)"
-      url: /memlnaut/firmwares/pafsynthnisps
-  - title: "Firmware Archive"
-    children:
+    - title: "Multi FX (CARL)"
+      url: /memlnaut/firmwares/multifxrl
+    - title: "Multi-Euclidean (CARL)"
+      url: /memlnaut/firmwares/multieuclideancarl
     - title: "PAF Synth (CARL)"
       url: /memlnaut/firmwares/pafsynthrl
     - title: "PAF Synth (POPR)"
       url: /memlnaut/firmwares/pafsynthpopr
-    - title: "Multi FX with RL"
-      url: /memlnaut/firmwares/multifxrl
     - title: "Multi FX with POPR"
       url: /memlnaut/firmwares/multifxpopr
-    - title: "Multi-Euclidean Rhythm Generator (CARL)"
-      url: /memlnaut/firmwares/multieuclideancarl
     - title: "Doom Compressor"
       url: /memlnaut/firmwares/doomcomppopr
