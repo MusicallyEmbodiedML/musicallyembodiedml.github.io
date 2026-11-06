@@ -110,7 +110,7 @@ The firmware sends out the first 16 neural network outputs as MIDI controllers, 
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/PAF_1_1_0](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/PAF_1_1_0)
+[MEMLNaut-NISPS.PAF.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.PAF.1.2.0.uf2)
 
 
 See the firmware [guide](./guide) for installation instructions

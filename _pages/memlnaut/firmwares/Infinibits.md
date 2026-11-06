@@ -118,6 +118,6 @@ If you choose a MIDI controller on the [Input Source](#input-source) screen, CCs
 
 ## Firmware Download
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/Infinibits_1.0.0](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/Infinibits_1.0.0)
+[MEMLNaut-NISPS.Infinibits.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.Infinibits.1.2.0.uf2)
 
 See the firmware [guide](./guide) for installation instructions.

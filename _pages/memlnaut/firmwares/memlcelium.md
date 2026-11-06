@@ -9,7 +9,7 @@ toc_sticky: true
 
 # Overview
 
-MEMLCelium is a three-voice synth with its own sequencer. Each voice is a PAF (phase-aligned formant) synth with amplitude and pitch envelopes. A ratio sequencer plays the three voices. The neural network controls 83 parameters, including the rhythms, the formants, the envelopes and the ring modulation. You shape them with the [NISPS](/memlnaut/approaches/nisps) controls.
+MEMLCelium is a three-voice rhythm machine. Each voice is a PAF (phase-aligned formant) synth with amplitude and pitch envelopes, biased towards drum-like sounds. Ratio sequencers plays the three voices. The neural network controls 83 parameters, including the rhythms, the formants, the envelopes and effects. You shape them with the [NISPS](/memlnaut/approaches/nisps) controls.
 
 ## Try it in your browser
 
@@ -19,7 +19,7 @@ You can play MEMLCelium without a MEMLNaut. The browser version runs the firmwar
 
 ## Outputs
 
-Mono sound is output to both channels of the line out and headphone sockets.
+Mono sound is output to all channels of the line out and headphone sockets.
 
 # Quick start
 
@@ -38,7 +38,7 @@ The controls are the standard [NISPS controls](/memlnaut/approaches/nisps#contro
 
 | Control | In MEMLCelium |
 |---|---|
-| **Knob Y** | Tempo, from 30 to 200 BPM (instead of reward scale) |
+| **Knob Y** | Tempo, from 30 to 200 BPM  |
 | **Toggle B down** | Stop or restart the sequencer |
 
 The network's input defaults to the joystick. You can change it on the **Input Source** screen.
@@ -70,8 +70,8 @@ MEMLCelium adds two screens after the RL screen.
 
 ## Firmware Download
 
-MEMLCelium is available as an alpha release, with separate files for 3D and 4D joysticks:
+One file works with both 3D and 4D joysticks. It starts on the 3D joystick, so if you have a 4D joystick, choose **4D Joystick** on the **Input Source** screen. Your choice is saved.
 
-[https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/MEMLCelium_0_1_alpha](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/tag/MEMLCelium_0_1_alpha)
+[MEMLNaut-NISPS.MEMLCelium.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.MEMLCelium.1.2.0.uf2)
 
 See the firmware [guide](./guide) for installation instructions.

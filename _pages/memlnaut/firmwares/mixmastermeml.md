@@ -9,7 +9,7 @@ toc_sticky: true
 
 # Overview
 
-MixMasterMEML is a self-contained groove machine. It has three sequenced drum voices, a bassline, a Euclidean arpeggiator, a sine shaper and a stereo grain delay, with a mixer to balance them. The neural network controls 122 parameters, and you shape them with the [NISPS](/memlnaut/approaches/nisps) controls.
+MixMasterMEML is a self-contained glitch ambient groove machine. It has three sequenced drum voices, a bassline, a euclidean arpeggiator, a sine shaper and a stereo grain delay, with a mixer to balance them. The neural network controls 122 parameters, and you shape them with the [NISPS](/memlnaut/approaches/nisps) controls. It's an experiment to explore how NISPS might be used to control a complete composition.
 
 ## Signal path
 
@@ -78,4 +78,6 @@ MixMasterMEML adds three screens after the RL screen.
 
 ## Firmware Download
 
-There's no release of MixMasterMEML yet. You can build it from the code above.
+[MEMLNaut-NISPS.MixMasterMEML.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.MixMasterMEML.1.2.0.uf2)
+
+See the firmware [guide](./guide) for installation instructions.

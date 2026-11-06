@@ -25,18 +25,18 @@ memlnaut:
     children:
     - title: "Guide"
       url: /memlnaut/firmwares/guide
-    - title: "MEMLCelium"
-      url: /memlnaut/firmwares/memlcelium
-    - title: "MixMasterMEML"
-      url: /memlnaut/firmwares/mixmastermeml
     - title: "VerbFX"
       url: /memlnaut/firmwares/verbfxnisps
     - title: "LiveFX"
       url: /memlnaut/firmwares/livefxnisps
-    - title: "Infinibits"
-      url: /memlnaut/firmwares/infinibitsnisps
     - title: "Paramsite"
       url: /memlnaut/firmwares/paramsitenisps
+    - title: "MEMLCelium"
+      url: /memlnaut/firmwares/memlcelium
+    - title: "MixMasterMEML"
+      url: /memlnaut/firmwares/mixmastermeml
+    - title: "Infinibits"
+      url: /memlnaut/firmwares/infinibitsnisps
     - title: "PAF Synth"
       url: /memlnaut/firmwares/pafsynthnisps
   - title: "Legacy"
