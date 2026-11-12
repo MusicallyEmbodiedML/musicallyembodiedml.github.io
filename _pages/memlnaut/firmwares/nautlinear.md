@@ -5,6 +5,7 @@ sidebar:
   nav: "memlnaut"
 toc: true
 toc_sticky: true
+mermaid: true
 ---
 
 # Overview
@@ -16,6 +17,35 @@ NautLinear is a distortion and waveshaping effect for the line input. Eight wave
 The input is levelled and passes through a peaking EQ. A grain delay picks up the same signal. The EQ'd input, the grain delay and the feedback are mixed into each of the eight shapers, each in its own amounts. The shapers' outputs are blended, filtered by a resonant lowpass and brought back to the level of the dry input. Knob Y mixes the result with the dry signal.
 
 A copy of the shaped signal is fed back into the shapers and into the grain delay.
+
+```mermaid
+flowchart TD
+  IN["Line in<br/>L + R summed to mono"] --> AL["Auto-level"]
+  AL --> EQ["Pre-EQ<br/>peaking filter"]
+  EQ --> GD["Grain delay"]
+  EQ --> SH
+  FBIN(("Feedback")) -. "grain feedback send" .-> GD
+  FBIN -. "master × each shaper" .-> SH
+  GD -- "send to each shaper" --> SH
+
+  subgraph SH["Shapers · drive, bias, 4× oversampled"]
+    direction LR
+    S1["Hard"] ~~~ S2["Tanh"] ~~~ S3["Knee"] ~~~ S4["Diode"]
+    S5["Oct"] ~~~ S6["Asym"] ~~~ S7["Sine"] ~~~ S8["Cheby"]
+  end
+
+  SH -- "mix level of each shaper" --> DC["DC block"]
+  DC --> LP["Resonant lowpass"]
+  LP --> MK["Makeup gain<br/>matched to the dry level"]
+  MK --> WD{"Wet / dry<br/>knob Y"}
+  IN -- "dry" --> WD
+  WD --> OUT["Line out and phones<br/>mono on both channels"]
+
+  LP -. "FB Pre-Make" .-> TAP(("Feedback tap<br/>back to the top"))
+  MK -. "FB Post-Make" .-> TAP
+```
+
+*Dotted lines are feedback: the tap at the bottom feeds the **Feedback** node at the top. The **Options** screen chooses where the tap is taken from.*
 
 ## The shapers
 

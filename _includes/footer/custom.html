@@ -1,3 +1,44 @@
 <!-- start custom footer snippets -->
 
+{% if page.mermaid %}
+<!-- Mermaid diagrams: pages opt in with `mermaid: true` in their front matter and
+     write ```mermaid fenced blocks. Kramdown/Rouge renders those as highlighted
+     code, so swap each one for a <pre class="mermaid"> before Mermaid runs. -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs";
+
+  document.querySelectorAll("div.language-mermaid, pre > code.language-mermaid").forEach((el) => {
+    const block = el.tagName === "CODE" ? el.parentElement : el;
+    const pre = document.createElement("pre");
+    pre.className = "mermaid";
+    pre.textContent = el.textContent;
+    block.replaceWith(pre);
+  });
+
+  // Colours from the meml skin (_sass/minimal-mistakes/skins/_meml.scss).
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "base",
+    themeVariables: {
+      background: "#003c46",
+      primaryColor: "#00525e",
+      primaryBorderColor: "#00adb5",
+      primaryTextColor: "#ffffff",
+      secondaryColor: "#00303a",
+      tertiaryColor: "#003c46",
+      clusterBkg: "#00303a",
+      clusterBorder: "#d6b92a",
+      lineColor: "#c6d0c8",
+      textColor: "#ffffff",
+      edgeLabelBackground: "#003c46",
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    },
+  });
+  await mermaid.run({ querySelector: "pre.mermaid" });
+</script>
+<style>
+  pre.mermaid { background: transparent; text-align: center; }
+</style>
+{% endif %}
+
 <!-- end custom footer snippets -->
