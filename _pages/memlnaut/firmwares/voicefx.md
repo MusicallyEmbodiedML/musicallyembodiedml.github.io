@@ -141,6 +141,6 @@ If you choose a MIDI controller on the **Input Source** screen, CCs 1-8 become i
 
 ## Firmware Download
 
-[MEMLNaut-NISPS.VoiceFX.1.0.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/VoiceFX_1.0.0/MEMLNaut-NISPS.VoiceFX.1.0.0.uf2)
+[MEMLNaut-NISPS.VoiceFX.1.2.1.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.1/MEMLNaut-NISPS.VoiceFX.1.2.1.uf2)
 
 See the firmware [guide](./guide) for installation instructions.

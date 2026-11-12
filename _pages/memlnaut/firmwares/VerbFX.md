@@ -161,6 +161,6 @@ If you choose a MIDI controller on the [Input Source](#input-source) screen, CCs
 
 ## Firmware Download
 
-[MEMLNaut-NISPS.VerbFX.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.VerbFX.1.2.0.uf2)
+[MEMLNaut-NISPS.VerbFX.1.2.1.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.1/MEMLNaut-NISPS.VerbFX.1.2.1.uf2)
 
 See the firmware [guide](./guide) for installation instructions.

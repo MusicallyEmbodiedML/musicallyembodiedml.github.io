@@ -130,6 +130,6 @@ The CCs are sent on the MIDI DIN output, and also on USB: the MEMLNaut appears o
 
 ## Firmware Download
 
-[MEMLNaut-NISPS.Paramsite.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.Paramsite.1.2.0.uf2)
+[MEMLNaut-NISPS.Paramsite.1.2.1.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.1/MEMLNaut-NISPS.Paramsite.1.2.1.uf2)
 
 See the firmware [guide](./guide) for installation instructions.

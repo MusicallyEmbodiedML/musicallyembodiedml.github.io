@@ -72,6 +72,6 @@ MEMLCelium adds two screens after the RL screen.
 
 One file works with both 3D and 4D joysticks. It starts on the 3D joystick, so if you have a 4D joystick, choose **4D Joystick** on the **Input Source** screen. Your choice is saved.
 
-[MEMLNaut-NISPS.MEMLCelium.1.2.0.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.0/MEMLNaut-NISPS.MEMLCelium.1.2.0.uf2)
+[MEMLNaut-NISPS.MEMLCelium.1.2.1.uf2](https://github.com/MusicallyEmbodiedML/MEMLNaut-NISPS/releases/download/1.2.1/MEMLNaut-NISPS.MEMLCelium.1.2.1.uf2)
 
 See the firmware [guide](./guide) for installation instructions.
