@@ -65,6 +65,17 @@ FIRMWARES = [
                   "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
     },
     {
+        "slug": "voicefx", "name": "VoiceFX", "build": "MODE_VOICEFX",
+        "tagline": "voice effects with flanger, compressor and vocal EQ",
+        "knob_y": ("Y · wet / dry", "0 = dry: bypasses every effect"),
+        "tog_b_down": None,
+        "inputs_used": True, "messages": False, "midi_in": "MIDI in · feedback CCs",
+        "joystick": None, "nn_screen": "Neural Net",
+        "mode_screens": ["Focus", "FX Enable", "VU", "Input Gain"], "end_screens": [],
+        "notes": ["Tap tempo on the Neural Net screen. Input Gain is saved to flash. 59 network outputs.",
+                  "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
+    },
+    {
         "slug": "livefx", "name": "LiveFX", "build": "MODE_DJFX",
         "tagline": "ten tempo-synced effects for live sets and DJing",
         "knob_y": ("Y · DJ filter", "low-pass ◂ centre ▸ high-pass"),
@@ -95,7 +106,7 @@ def ring(cx, cy, r):
 def screen_list(fw):
     """Replace the RL sketch with this firmware's screen order."""
     after = [s for s in AFTER_MODE if fw["messages"] or s != "Messages"]
-    screens = (["RL"] + [(s, True) for s in fw["mode_screens"]] + after
+    screens = ([fw.get("nn_screen", "RL")] + [(s, True) for s in fw["mode_screens"]] + after
                + [(s, True) for s in fw["end_screens"]])
     screens = [s if isinstance(s, tuple) else (s, False) for s in screens]
     rows = (len(screens) + 1) // 2
