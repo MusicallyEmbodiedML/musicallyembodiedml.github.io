@@ -5,6 +5,7 @@ sidebar:
   nav: "memlnaut"
 toc: true
 toc_sticky: true
+mermaid: true
 ---
 
 # Overview
@@ -18,7 +19,26 @@ LiveFX is an interactive FX unit with 10 different effects.  It can be used in '
 
 ## Signal Flow
 
-Input → DJ Filter → Downsampler → Ring Modulator → Allpass → Flanger → Chorus → Grain Delay 1 → Grain Delay 2 → Delay → Stutter → Reverb → Output
+```mermaid
+flowchart TD
+  IN["Line in"] -- "dry (stereo)" --> WD{"Wet / dry"}
+  IN --> MONO["L + R summed to mono"]
+  MONO --> DJ["DJ filter<br/>DJ Mode only, knob Y"]
+  DJ --> DS["Downsampler"]
+  DS --> RM["Ring modulator"]
+  RM --> AP["Allpass"]
+  AP --> FL["Flanger"]
+  FL --> CH["Chorus"]
+  CH --> GR["Grain delays 1 and 2<br/>crossfaded"]
+  GR --> DL["Delay<br/>band-pass in the feedback"]
+  DL --> ST["Stutter"]
+  ST --> SAT["Saturation"]
+  SAT --> RV["Reverb<br/>mono in, stereo out"]
+  RV -- "wet" --> WD
+  WD --> OUT["Line out and phones"]
+```
+
+*The wet/dry mix follows the joystick's distance from centre in DJ Mode, or knob Y with DJ Mode off. The effects run in mono until the reverb, which makes them stereo.*
 
 
 ## Effect Blocks
