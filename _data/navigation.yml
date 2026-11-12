@@ -29,6 +29,8 @@ memlnaut:
       url: /memlnaut/firmwares/verbfxnisps
     - title: "LiveFX"
       url: /memlnaut/firmwares/livefxnisps
+    - title: "NautLinear"
+      url: /memlnaut/firmwares/nautlinear
     - title: "Paramsite"
       url: /memlnaut/firmwares/paramsitenisps
     - title: "MEMLCelium"

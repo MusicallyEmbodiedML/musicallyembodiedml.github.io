@@ -54,6 +54,17 @@ FIRMWARES = [
         "notes": ["MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
     },
     {
+        "slug": "nautlinear", "name": "NautLinear", "build": "MODE_NAUTLINEAR",
+        "tagline": "waveshaper bank with feedback and grain delay for line input",
+        "knob_y": ("Y · wet / dry", "0 = dry"),
+        "tog_b_down": None,
+        "inputs_used": True, "messages": False, "midi_in": "MIDI in · feedback CCs",
+        "joystick": None,
+        "mode_screens": ["Focus", "Enable", "VU", "Options"], "end_screens": [],
+        "notes": ["60 network outputs. Enable toggles and the feedback tap are saved with each model.",
+                  "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
+    },
+    {
         "slug": "livefx", "name": "LiveFX", "build": "MODE_DJFX",
         "tagline": "ten tempo-synced effects for live sets and DJing",
         "knob_y": ("Y · DJ filter", "low-pass ◂ centre ▸ high-pass"),
