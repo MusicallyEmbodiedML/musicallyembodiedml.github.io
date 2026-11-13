@@ -13,6 +13,8 @@ Paramsite turns the MEMLNaut into a MIDI controller for any synth, drum machine,
 
 You can set up your own CCs in one of four User slots, or choose a preset with the CC table of a particular synth already filled in.
 
+MIDI arriving at the MEMLNaut is passed through to its outputs, merged with the CCs, so you can play a synth that has no keyboard from a MIDI keyboard or a computer. See [Options](#options).
+
 # MIDI Modes
 
 Choose a mode on the [MIDI Mode](#midi-mode) screen. Each mode has its own CC setup, MIDI channel, focus groups and folder of saved models.
@@ -35,7 +37,7 @@ Choose a mode on the [MIDI Mode](#midi-mode) screen. Each mode has its own CC se
 | Arturia MicroFreak | 1 | OSC FILT ENV CYC LFO | yes |
 | Melbourne Instruments Nina | layer | OSC MIX FILT ENV LFO FX | yes |
 
-- **Keyboard thru**: MIDI notes arriving at the MEMLNaut are passed on to the synth, so you can play it while the MEMLNaut controls its sound.
+- **Keyboard thru**: when all the [MIDI thru](#options) routes are off, notes arriving at the MEMLNaut are still passed on to the synth, moved to the mode's MIDI channel. With MIDI thru on, notes go through on the channel they arrive on, so set your keyboard to the synth's channel.
 - **Fade**: in every mode, each CC has a *home* value. Knob Y fades between the home values (left) and the neural network (right), so you can start from a patch or kit you've set up and bring in as much of the network as you like. Knob G sets the home value of the CC under the cursor on the [CC Assign](#cc-assign) screen. Homes start at 0, except in the Blofeld and Supernova II presets, which start from a usable patch.
 
 The synth presets were checked against each maker's published CC table. Make sure the synth is set to receive CCs (for example Global → MIDI Param Receive on the Mopho and Rev2, Global → Controller Recv on the microQ). For the Steampipe, check Settings → MIDI CC MAP on the synth, as only some of its CC numbers are published.
@@ -110,6 +112,20 @@ Choose the MIDI channel, 1–16. Saved separately for each mode.
 
 Choose the [MIDI mode](#midi-modes). Push the encoder, turn to a mode, and push again: the choice is saved and the MEMLNaut restarts into the new mode. To leave without changing mode, choose **Cancel** (at either end of the list) or leave the screen without pushing.
 
+## Options
+
+MIDI thru: copy the MIDI arriving at the MEMLNaut to its outputs, merged with the CCs it sends. Each route can be turned on or off; highlighted routes are on, and all three are on by default.
+
+| Route | From | To |
+|---|---|---|
+| **HW>HW** | MIDI DIN input | MIDI DIN output |
+| **HW>USB** | MIDI DIN input | USB MIDI |
+| **USB>HW** | USB MIDI | MIDI DIN output |
+
+USB input is never sent back to USB, so a DAW can't get stuck in a feedback loop. Notes, CCs, program changes, pitch bend and aftertouch are passed through; SysEx and clock are not. The MEMLNaut still responds to the MIDI it receives as usual. The settings are saved, and apply in every MIDI mode.
+
+If something on the input also sends CCs that the MEMLNaut is sending, the receiving synth will get both: turn that route off, or keep the CCs apart.
+
 ## Levels
 
 Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
@@ -124,7 +140,7 @@ System information about the MEMLNaut and current firmware.
 
 # MIDI
 
-The CCs are sent on the MIDI DIN output, and also on USB: the MEMLNaut appears on a computer as a USB MIDI port called "MEMLNaut MIDI". Notes and CCs received over USB are handled the same way as on the DIN input. SysEx is DIN only.
+The CCs are sent on the MIDI DIN output, and also on USB: the MEMLNaut appears on a computer as a USB MIDI port called "MEMLNaut MIDI". Notes and CCs received over USB are handled the same way as on the DIN input. SysEx is DIN only. MIDI received on either input can be passed through to the outputs: see [Options](#options).
 
 # Files
 
