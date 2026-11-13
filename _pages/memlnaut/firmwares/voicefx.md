@@ -12,6 +12,10 @@ mermaid: true
 
 VoiceFX is an effects processor for the voice, using the [NISPS](/memlnaut/approaches/nisps) approach to ML. It grew out of [LiveFX](/memlnaut/firmwares/livefxnisps): it keeps the grain delays, delay, chorus, allpass and reverb, adds a stereo flanger, a compressor and a vocal EQ, and gives you a single wet/dry knob. The neural network controls 59 parameters.
 
+## Video Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OkbY1_FE3yE?si=8imXa1XgYoIzkdvD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Signal path
 
 ```mermaid

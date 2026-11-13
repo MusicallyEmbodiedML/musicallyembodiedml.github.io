@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130" role="img" aria-label="Where to find the reset and boot select buttons. They are on the top edge of the MEMLNaut, under the labels Reset and Boot Sel printed along the top of the panel. From the front, left to right, the top edge has USB, headphones, reset, boot select and the SD card. Hold boot select, press and release reset, then release boot select.">
+  <!-- Positions follow the panel artwork (memlnaut_0_3_joystick.jpg, offset +12,+93) and the board render (MEMLNaut_0_2.jpg, SW5 Reset, SW6 Bootsel). -->
+  <defs>
+    <radialGradient id="pcb" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#55665a"/><stop offset="1" stop-color="#34453a"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1130" rx="14" fill="#00313a"/>
+
+  <text x="60" y="58" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#eef5e0">Find the labels on the top edge of the panel</text>
+
+  <!-- whole panel, drawn at 0.8 scale -->
+  <g transform="translate(160 -30) scale(.8)">
+    <rect x="58" y="150" width="1484" height="684" rx="6" fill="url(#pcb)"/>
+    <g fill="#20291f" opacity=".7"><circle cx="87" cy="177" r="9"/><circle cx="1513" cy="177" r="9"/><circle cx="87" cy="806" r="9"/><circle cx="1513" cy="806" r="9"/></g>
+    <text x="372" y="245" font-family="Helvetica, Arial, sans-serif" font-size="44" fill="#eef2ee" opacity=".55">MEMLNaut</text>
+    <!-- controls, dimmed so the labels stand out -->
+    <g fill="#8f95a8" opacity=".55">
+      <circle cx="177" cy="214" r="20"/><circle cx="256" cy="214" r="20"/><circle cx="177" cy="324" r="20"/><circle cx="256" cy="324" r="20"/><circle cx="338" cy="327" r="24"/>
+      <circle cx="575" cy="352" r="26"/>
+      <circle cx="829" cy="356" r="25"/><circle cx="995" cy="356" r="25"/><circle cx="829" cy="480" r="25"/><circle cx="995" cy="480" r="25"/>
+      <circle cx="912" cy="616" r="26"/><circle cx="800" cy="737" r="26"/><circle cx="1028" cy="737" r="26"/>
+      <circle cx="1312" cy="502" r="126"/>
+    </g>
+    <circle cx="1312" cy="502" r="58" fill="#5d6272" opacity=".6"/><circle cx="1312" cy="502" r="26" fill="#2c2f3e" opacity=".8"/>
+    <rect x="203" y="460" width="454" height="328" rx="3" fill="#10161a" opacity=".7"/>
+    <!-- labels as printed -->
+    <g font-family="Menlo, Consolas, monospace" font-size="15" fill="#eef2ee" text-anchor="middle" opacity=".75">
+      <text x="372" y="176">MIDI Out</text><text x="522" y="176">MIDI In</text><text x="630" y="176">USB</text><text x="715" y="176">Headphones</text><text x="972" y="176">SD Card</text>
+    </g>
+    <g font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" fill="#ffe46b" text-anchor="middle">
+      <text x="812" y="176">Reset</text><text x="878" y="176">Boot Sel</text>
+    </g>
+    <rect x="782" y="156" width="140" height="30" rx="6" fill="none" stroke="#ffe46b" stroke-width="4"/>
+  </g>
+
+  <!-- arrow from the labels to the close-up, through the gap between the switches and knobs -->
+  <line x1="856" y1="121" x2="856" y2="640" stroke="#ffe46b" stroke-width="4"/>
+  <path d="M842 638 L870 638 L856 658 Z" fill="#ffe46b"/>
+
+  <!-- close-up -->
+  <rect x="60" y="660" width="1480" height="440" rx="10" fill="#012630" stroke="#ffe46b" stroke-width="2"/>
+  <text x="90" y="704" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#eef5e0">Close-up: the buttons under the labels</text>
+  <text x="1510" y="702" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#9fb8b8" text-anchor="end">seen from the front, panel towards you</text>
+
+  <!-- step markers -->
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <circle cx="1040" cy="752" r="20" fill="#ffe46b"/><text x="1040" y="761" font-size="25" font-weight="bold" fill="#012630">1</text>
+    <text x="1040" y="796" font-size="20" font-weight="bold" fill="#ffe46b">hold</text>
+    <circle cx="800" cy="752" r="20" fill="#ffe46b"/><text x="800" y="761" font-size="25" font-weight="bold" fill="#012630">2</text>
+    <text x="800" y="796" font-size="20" font-weight="bold" fill="#ffe46b">press and release</text>
+  </g>
+
+  <!-- parts on the edge of the board -->
+  <rect x="150" y="810" width="1300" height="110" fill="#2f5a34"/>
+  <rect x="200" y="836" width="120" height="44" rx="20" fill="#c9cbe0" stroke="#55596d" stroke-width="3"/><rect x="226" y="852" width="68" height="12" rx="6" fill="#2c2f3e"/>
+  <circle cx="520" cy="858" r="34" fill="#c9cbe0" stroke="#55596d" stroke-width="3"/><circle cx="520" cy="858" r="15" fill="#2c2f3e"/>
+  <g stroke="#ffe46b" stroke-width="5">
+    <rect x="750" y="818" width="100" height="84" rx="8" fill="#1d2228"/>
+    <rect x="990" y="818" width="100" height="84" rx="8" fill="#1d2228"/>
+  </g>
+  <circle cx="800" cy="860" r="24" fill="#c9cbe0"/><circle cx="1040" cy="860" r="24" fill="#c9cbe0"/>
+  <rect x="1250" y="846" width="170" height="26" rx="3" fill="#c9cbe0" stroke="#55596d" stroke-width="3"/><rect x="1264" y="855" width="142" height="8" fill="#2c2f3e"/>
+
+  <!-- panel edge with its printed labels -->
+  <rect x="100" y="920" width="1400" height="62" fill="url(#pcb)"/>
+  <g font-family="Menlo, Consolas, monospace" font-size="24" fill="#eef2ee" text-anchor="middle">
+    <text x="260" y="960">USB</text><text x="520" y="960">Headphones</text><text x="1335" y="960">SD Card</text>
+  </g>
+  <g font-family="Menlo, Consolas, monospace" font-size="26" font-weight="bold" fill="#ffe46b" text-anchor="middle">
+    <text x="800" y="960">Reset</text><text x="1040" y="960">Boot Sel</text>
+  </g>
+
+  <!-- last step -->
+  <g font-family="Helvetica, Arial, sans-serif">
+    <circle cx="120" cy="1040" r="20" fill="#ffe46b"/><text x="120" y="1049" font-size="25" font-weight="bold" fill="#012630" text-anchor="middle">3</text>
+    <text x="154" y="1049" font-size="24" fill="#eef5e0">Let go of boot select. A drive called <tspan font-family="Menlo, Consolas, monospace" font-weight="bold" fill="#ffe46b">RP2350</tspan> appears on your computer.</text>
+  </g>
+</svg>

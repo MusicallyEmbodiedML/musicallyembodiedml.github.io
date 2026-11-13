@@ -10,7 +10,7 @@ mermaid: true
 
 # Overview
 
-NautLinear is a distortion and waveshaping effect for the line input. Its tone comes from nonlinearities alone: there is no EQ or tone filter. A preamp drives eight waveshapers side by side, a damper tames the result, and feedback sends the output back into the shapers. The neural network controls 47 parameters, and you shape them with the [NISPS](/memlnaut/approaches/nisps) controls.
+NautLinear is a nonlinear tone and harmonics processor. It shapes sound with a range of waveshaping processors, creating tonal changes and adding warmth and complexity ranging from subtle to extreme. A preamp drives eight waveshapers side by side, a damper tames the result, and feedback sends the output back into the shapers. The neural network controls 47 parameters, and you shape them with the [NISPS](/memlnaut/approaches/nisps) controls.
 
 ## Signal path
 
