@@ -48,9 +48,9 @@ MixMasterMEML stops training once the network has learned your likes, and starts
 
 # Screens
 
-MixMasterMEML adds three screens after the RL screen.
+MixMasterMEML adds three screens after the Neural Net screen. The **Levels** screen comes at the end as in every firmware.
 
-**RL**: the 122 outputs are labelled by section: **Seq**, **V1**, **V2**, **V3**, **FX**, **Arp** and **Bass**.
+**Neural Net**: the 122 outputs are labelled by section: **Seq**, **V1**, **V2**, **V3**, **FX**, **Arp** and **Bass**.
 
 **Focus**: choose which groups of parameters the network changes. The groups are **Seq**, **Synth**, **Env**, **Voice 1**, **Voice 2**, **Voice 3**, **FX**, **Arp** and **Bass**.
 

@@ -63,7 +63,7 @@ When you indicate a reward, you are rewarding (negatively or positively) how a p
 
 Navigate between screens using the rotary encoder.
 
-## RL
+## Neural Net
 
 Info on the neural network: the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.
 
@@ -109,6 +109,10 @@ Choose the MIDI channel, 1–16. Saved separately for each mode.
 ## MIDI Mode
 
 Choose the [MIDI mode](#midi-modes). Push the encoder, turn to a mode, and push again: the choice is saved and the MEMLNaut restarts into the new mode. To leave without changing mode, choose **Cancel** (at either end of the list) or leave the screen without pushing.
+
+## Levels
+
+Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
 
 ## Help
 

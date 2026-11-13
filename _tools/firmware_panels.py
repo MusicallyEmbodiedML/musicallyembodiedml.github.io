@@ -55,13 +55,13 @@ FIRMWARES = [
     },
     {
         "slug": "nautlinear", "name": "NautLinear", "build": "MODE_NAUTLINEAR",
-        "tagline": "waveshaper bank with feedback and grain delay for line input",
+        "tagline": "waveshaper bank with preamp, damper and feedback for line input",
         "knob_y": ("Y · wet / dry", "0 = dry"),
         "tog_b_down": None,
         "inputs_used": True, "messages": False, "midi_in": "MIDI in · feedback CCs",
         "joystick": None,
-        "mode_screens": ["Focus", "Enable", "VU", "Options"], "end_screens": [],
-        "notes": ["60 network outputs. Enable toggles and the feedback tap are saved with each model.",
+        "mode_screens": ["Focus", "Enable", "Options"], "end_screens": [],
+        "notes": ["47 network outputs. Enable toggles and the feedback tap are saved with each model.",
                   "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
     },
     {
@@ -70,9 +70,9 @@ FIRMWARES = [
         "knob_y": ("Y · wet / dry", "0 = dry: bypasses every effect"),
         "tog_b_down": None,
         "inputs_used": True, "messages": False, "midi_in": "MIDI in · feedback CCs",
-        "joystick": None, "nn_screen": "Neural Net",
-        "mode_screens": ["Focus", "FX Enable", "VU", "Input Gain"], "end_screens": [],
-        "notes": ["Tap tempo on the Neural Net screen. Input Gain is saved to flash. 59 network outputs.",
+        "joystick": None,
+        "mode_screens": ["Focus", "FX Enable"], "end_screens": [],
+        "notes": ["Tap tempo on the Neural Net screen. 59 network outputs.",
                   "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
     },
     {
@@ -83,8 +83,8 @@ FIRMWARES = [
         "tog_b_down": None,
         "inputs_used": True, "messages": True, "midi_in": "MIDI in · feedback CCs",
         "joystick": ("Joystick · explore + wet/dry", "DJ Mode: dry at centre, wet at edge"),
-        "mode_screens": ["Focus", "FX Enable", "VU"], "end_screens": ["Options"],
-        "notes": ["Tap tempo on the RL screen. DJ Mode is on the Options screen.",
+        "mode_screens": ["Focus", "FX Enable"], "end_screens": ["Options"],
+        "notes": ["Tap tempo on the Neural Net screen. DJ Mode is on the Options screen.",
                   "MIDI CC 1 like · 2 dislike · 3 scramble · 4 forget · 5 exploration · 6 training speed."],
     },
 ]
@@ -106,8 +106,9 @@ def ring(cx, cy, r):
 def screen_list(fw):
     """Replace the RL sketch with this firmware's screen order."""
     after = [s for s in AFTER_MODE if fw["messages"] or s != "Messages"]
-    screens = ([fw.get("nn_screen", "RL")] + [(s, True) for s in fw["mode_screens"]] + after
-               + [(s, True) for s in fw["end_screens"]])
+    # 1.2.1: the network screen is "Neural Net", and every firmware ends with Levels.
+    screens = ([fw.get("nn_screen", "Neural Net")] + [(s, True) for s in fw["mode_screens"]] + after
+               + [(s, True) for s in fw["end_screens"]] + ["Levels"])
     screens = [s if isinstance(s, tuple) else (s, False) for s in screens]
     rows = (len(screens) + 1) // 2
     out = [f'<g font-family="{MONO}" font-size="16">']

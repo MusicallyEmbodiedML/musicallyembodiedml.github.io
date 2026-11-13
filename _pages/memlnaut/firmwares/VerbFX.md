@@ -66,7 +66,7 @@ The controls are the standard [NISPS controls](/memlnaut/approaches/nisps#contro
 
 Navigate between screens using the rotary encoder.
 
-## RL 
+## Neural Net
 
 Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.
 
@@ -117,6 +117,10 @@ Choose from
 - the joystick that matches your hardware (3D or 4D) 
 - machine listening analysis of the line input (allows the system to adapt to different sounds)
 - various configurations of MIDI controllers
+
+## Levels
+
+Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
 
 ## Help
 

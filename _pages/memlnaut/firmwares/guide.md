@@ -29,7 +29,7 @@ The current firmwares all use [NISPS](/memlnaut/approaches/nisps). They share on
 | [VerbFX](/memlnaut/firmwares/verbfxnisps) | Reverb, filterbank and delays for the line input |
 | [LiveFX](/memlnaut/firmwares/livefxnisps) | Ten tempo-synced effects for live performance and DJing |
 | [VoiceFX](/memlnaut/firmwares/voicefx) | Voice effects: grain delays, delay, reverb, flanger, compressor and vocal EQ |
-| [NautLinear](/memlnaut/firmwares/nautlinear) | Waveshaper bank with feedback and grain delay, for the line input |
+| [NautLinear](/memlnaut/firmwares/nautlinear) | Waveshaper bank with preamp, damper and feedback, for the line input |
 | [Infinibits](/memlnaut/firmwares/infinibitsnisps) | Granular drone synth |
 | [Paramsite](/memlnaut/firmwares/paramsitenisps) | MIDI controller for any synth, drum machine, effect or DAW |
 | [PAF Synth](/memlnaut/firmwares/pafsynthnisps) | Phase Aligned Formant synth, played over MIDI |

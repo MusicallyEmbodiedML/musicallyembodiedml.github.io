@@ -148,7 +148,7 @@ The dry signal is output in stereo.  The effects signal is added in mono.
 # Quick start
 
 1. Flash the firmware, connect a sound source to the line input and turn up **G**.
-2. On the **RL** screen, tap the tempo button four times in time with the music.
+2. On the **Neural Net** screen, tap the tempo button four times in time with the music.
 3. Push the joystick away from the centre. In DJ Mode, the further you push, the more of the effects you hear. At rest the sound is dry.
 4. Like, dislike, drag and jolt as described on the [NISPS page](/memlnaut/approaches/nisps#quick-start).
 
@@ -184,9 +184,9 @@ Turn DJ Mode on or off on the [Options](#options) screen.
 
 Navigate between screens using the rotary encoder.
 
-## RL 
+## Neural Net
 
-Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.  The green button is a tap-tempo for synchronising delay lines.
+Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.  The tempo button on the right is a tap tempo for synchronising delay lines.
 
 ## Focus
 
@@ -195,11 +195,6 @@ Selecting one or more items in the focus menu freezes all *unfocused* neural net
 ## FX Enable
 
 Toggle each of the ten effect blocks on or off: Allpass, Flanger, Chorus, Grain 1, Grain 2, Delay, Downsamp, Stutter, Ring Mod, Reverb.
-
-## VU
-
-Four VU meters showing input and output levels — In L, In R, Out L, Out R — useful for
-setting input levels and confirming the signal is reaching both channels.
 
 ## NN Inputs
 
@@ -232,6 +227,10 @@ A single toggle for **DJ Mode**:
   fully wet as you move away), and the DJ Filter knob sweeps the input filter.
 - **Off**: the wet/dry mix is set manually with the knob, and the input filter is bypassed —
   use this for a traditional FX unit with a fixed wet/dry balance.
+
+## Levels
+
+Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
 
 ## Help
 

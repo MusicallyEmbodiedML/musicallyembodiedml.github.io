@@ -50,13 +50,14 @@
   <text x="223" y="490" font-family="Menlo, Consolas, monospace" font-size="14" fill="#8fa49a">screens · turn the encoder</text>
   <rect x="223" y="508" width="414" height="1" fill="#2a3a33"/>
   <g font-family="Menlo, Consolas, monospace" font-size="16">
-    <text x="231" y="545" fill="#5f7369"> 1</text><text x="261" y="545" fill="#c6d0c8">RL</text>
+    <text x="231" y="545" fill="#5f7369"> 1</text><text x="261" y="545" fill="#c6d0c8">Neural Net</text>
     <text x="231" y="579" fill="#5f7369"> 2</text><text x="261" y="579" fill="#d6b92a">Focus</text>
     <text x="231" y="613" fill="#5f7369"> 3</text><text x="261" y="613" fill="#d6b92a">Enable</text>
     <text x="231" y="647" fill="#5f7369"> 4</text><text x="261" y="647" fill="#c6d0c8">NN Inputs</text>
     <text x="441" y="545" fill="#5f7369"> 5</text><text x="471" y="545" fill="#c6d0c8">Save Model</text>
     <text x="441" y="579" fill="#5f7369"> 6</text><text x="471" y="579" fill="#c6d0c8">Load Model</text>
     <text x="441" y="613" fill="#5f7369"> 7</text><text x="471" y="613" fill="#c6d0c8">Input Source</text>
+    <text x="441" y="647" fill="#5f7369"> 8</text><text x="471" y="647" fill="#c6d0c8">Levels</text>
     </g>
   <text x="223" y="768" font-family="Menlo, Consolas, monospace" font-size="13" fill="#5f7369">gold = MEMLCelium screens</text>
 

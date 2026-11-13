@@ -51,7 +51,7 @@ Navigate between screens using the rotary encoder.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Jz2sxsOFroo?si=8-nA4GSPlnBFKj-p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-## RL
+## Neural Net
 
 Info on the neural network - the outputs, the current error rate, the number of datapoints in replay memory, and the most recent command.
 
@@ -88,6 +88,10 @@ Choose from
 ## MIDI CC Out
 
 Choose the CC numbers that the neural network outputs are sent on.
+
+## Levels
+
+Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
 
 ## Help
 

@@ -59,17 +59,18 @@ Turn the **encoder** to step through the screens. On a selection screen (for exa
 
 # Screens
 
-The screens appear in this order. Firmwares add their own screens after the RL screen.
+The screens appear in this order. Firmwares add their own screens after the Neural Net screen.
 
 | Screen | What it shows or does |
 |---|---|
-| **RL** | Every network output as a bar, plus the training loss, the number of likes in memory and the last gesture |
+| **Neural Net** | Every network output as a bar, plus the training loss, the number of likes in memory and the last gesture |
 | *Mode screens* | For example **Focus**, **Enable** and **Mixer** (see each firmware's page) |
 | **NN Inputs** | The inputs going into the network. With a joystick, this includes an X/Y map |
 | **Messages** | Recent messages, such as "Where do you want it?" while dragging. Not every firmware has this screen |
 | **Save Model** | 12 slots on the SD card. Touch a slot, then type a name |
 | **Load Model** | Touch a slot to load it. The slot in use is highlighted |
 | **Input Source** | Chooses what drives the network (see below) |
+| **Levels** | Input and output level meters, with the **In Gain** fader: the codec's analog input gain, 0 to +22.5 dB. Saved, and applies in every firmware |
 | **Help** | What the controls do |
 | **System Info** | Information about the MEMLNaut and the current firmware |
 

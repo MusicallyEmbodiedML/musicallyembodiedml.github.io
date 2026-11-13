@@ -54,12 +54,12 @@ The grain delays and the delay are **tempo synced**: their times snap to divisio
 
 ## Inputs and outputs
 
-The processor takes a stereo line input. The effects bus is mono until the reverb, then stereo. The dry signal stays stereo. Set the input level on the [Input Gain](#input-gain) screen.
+The processor takes a stereo line input. The effects bus is mono until the reverb, then stereo. The dry signal stays stereo. Set the input level on the [Levels](#levels) screen.
 
 # Quick start
 
 1. Flash the firmware, connect a microphone preamp or other line-level source, and turn up **G**.
-2. Set the level on the **Input Gain** screen while watching the input meters on the **VU** screen.
+2. Set the input level on the **Levels** screen, watching its input meters.
 3. Set the wet/dry balance with **knob Y**.
 4. Tap the tempo on the **Neural Net** screen, if you want the delays in time.
 5. Move the joystick, then like, dislike, drag and jolt as described on the [NISPS page](/memlnaut/approaches/nisps#quick-start).
@@ -92,15 +92,11 @@ Choose which effects the network changes: **Gr1**, **Gr2**, **Dly**, **Flgr**, *
 
 Turn each block on or off: **Allpass**, **Flanger**, **Chorus**, **Grain 1**, **Grain 2**, **Delay**, **Reverb**, **Comp** and **EQ**. Highlighted blocks are on. The settings are saved with each model.
 
-## VU
+## Levels
 
-Input and output levels for both channels.
+Input and output level meters (In L, In R, Out L, Out R), with the **In Gain** fader beside them. In Gain is the codec's analog input gain, 0 to +22.5 dB in 1.5 dB steps: set it while watching the input meters. It's saved, and applies in every firmware.
 
-## Input Gain
-
-The codec's analog input gain, from 0 to +22.5 dB in 1.5 dB steps. It boosts the signal before it's digitised, so quiet sources keep their quality. The gain changes as you drag the fader, and is saved when you let go, so it comes back the next time you switch on.
-
-The other screens are the standard ones: **NN Inputs**, **Save Model**, **Load Model** and **Input Source**.
+The other screens are the standard ones: **NN Inputs**, **Save Model**, **Load Model** and **Input Source**. **Levels** comes after them.
 
 # Parameters
 

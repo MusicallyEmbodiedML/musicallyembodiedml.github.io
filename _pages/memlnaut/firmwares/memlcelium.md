@@ -45,9 +45,9 @@ The network's input defaults to the joystick. You can change it on the **Input S
 
 # Screens
 
-MEMLCelium adds two screens after the RL screen.
+MEMLCelium adds two screens after the Neural Net screen. The **Levels** screen, with the input gain, comes at the end as in every firmware.
 
-**RL**: the 83 outputs are labelled by section: **Seq**, **V1**, **V2** and **V3**.
+**Neural Net**: the 83 outputs are labelled by section: **Seq**, **V1**, **V2** and **V3**.
 
 **Focus**: choose which groups of parameters the network changes. The groups are **Seq** (the sequencer's rhythms), **Synth** (the sound of each voice), **Env** (the envelopes), and **Voice 1**, **Voice 2** and **Voice 3**. Groups overlap, so selecting **Env** and **Voice 2** together focuses on everything in either group.
 
